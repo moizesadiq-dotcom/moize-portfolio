@@ -16,243 +16,231 @@
     <meta name="author" content="Abdul Moize">
 
     <!-- Google Font -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <!-- CSS -->
-
     <link rel="stylesheet" href="css/style.css">
 
+    <style>
+        /* Interactive Slider Modal Styling */
+        .modal-container {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.94);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content-wrapper {
+            position: relative;
+            max-width: 85%;
+            max-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 10px;
+            box-shadow: 0 0 25px rgba(0, 123, 255, 0.3);
+            object-fit: contain;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 24px;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: 0.3s ease;
+            user-select: none;
+        }
+
+        .slider-btn:hover {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #fff;
+        }
+
+        .prev-btn { left: -65px; }
+        .next-btn { right: -65px; }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        @media (max-width: 768px) {
+            .prev-btn { left: 5px; }
+            .next-btn { right: 5px; }
+            .modal-content-wrapper { max-width: 95%; }
+        }
+    </style>
 </head>
 
 <body>
 
 <!-- ================= HEADER ================= -->
-
 <header>
-
     <div class="container">
-
         <nav>
-
             <a href="#" class="logo">
                 Abdul<span>Moize</span>
             </a>
 
             <ul class="nav-links">
-
                 <li><a href="#home">Home</a></li>
-
                 <li><a href="#about">About</a></li>
-
                 <li><a href="#skills">Skills</a></li>
-
                 <li><a href="#projects">Projects</a></li>
-
                 <li><a href="#contact">Contact</a></li>
-
             </ul>
 
             <a href="resume.html" class="resume-btn">Resume</a>
 
             <div class="menu-btn">
-
                 <i class="fa-solid fa-bars"></i>
-
             </div>
-
         </nav>
-
     </div>
-
 </header>
 
 <!-- ================= HERO ================= -->
-
 <section id="home" class="hero">
-
     <div class="container hero-container">
-
         <div class="hero-content">
-
             <span class="hero-tag">
-
                 👋 Hello, I'm
-
             </span>
 
             <h1>
-
                 Abdul <span>Moize</span>
-
             </h1>
 
             <h2>
-
                 Full Stack Web Developer
-
             </h2>
 
             <p>
-
                 I build modern, responsive and high-performance websites
                 using HTML, CSS, JavaScript, PHP, Laravel and MySQL.
-
                 My goal is to create clean UI, smooth UX and scalable web
                 applications.
-
             </p>
 
             <div class="hero-buttons">
-
-                <a href="#projects" class="btn primary">
-
-                    View Projects
-
-                </a>
-
-                <a href="#contact" class="btn secondary">
-
-                    Hire Me
-
-                </a>
-
+                <a href="#projects" class="btn primary">View Projects</a>
+                <a href="#contact" class="btn secondary">Hire Me</a>
             </div>
-<div class="social-icons">
 
-    <a href="https://github.com/moizesadiq-dotcom" target="_blank">
-        <i class="fab fa-github"></i>
-    </a>
-
-    <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-
-    <a href="https://www.instagram.com/ab.moize/" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-
-    <a href="mailto:moizesadiq@gmail.com">
-        <i class="fas fa-envelope"></i>
-    </a>
-</div>
-</div>
-        <div class="hero-image">
-
-            <div class="circle"></div>
-
-            <img src="images/profile.png"
-                alt="Abdul Moize">
-
+            <div class="social-icons">
+                <a href="https://github.com/moizesadiq-dotcom" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/ab.moize/" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="mailto:moizesadiq@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
         </div>
 
+        <div class="hero-image">
+            <div class="circle"></div>
+            <img src="images/profile.png" alt="Abdul Moize">
+        </div>
     </div>
-
 </section>
+
 <!-- ================= ABOUT ================= -->
-
 <section class="about section" id="about">
-
     <div class="container">
-
         <div class="section-title">
-
             <h5>ABOUT ME</h5>
-
             <h2>Turning Ideas Into Digital Experiences</h2>
-
         </div>
 
         <div class="about-wrapper">
-
             <div class="about-image">
-
-              <img src="images/profile.png" alt="Abdul Moize">
-
+                <img src="images/profile.png" alt="Abdul Moize">
             </div>
 
             <div class="about-content">
-
                 <h3>I'm Abdul Moize</h3>
-
                 <h4>Full Stack Web Developer</h4>
 
                 <p>
-
                     I am a passionate Full Stack Web Developer from Karachi,
                     Pakistan. I enjoy building responsive, modern and
                     user-friendly websites using HTML, CSS, JavaScript,
                     Bootstrap, PHP, Laravel and MySQL.
-
                 </p>
 
                 <p>
-
                     I believe every project should not only look beautiful
                     but also provide an excellent user experience with clean
                     and optimized code.
-
                 </p>
 
                 <div class="about-info">
+                    <div class="info-box">
+                        <span>Name</span>
+                        <h5>Abdul Moize</h5>
+                    </div>
 
-                    <div>
-<div class="about-info">
+                    <div class="info-box">
+                        <span>Email</span>
+                        <a href="mailto:moizesadiq@gmail.com" class="contact-link">moizesadiq@gmail.com</a>
+                    </div>
 
-    <div class="info-box">
-        <span>Name</span>
-        <h5>Abdul Moize</h5>
+                    <div class="info-box">
+                        <span>Phone</span>
+                        <a href="tel:+923707104132" class="contact-link">+92 370 7104132</a>
+                    </div>
+
+                    <div class="info-box">
+                        <span>Location</span>
+                        <h5>Karachi, Pakistan</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="info-box">
-        <span>Email</span>
-        <a href="mailto:moizesadiq@gmail.com" class="contact-link">
-            moizesadiq@gmail.com
-        </a>
-    </div>
-
-    <div class="info-box">
-        <span>Phone</span>
-        <a href="tel:+923171234567" class="contact-link">
-            +92707104132
-        </a>
-    </div>
-
-    <div class="info-box">
-        <span>Location</span>
-        <h5>Karachi, Pakistan</h5>
-    </div>
-
-</div>
 </section>
 
 <!-- ================= SKILLS ================= -->
-
 <section class="skills section" id="skills">
-
     <div class="container">
-
         <div class="section-title">
-
             <h5>MY SKILLS</h5>
-
             <h2>Technologies I Work With</h2>
-
         </div>
 
         <div class="skills-grid">
-
             <div class="skill-card">
                 <i class="fa-brands fa-html5"></i>
                 <h3>HTML5</h3>
@@ -300,332 +288,251 @@
                 <h3>Git</h3>
                 <p>Version control and collaboration.</p>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
 <!-- ================= SERVICES ================= -->
-
 <section class="services section">
-
     <div class="container">
-
         <div class="section-title">
-
             <h5>SERVICES</h5>
-
             <h2>What I Can Do</h2>
-
         </div>
 
         <div class="services-grid">
-
             <div class="service-box">
-
                 <i class="fa-solid fa-laptop-code"></i>
-
                 <h3>Frontend Development</h3>
-
-                <p>
-
-                    Modern responsive websites using HTML,
-                    CSS, Bootstrap and JavaScript.
-
-                </p>
-
+                <p>Modern responsive websites using HTML, CSS, Bootstrap and JavaScript.</p>
             </div>
 
             <div class="service-box">
-
                 <i class="fa-solid fa-layer-group"></i>
-
                 <h3>Laravel Development</h3>
-
-                <p>
-
-                    Dynamic web applications using
-                    Laravel and MySQL.
-
-                </p>
-
+                <p>Dynamic web applications using Laravel and MySQL.</p>
             </div>
 
             <div class="service-box">
-
                 <i class="fa-solid fa-mobile-screen-button"></i>
-
                 <h3>Responsive Design</h3>
-
-                <p>
-
-                    Websites optimized for desktop,
-                    tablet and mobile devices.
-
-                </p>
-
+                <p>Websites optimized for desktop, tablet and mobile devices.</p>
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-<!-- ================= PROJECTS ================= -->
-
+<<!-- ================= PROJECTS ================= -->
 <section class="projects section" id="projects">
-
     <div class="container">
-
         <div class="section-title">
-
             <h5>PROJECTS</h5>
-
             <h2>Featured Work</h2>
-
         </div>
-<div class="projects-grid">
 
-    <!-- Project 1: The Origami Hub -->
-<div class="project-card">
-    <img src="images/origam.png" alt="The Origami Hub">
-    <div class="project-content">
-        <h3>The Origami Hub</h3>
-        <p>A web-based application dedicated to paper folding guides, custom background elements, and step-by-step tutorials.</p>
-     <!-- Project 1: The Origami Hub -->
-<a href="https://moizesadiq-dotcom.github.io/the-origami-hub/" target="_blank">
-    The Origami Hub
-</a>
-    </div>
-</div>
-<!-- Project 2: Salon Management System -->
-<div class="project-card">
+        <div class="projects-grid">
 
-  <div class="project-slider">
+            <!-- Project 1: AURA BISTRO -->
+            <div class="project-card">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="AURA BISTRO">
+                <div class="project-content">
+                    <h3>AURA BISTRO — Gourmet Dining Web App</h3>
+                    <p>Modern luxury coffee & bistro app with dynamic category filtering, cart management, table reservation, and 1-click WhatsApp checkout.</p>
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <a href="https://moizesadiq-dotcom.github.io/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App/" target="_blank" class="btn">View Live Demo</a>
+                        <a href="https://github.com/moizesadiq-dotcom/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App" target="_blank" class="btn secondary">Source Code</a>
+                    </div>
+                </div>
+            </div>
 
-    <div class="slides">
-        <img src="images/dashboard.png" alt="Salon Dashboard">
-        <img src="images/appoinment.png" alt="Salon Appointments">
-        <img src="images/reports.png" alt="Salon Reports">
-    </div>
+            <!-- Project 2: The Origami Hub -->
+            <div class="project-card">
+                <img src="images/origam.png" alt="The Origami Hub">
+                <div class="project-content">
+                    <h3>The Origami Hub</h3>
+                    <p>A web-based application dedicated to paper folding guides, custom background elements, and step-by-step tutorials.</p>
+                    <a href="https://moizesadiq-dotcom.github.io/the-origami-hub/" target="_blank" class="btn">View Live Demo</a>
+                </div>
+            </div>
 
-    <button class="slider-btn prev" onclick="changeSlide(-1)">
-        <i class="fa-solid fa-chevron-left"></i>
-    </button>
+            <!-- Project 3: Salon Management System -->
+            <div class="project-card">
+                <div class="project-img-wrapper" onclick="openSlider(0)">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" alt="Salon Management System">
+                    <div class="slider-badge">
+                        <i class="fa-solid fa-images"></i> Click to view slider
+                    </div>
+                </div>
 
-    <button class="slider-btn next" onclick="changeSlide(1)">
-        <i class="fa-solid fa-chevron-right"></i>
-    </button>
-
-    <div class="slider-dots">
-        <span class="dot active" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-    </div>
-
-</div>
-
-    <div class="project-content">
-        <h3>Salon Management System</h3>
-
-        <p>
-            A full-stack Laravel administration module to manage bookings,
-            services, staff members, appointments, payments, commissions,
-            and reporting.
-        </p>
-
-        <a href="https://github.com/moizesadiq-dotcom/salon-management-system"
-           target="_blank"
-           class="btn">
-            View Source Code
-        </a>
-    </div>
-
-</div>
+                <div class="project-content">
+                    <h3>Salon Management System</h3>
+                    <p>
+                        A full-stack Laravel administration module to manage bookings,
+                        services, staff members, appointments, payments, commissions,
+                        and reporting.
+                    </p>
+                    
+                    <a href="https://github.com/moizesadiq-dotcom/salon-management-system" target="_blank" class="btn">
+                        View Source Code
+                    </a>
+                </div>
             </div>
 
         </div>
-
     </div>
-
 </section>
+
+<!-- ================= FULLSCREEN SLIDER POPUP ================= -->
+<div id="imageModal" class="modal-container">
+    <span onclick="closeSlider()" class="close-modal-btn">&times;</span>
+    
+    <div class="modal-content-wrapper">
+        <button class="slider-btn prev-btn" onclick="changeSlide(-1)">❮</button>
+        <img id="modalImg" class="modal-img" src="" alt="Screenshot">
+        <button class="slider-btn next-btn" onclick="changeSlide(1)">❯</button>
+    </div>
+    
+    <p id="modalCaption" class="modal-caption"></p>
+</div>
 <!-- ================= CONTACT ================= -->
-
 <section class="contact section" id="contact">
-
     <div class="container">
-
         <div class="section-title">
-
             <h5>CONTACT</h5>
-
             <h2>Let's Work Together</h2>
-
         </div>
 
         <div class="contact-wrapper">
-
             <div class="contact-info">
-
                 <div class="info-box">
-
                     <i class="fa-solid fa-envelope"></i>
-
                     <div>
-
                         <h4>Email</h4>
-
                         <p>moizesadiq@gmail.com</p>
-
                     </div>
-
                 </div>
 
-
                 <div class="info-box">
-
                     <i class="fa-solid fa-phone"></i>
-
                     <div>
-
                         <h4>Phone</h4>
-
-                        <p>+92 707104132</p>
-
+                        <p>+92 370 7104132</p>
                     </div>
-
                 </div>
 
-
                 <div class="info-box">
-
                     <i class="fa-solid fa-location-dot"></i>
-
                     <div>
-
                         <h4>Location</h4>
-
                         <p>Karachi, Sindh, Pakistan</p>
-
                     </div>
-
                 </div>
-
-
-               <div class="info-box">
-
-    <i class="fa-brands fa-linkedin"></i>
-
-    <div>
-
-        <h4>LinkedIn</h4>
-
-        <p>linkedin.com/in/moize-sadiq-31220b3a0</p>
-
-    </div>
-
-</div>
 
                 <div class="info-box">
-
-                    <i class="fa-brands fa-github"></i>
-
+                    <i class="fa-brands fa-linkedin"></i>
                     <div>
-
-                        <h4>GitHub</h4>
-
-                        <p>github.com/abmoize</p>
-
+                        <h4>LinkedIn</h4>
+                        <p>linkedin.com/in/moize-sadiq-31220b3a0</p>
                     </div>
-
                 </div>
 
+                <div class="info-box">
+                    <i class="fa-brands fa-github"></i>
+                    <div>
+                        <h4>GitHub</h4>
+                        <p>github.com/moizesadiq-dotcom</p>
+                    </div>
+                </div>
             </div>
 
-
             <form class="contact-form">
-
                 <input type="text" placeholder="Your Name" required>
-
                 <input type="email" placeholder="Your Email" required>
-
                 <input type="text" placeholder="Subject">
-
                 <textarea rows="6" placeholder="Your Message"></textarea>
-
-                <button type="submit" class="btn primary">
-
-                    Send Message
-
-                </button>
-
+                <button type="submit" class="btn primary">Send Message</button>
             </form>
-
-
         </div>
-
     </div>
-
 </section>
+
 <!-- ================= FOOTER ================= -->
-
 <footer>
-
     <div class="container">
-
         <div class="footer-content">
-
-            <h2>
-
-                Abdul<span>Moize</span>
-
-            </h2>
-
-            <p>
-
-                Full Stack Web Developer
-
-            </p>
+            <h2>Abdul<span>Moize</span></h2>
+            <p>Full Stack Web Developer</p>
 
             <div class="footer-social">
-
-                <a href="https://github.com/moizesadiq-dotcom"><i class="fab fa-github"></i></a>
-
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="https://www.instagram.com/ab.moize/" target="_blank">
-    <i class="fab fa-instagram"></i>
-</a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-
+                <a href="https://github.com/moizesadiq-dotcom" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/ab.moize/" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
 
             <p class="copyright">
-
                 © 2026 Abdul Moize. All Rights Reserved.
-
             </p>
-
         </div>
-
     </div>
-
 </footer>
 
 <!-- ================= BACK TO TOP ================= -->
-
 <button id="topBtn">
-
     <i class="fa-solid fa-arrow-up"></i>
-
 </button>
 
 <!-- ================= JS ================= -->
-
 <script src="js/script.js"></script>
 
-</body>
+<!-- Interactive Admin Dashboard Slider Script -->
+<script>
+const galleryData = [
+    { src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80", title: "Admin Dashboard & Real-Time Analytics" },
+    { src: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1200&q=80", title: "Appointments & Salon Scheduling System" },
+    { src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80", title: "Revenue & Sales Performance Analytics" },
+    { src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80", title: "Salon Service Catalogue & Pricing Manager" },
+    { src: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=1200&q=80", title: "Customer Bookings & Staff Commission Panel" }
+];
 
+let currentIndex = 0;
+
+function openSlider(index) {
+    currentIndex = index;
+    updateModalContent();
+    document.getElementById("imageModal").style.display = "flex";
+}
+
+function closeSlider() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+function changeSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex >= galleryData.length) {
+        currentIndex = 0;
+    } else if (currentIndex < 0) {
+        currentIndex = galleryData.length - 1;
+    }
+    updateModalContent();
+}
+
+function updateModalContent() {
+    const modalImg = document.getElementById("modalImg");
+    const caption = document.getElementById("modalCaption");
+    modalImg.src = galleryData[currentIndex].src;
+    caption.innerText = `(${currentIndex + 1} / ${galleryData.length}) - ${galleryData[currentIndex].title}`;
+}
+
+// Keyboard arrow key navigation
+document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById("imageModal");
+    if (modal.style.display === "flex") {
+        if (e.key === "Escape") closeSlider();
+        if (e.key === "ArrowRight") changeSlide(1);
+        if (e.key === "ArrowLeft") changeSlide(-1);
+    }
+});
+</script>
+
+</body>
 </html>

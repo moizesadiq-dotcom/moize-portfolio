@@ -327,3 +327,52 @@ setInterval(() => {
     slideIndex++;
     showSlide(slideIndex);
 }, 4000);
+// ================= SALON SYSTEM SLIDER POPUP =================
+const galleryData = [
+    { src: "images/dashboard.png", title: "Admin Dashboard & Real-Time Analytics" },
+    { src: "images/services.png", title: "Revenue & Sales Performance Analytics" },
+    { src: "images/bookings.png", title: "Appointments & Salon Scheduling System" },
+    { src: "images/reports.png", title: "Salon Service Catalogue & Pricing Manager" },
+    { src: "images/appoinment.png", title: "Customer Bookings & Staff Commission Panel" }
+];
+
+let currentIndex = 0;
+
+function openSlider(index) {
+    currentIndex = index;
+    updateModalContent();
+    document.getElementById("imageModal").style.display = "flex";
+}
+
+function closeSlider() {
+    document.getElementById("imageModal").style.display = "none";
+}
+
+function changeSlide(direction) {
+    currentIndex += direction;
+    if (currentIndex >= galleryData.length) {
+        currentIndex = 0;
+    } else if (currentIndex < 0) {
+        currentIndex = galleryData.length - 1;
+    }
+    updateModalContent();
+}
+
+function updateModalContent() {
+    const modalImg = document.getElementById("modalImg");
+    const caption = document.getElementById("modalCaption");
+    if (modalImg && caption) {
+        modalImg.src = galleryData[currentIndex].src;
+        caption.innerText = `(${currentIndex + 1} / ${galleryData.length}) - ${galleryData[currentIndex].title}`;
+    }
+}
+
+// Arrow Key Navigation
+document.addEventListener('keydown', function(e) {
+    const modal = document.getElementById("imageModal");
+    if (modal && modal.style.display === "flex") {
+        if (e.key === "Escape") closeSlider();
+        if (e.key === "ArrowRight") changeSlide(1);
+        if (e.key === "ArrowLeft") changeSlide(-1);
+    }
+});
