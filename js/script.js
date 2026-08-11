@@ -1,378 +1,136 @@
-// ===============================
-// MOBILE MENU
-// ===============================
+// 1. Mobile Menu Toggle
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.getElementById('nav-links');
 
-const menuBtn = document.querySelector(".menu-btn");
-const navLinks = document.querySelector(".nav-links");
-
-menuBtn.addEventListener("click", () => {
-    navLinks.classList.toggle("active");
-
-    if (menuBtn.innerHTML.includes("bars")) {
-        menuBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
-    } else {
-        menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
-    }
-});
-
-// ===============================
-// CLOSE MENU ON LINK CLICK
-// ===============================
-
-document.querySelectorAll(".nav-links a").forEach(link => {
-
-    link.addEventListener("click", () => {
-
-        navLinks.classList.remove("active");
-
-        menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
-
+if (menuBtn && navLinks) {
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
     });
+}
 
-});
-
-// ===============================
-// STICKY HEADER
-// ===============================
-
-const header = document.querySelector("header");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 50) {
-
-        header.style.background = "rgba(8,17,31,.95)";
-
-        header.style.boxShadow = "0 10px 30px rgba(0,0,0,.25)";
-
-    } else {
-
-        header.style.background = "rgba(8,17,31,.65)";
-
-        header.style.boxShadow = "none";
-
-    }
-
-});
-
-// ===============================
-// BACK TO TOP
-// ===============================
-
-const topBtn = document.getElementById("topBtn");
-
-window.addEventListener("scroll", () => {
-
-    if (window.scrollY > 300) {
-
-        topBtn.style.opacity = "1";
-
-        topBtn.style.visibility = "visible";
-
-    } else {
-
-        topBtn.style.opacity = "0";
-
-        topBtn.style.visibility = "hidden";
-
-    }
-
-});
-
-topBtn.addEventListener("click", () => {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
+// Close mobile menu on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+        }
     });
-
 });
-// ========================// ======================================
-// TYPING EFFECT
-// ======================================
 
-const typingElement = document.querySelector(".hero-content h2");
-
-const roles = [
-    "Full Stack Web Developer",
-    "Laravel Developer",
-    "Frontend Developer",
-    "Problem Solver"
-];
-
-let roleIndex = 0;
-let letterIndex = 0;
+// 2. Typewriter Effect
+const words = ["Full Stack Developer", "Laravel Developer", "Problem Solver", "Web Developer"];
+let wordIndex = 0;
+let charIndex = 0;
 let isDeleting = false;
+const typingElement = document.getElementById("typing-text");
 
-function typingAnimation() {
+function typeEffect() {
+    if (!typingElement) return;
 
-    const currentRole = roles[roleIndex];
-
-    if (!isDeleting) {
-
-        typingElement.textContent = currentRole.substring(0, letterIndex);
-        letterIndex++;
-
-        if (letterIndex > currentRole.length) {
-            isDeleting = true;
-            setTimeout(typingAnimation, 1500);
-            return;
-        }
-
+    const currentWord = words[wordIndex];
+    
+    if (isDeleting) {
+        typingElement.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
     } else {
+        typingElement.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+    }
 
-        typingElement.textContent = currentRole.substring(0, letterIndex);
-        letterIndex--;
+    let typeSpeed = isDeleting ? 60 : 120;
 
-        if (letterIndex < 0) {
-            isDeleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            letterIndex = 0;
+    if (!isDeleting && charIndex === currentWord.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        typeSpeed = 500;
+    }
+
+    setTimeout(typeEffect, typeSpeed);
+}
+
+document.addEventListener("DOMContentLoaded", typeEffect);
+
+// 3. Project Filter Logic
+function filterProjects(category, event) {
+    const cards = document.querySelectorAll('.project-card');
+    const buttons = document.querySelectorAll('.tab-btn');
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    if (event) event.target.classList.add('active');
+
+    cards.forEach(card => {
+        if (category === 'all' || card.classList.contains(category)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
         }
-
-    }
-
-    setTimeout(typingAnimation, isDeleting ? 50 : 100);
-
-}
-
-typingAnimation();
-
-// ======================================
-// SCROLL REVEAL
-// ======================================
-
-const revealElements = document.querySelectorAll(
-
-".hero-content,.hero-image,.about-wrapper,.skill-card,.service-box,.project-card,.contact-wrapper"
-
-);
-
-function reveal() {
-
-    revealElements.forEach(element => {
-
-        const windowHeight = window.innerHeight;
-
-        const revealTop = element.getBoundingClientRect().top;
-
-        if (revealTop < windowHeight - 120) {
-
-            element.classList.add("show");
-
-        }
-
     });
-
 }
+// ==========================================
+// 4. Project Image Slider / Modal Logic
+// ==========================================
 
-window.addEventListener("scroll", reveal);
+// Store project image arrays & captions
+const projectGalleries = {
+    'salon': [
+        { src: 'images/dashboard.png', caption: 'Admin Dashboard Overview' },
+        { src: 'images/appoinment.png', caption: 'Appointments Management' }, // Note: matching your spelling exactly
+        { src: 'images/bookings.png', caption: 'Booking History & Logs' },
+        { src: 'images/services.png', caption: 'Services & Packages Catalog' },
+        { src: 'images/reports.png', caption: 'System Analytics & Reports' }
+    ]
+};
 
-reveal();
+let currentGallery = '';
+let currentSlideIndex = 0;
 
-// ======================================
-// CURRENT YEAR
-// ======================================
-
-const copyright = document.querySelector(".copyright");
-
-if(copyright){
-
-copyright.innerHTML =
-`© ${new Date().getFullYear()} Abdul Moize. All Rights Reserved.`;
-
-}
-// ======================================
-// PRELOADER
-// ======================================
-
-window.addEventListener("load", () => {
-
-    const loader = document.querySelector(".loader");
-
-    if (loader) {
-
-        loader.style.opacity = "0";
-
-        loader.style.visibility = "hidden";
-
-        loader.style.transition = "0.6s";
-
+function openSlider(projectKey) {
+    currentGallery = projectKey;
+    currentSlideIndex = 0;
+    
+    const modal = document.getElementById('imageModal');
+    if(modal) {
+        modal.style.display = 'flex';
+        updateModalContent();
     }
-
-});
-
-// ======================================
-// PARALLAX EFFECT
-// ======================================
-
-const heroImage = document.querySelector(".hero-image");
-
-window.addEventListener("mousemove", (e) => {
-
-    if (!heroImage) return;
-
-    const x = (window.innerWidth / 2 - e.clientX) / 35;
-    const y = (window.innerHeight / 2 - e.clientY) / 35;
-
-    heroImage.style.transform =
-        `translate(${x}px, ${y}px)`;
-
-});
-
-// ======================================
-// SCROLL PROGRESS BAR
-// ======================================
-
-const progressBar = document.createElement("div");
-
-progressBar.className = "progress-bar";
-
-document.body.appendChild(progressBar);
-
-window.addEventListener("scroll", () => {
-
-    const totalHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-
-    const progress =
-        (window.scrollY / totalHeight) * 100;
-
-    progressBar.style.width = progress + "%";
-
-});
-
-// ======================================
-// BUTTON RIPPLE EFFECT
-// ======================================
-
-const buttons = document.querySelectorAll(".btn");
-
-buttons.forEach(button => {
-
-    button.addEventListener("click", function (e) {
-
-        const ripple = document.createElement("span");
-
-        ripple.className = "ripple";
-
-        const rect = this.getBoundingClientRect();
-
-        ripple.style.left = (e.clientX - rect.left) + "px";
-        ripple.style.top = (e.clientY - rect.top) + "px";
-
-        this.appendChild(ripple);
-
-        setTimeout(() => {
-
-            ripple.remove();
-
-        }, 600);
-
-    });
-
-});
-
-// ======================================
-// CONSOLE MESSAGE
-// ======================================
-
-console.log("%cWelcome 👋", "font-size:28px;color:#3b82f6;font-weight:bold;");
-console.log("%cPortfolio developed by Abdul Moize", "font-size:16px;color:#ffffff;");
-console.log("%cThanks for visiting.", "color:#60a5fa;");
-
-/* ================= PROJECT IMAGE SLIDER ================= */
-
-let slideIndex = 0;
-
-const slides = document.querySelector(".slides");
-const dots = document.querySelectorAll(".dot");
-
-function showSlide(index) {
-
-    if (index >= 3) {
-        slideIndex = 0;
-    }
-
-    if (index < 0) {
-        slideIndex = 2;
-    }
-
-    slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-
-    dots.forEach(dot => {
-        dot.classList.remove("active");
-    });
-
-    dots[slideIndex].classList.add("active");
-}
-
-function changeSlide(direction) {
-    slideIndex += direction;
-    showSlide(slideIndex);
-}
-
-function currentSlide(index) {
-    slideIndex = index;
-    showSlide(slideIndex);
-}
-
-/* Automatic Slider */
-
-setInterval(() => {
-    slideIndex++;
-    showSlide(slideIndex);
-}, 4000);
-// ================= SALON SYSTEM SLIDER POPUP =================
-const galleryData = [
-    { src: "images/dashboard.png", title: "Admin Dashboard & Real-Time Analytics" },
-    { src: "images/services.png", title: "Revenue & Sales Performance Analytics" },
-    { src: "images/bookings.png", title: "Appointments & Salon Scheduling System" },
-    { src: "images/reports.png", title: "Salon Service Catalogue & Pricing Manager" },
-    { src: "images/appoinment.png", title: "Customer Bookings & Staff Commission Panel" }
-];
-
-let currentIndex = 0;
-
-function openSlider(index) {
-    currentIndex = index;
-    updateModalContent();
-    document.getElementById("imageModal").style.display = "flex";
 }
 
 function closeSlider() {
-    document.getElementById("imageModal").style.display = "none";
+    const modal = document.getElementById('imageModal');
+    if(modal) {
+        modal.style.display = 'none';
+    }
 }
 
 function changeSlide(direction) {
-    currentIndex += direction;
-    if (currentIndex >= galleryData.length) {
-        currentIndex = 0;
-    } else if (currentIndex < 0) {
-        currentIndex = galleryData.length - 1;
+    const images = projectGalleries[currentGallery];
+    currentSlideIndex += direction;
+
+    // Loop back to start or end
+    if (currentSlideIndex >= images.length) {
+        currentSlideIndex = 0;
+    } else if (currentSlideIndex < 0) {
+        currentSlideIndex = images.length - 1;
     }
+    
     updateModalContent();
 }
 
 function updateModalContent() {
-    const modalImg = document.getElementById("modalImg");
-    const caption = document.getElementById("modalCaption");
-    if (modalImg && caption) {
-        modalImg.src = galleryData[currentIndex].src;
-        caption.innerText = `(${currentIndex + 1} / ${galleryData.length}) - ${galleryData[currentIndex].title}`;
-    }
+    const imageObj = projectGalleries[currentGallery][currentSlideIndex];
+    const totalSlides = projectGalleries[currentGallery].length;
+    
+    document.getElementById('modalImg').src = imageObj.src;
+    document.getElementById('modalCaption').innerHTML = `<strong>${imageObj.caption}</strong> (${currentSlideIndex + 1} / ${totalSlides})`;
 }
 
-// Arrow Key Navigation
-document.addEventListener('keydown', function(e) {
-    const modal = document.getElementById("imageModal");
-    if (modal && modal.style.display === "flex") {
-        if (e.key === "Escape") closeSlider();
-        if (e.key === "ArrowRight") changeSlide(1);
-        if (e.key === "ArrowLeft") changeSlide(-1);
+// Close modal if user clicks outside the image
+window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target === modal) {
+        closeSlider();
     }
-});
+}
