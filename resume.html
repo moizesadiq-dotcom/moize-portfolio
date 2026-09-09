@@ -1,90 +1,684 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Moiz - Resume</title>
-    <!-- Google Fonts & FontAwesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Separate CSS file link -->
-    <link rel="stylesheet" href="resume-style.css">
+
+    <title>Abdul Moize — Resume</title>
+
+    <meta name="description" content="Resume of Abdul Moize - Backend Developer, Laravel Developer and Full Stack Web Developer.">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0a0a0c',
+                        cardBg: '#121217',
+                        cardBorder: '#22222c',
+                        accent: '#3b82f6',
+                        accentHover: '#2563eb',
+                        mutedText: '#9ca3af'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        body {
+            background: #0a0a0c;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .glass {
+            background: rgba(18, 18, 23, 0.85);
+            border: 1px solid #22222c;
+            backdrop-filter: blur(12px);
+        }
+
+        .glow {
+            box-shadow: 0 0 35px rgba(59, 130, 246, 0.12);
+        }
+
+        .resume-card {
+            transition: all 0.3s ease;
+        }
+
+        .resume-card:hover {
+            border-color: rgba(59, 130, 246, 0.45);
+            transform: translateY(-3px);
+        }
+
+        .skill {
+            background: rgba(59, 130, 246, 0.08);
+            border: 1px solid rgba(59, 130, 246, 0.18);
+        }
+
+        @media print {
+            body {
+                background: white !important;
+                color: #111827 !important;
+            }
+
+            .no-print {
+                display: none !important;
+            }
+
+            .glass,
+            .resume-card {
+                background: white !important;
+                border: 1px solid #e5e7eb !important;
+                box-shadow: none !important;
+            }
+
+            .text-white {
+                color: #111827 !important;
+            }
+
+            .text-slate-300,
+            .text-slate-400 {
+                color: #4b5563 !important;
+            }
+
+            .text-accent {
+                color: #2563eb !important;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="resume-container">
-    <!-- Left Sidebar -->
-    <div class="sidebar">
-        <div class="profile-box">
-            <div class="avatar"><i class="fa-solid fa-code"></i></div>
-            <h2>Abdul Moiz</h2>
-            <p>Full Stack Developer</p>
-        </div>
+    <!-- Top Navigation -->
+    <nav class="no-print sticky top-0 z-50 border-b border-white/5 bg-[#0a0a0c]/90 backdrop-blur-xl">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
-        <div class="section-title">Contact</div>
-        <ul class="contact-list">
-            <li><i class="fa-solid fa-phone"></i> +92 3707104132</li>
-            <li><i class="fa-solid fa-envelope"></i> moizesadiq@gmail.com</li>
-            <li><i class="fa-solid fa-location-dot"></i> Karachi, Sindh, PK</li>
-            <li><i class="fa-brands fa-linkedin"></i> linkedin.com/in/moize-sadiq-31220b3a0</li>
-            <li><i class="fa-brands fa-github"></i> github.com/moizesadiq-dotcom</li>
-        </ul>
+            <a href="index.html"
+               class="font-mono text-lg font-semibold text-white">
+                &lt;AbdulMoize/&gt;
+            </a>
 
-        <div class="section-title">Education</div>
-        <div class="content-block">
-            <h3>CPISM (AI)</h3>
-            <p>Aptech Computer Education</p>
-            <span>2024 - Present</span>
-        </div>
+            <div class="flex items-center gap-3">
 
-        <div class="section-title">Languages</div>
-        <ul class="list-unstyled">
-            <li>• English</li>
-            <li>• Urdu</li>
-            <li>• Hindi</li>
-        </ul>
-    </div>
+                <a href="index.html"
+                   class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-slate-300 hover:text-white hover:border-accent/50 transition-all">
+                    <i class="fas fa-arrow-left text-xs"></i>
+                    Portfolio
+                </a>
 
-    <!-- Main Content -->
-    <div class="main-content">
-        <a href="index.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Portfolio</a>
-        
-        <h1>Abdul Moiz</h1>
-        <div class="role">Junior Full Stack Web Developer</div>
-        
-        <p class="about-text">
-            Junior Full Stack Web Developer with a strong foundation in HTML, CSS, JavaScript, PHP, Laravel, MySQL, and WordPress. Passionate about building modern, responsive, and user-friendly web applications with clean and efficient code.
-        </p>
+                <button onclick="window.print()"
+                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:bg-accentHover transition-all">
+                    <i class="fas fa-download text-xs"></i>
+                    Print / Save PDF
+                </button>
 
-        <div class="section-title" style="margin-top: 0;">Technical Skills</div>
-        <div class="content-block">
-            <p><strong>Frontend:</strong> HTML5, CSS3, JavaScript (ES6), Bootstrap 5</p>
-            <p><strong>Backend & CMS:</strong> PHP, Laravel, WordPress</p>
-            <p><strong>Database:</strong> MySQL</p>
-            <p><strong>Tools & Others:</strong> Git & GitHub, VS Code, Composer, XAMPP, REST APIs</p>
+            </div>
         </div>
+    </nav>
 
-        <div class="section-title">Projects</div>
-        <div class="content-block">
-            <h3>AURA BISTRO — Gourmet Dining & Coffee Web App</h3>
-            <p>Built a modern luxury coffee and bistro web application featuring dynamic category filtering, table reservations, interactive cart management, and 1-click WhatsApp order checkout.</p>
-        </div>
-        <div class="content-block">
-            <h3>Salon Management System (Laravel)</h3>
-            <p>Developed a complete salon management web application using Laravel featuring appointment booking, customer management, staff, services, payments, and admin dashboard.</p>
-        </div>
-        <div class="content-block">
-            <h3>Origami Hub</h3>
-            <p>Built a responsive website for origami tutorials using HTML, CSS, JavaScript, and Bootstrap focused on clean UI/UX.</p>
-        </div>
 
-        <div class="section-title">Certifications</div>
-        <div class="content-block">
-            <p>• Web Development - Aptech Computer Education</p>
-            <p>• CPISM (AI) - Aptech Computer Education</p>
-        </div>
-    </div>
-</div>
+    <!-- Resume -->
+    <main class="max-w-6xl mx-auto px-6 py-12 sm:py-16">
+
+        <!-- Header -->
+        <section class="glass glow rounded-3xl p-7 sm:p-10 mb-8">
+
+            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+
+                <div>
+
+                    <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent mb-3">
+                        Backend Developer • Laravel • PHP
+                    </p>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-4">
+                        Abdul Moize
+                    </h1>
+
+                    <p class="text-xl sm:text-2xl text-slate-300 font-medium mb-5">
+                        Junior Full Stack Web Developer
+                    </p>
+
+                    <p class="max-w-2xl text-slate-400 leading-7">
+                        Junior developer focused on backend development with PHP and Laravel,
+                        with practical experience in MySQL, JavaScript, Bootstrap, WordPress,
+                        and responsive web development. Interested in building clean,
+                        functional, and scalable web applications.
+                    </p>
+
+                </div>
+
+
+                <!-- Contact -->
+                <div class="glass rounded-2xl p-5 min-w-full lg:min-w-[300px]">
+
+                    <div class="space-y-4 text-sm">
+
+                        <a href="mailto:moizesadiq@gmail.com"
+                           class="flex items-center gap-3 text-slate-300 hover:text-white transition">
+                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            moizesadiq@gmail.com
+                        </a>
+
+                        <a href="tel:+923707104132"
+                           class="flex items-center gap-3 text-slate-300 hover:text-white transition">
+                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                <i class="fas fa-phone"></i>
+                            </span>
+                            +92 370 7104132
+                        </a>
+
+                        <div class="flex items-center gap-3 text-slate-300">
+                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                <i class="fas fa-location-dot"></i>
+                            </span>
+                            Karachi, Pakistan
+                        </div>
+
+                        <a href="https://github.com/moizesadiq-dotcom"
+                           target="_blank"
+                           class="flex items-center gap-3 text-slate-300 hover:text-white transition">
+                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                <i class="fab fa-github"></i>
+                            </span>
+                            GitHub
+                        </a>
+
+                        <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0"
+                           target="_blank"
+                           class="flex items-center gap-3 text-slate-300 hover:text-white transition">
+                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                <i class="fab fa-linkedin-in"></i>
+                            </span>
+                            LinkedIn
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- About -->
+        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
+
+            <div class="flex items-center gap-3 mb-6">
+                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                    <i class="fas fa-user"></i>
+                </span>
+
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
+                        Profile
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-white">
+                        About Me
+                    </h2>
+                </div>
+            </div>
+
+            <p class="text-slate-400 leading-8">
+                I am a junior web developer with a strong interest in backend development
+                and Laravel. I work with PHP, Laravel, MySQL, JavaScript, HTML, CSS and
+                Bootstrap to create responsive websites and web applications. I have also
+                worked with WordPress and SEO fundamentals. My focus is on improving my
+                backend development skills while continuing to build practical projects.
+            </p>
+
+        </section>
+
+
+        <!-- Skills -->
+        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
+
+            <div class="flex items-center gap-3 mb-7">
+
+                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                    <i class="fas fa-code"></i>
+                </span>
+
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
+                        Expertise
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-white">
+                        Technical Skills
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">Frontend</p>
+                    <p class="font-semibold text-white">HTML5, CSS3, JavaScript</p>
+                </div>
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">Framework</p>
+                    <p class="font-semibold text-white">Laravel</p>
+                </div>
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">Backend</p>
+                    <p class="font-semibold text-white">PHP</p>
+                </div>
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">Database</p>
+                    <p class="font-semibold text-white">MySQL</p>
+                </div>
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">UI Framework</p>
+                    <p class="font-semibold text-white">Bootstrap 5</p>
+                </div>
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">CMS</p>
+                    <p class="font-semibold text-white">WordPress</p>
+                </div>
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">Version Control</p>
+                    <p class="font-semibold text-white">Git & GitHub</p>
+                </div>
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">Development Tools</p>
+                    <p class="font-semibold text-white">VS Code, Composer, XAMPP</p>
+                </div>
+
+                <div class="skill rounded-xl p-4">
+                    <p class="text-xs text-slate-500 mb-1">Other</p>
+                    <p class="font-semibold text-white">SEO, REST APIs</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Education -->
+        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
+
+            <div class="flex items-center gap-3 mb-7">
+
+                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                    <i class="fas fa-graduation-cap"></i>
+                </span>
+
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
+                        Education
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-white">
+                        Academic Background
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="border-l-2 border-accent/30 pl-6">
+
+                <p class="font-mono text-xs text-accent mb-2">
+                    2025 — Present
+                </p>
+
+                <h3 class="text-xl font-bold text-white mb-2">
+                    CPISM AI — Artificial Intelligence
+                </h3>
+
+                <p class="text-slate-400">
+                    Aptech Computer Education, Pakistan
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Projects -->
+        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
+
+            <div class="flex items-center gap-3 mb-8">
+
+                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                    <i class="fas fa-folder-open"></i>
+                </span>
+
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
+                        Selected Work
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-white">
+                        Projects
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="grid md:grid-cols-2 gap-5">
+
+
+                <!-- Fitness Factory -->
+                <div class="resume-card glass rounded-2xl p-6">
+
+                    <div class="flex items-start justify-between gap-4 mb-4">
+
+                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+
+                        <a href="https://moizesadiq-dotcom.github.io/fitness-factory/"
+                           target="_blank"
+                           class="text-xs font-semibold text-accent hover:text-white">
+                            Live Project →
+                        </a>
+
+                    </div>
+
+                    <h3 class="text-lg font-bold text-white mb-2">
+                        Fitness Factory
+                    </h3>
+
+                    <p class="text-sm text-slate-400 leading-6">
+                        Modern fitness website designed with responsive layouts,
+                        structured sections, and an engaging user interface.
+                    </p>
+
+                    <p class="font-mono text-xs text-slate-500 mt-4">
+                        HTML • CSS • JavaScript
+                    </p>
+
+                </div>
+
+
+                <!-- AURA BISTRO -->
+                <div class="resume-card glass rounded-2xl p-6">
+
+                    <div class="flex items-start justify-between gap-4 mb-4">
+
+                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                            <i class="fas fa-mug-hot"></i>
+                        </div>
+
+                        <a href="https://moizesadiq-dotcom.github.io/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App/"
+                           target="_blank"
+                           class="text-xs font-semibold text-accent hover:text-white">
+                            Live Project →
+                        </a>
+
+                    </div>
+
+                    <h3 class="text-lg font-bold text-white mb-2">
+                        AURA BISTRO
+                    </h3>
+
+                    <p class="text-sm text-slate-400 leading-6">
+                        Gourmet dining and coffee web application featuring category
+                        filtering, table reservations, interactive cart management,
+                        and WhatsApp order checkout.
+                    </p>
+
+                    <p class="font-mono text-xs text-slate-500 mt-4">
+                        HTML • CSS • JavaScript • UI/UX
+                    </p>
+
+                </div>
+
+
+                <!-- Origami Hub -->
+                <div class="resume-card glass rounded-2xl p-6">
+
+                    <div class="flex items-start justify-between gap-4 mb-4">
+
+                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+
+                        <a href="https://moizesadiq-dotcom.github.io/the-origami-hub/"
+                           target="_blank"
+                           class="text-xs font-semibold text-accent hover:text-white">
+                            Live Project →
+                        </a>
+
+                    </div>
+
+                    <h3 class="text-lg font-bold text-white mb-2">
+                        The Origami Hub
+                    </h3>
+
+                    <p class="text-sm text-slate-400 leading-6">
+                        Responsive origami tutorial website focused on clean design,
+                        structured content, responsive layouts, and user-friendly navigation.
+                    </p>
+
+                    <p class="font-mono text-xs text-slate-500 mt-4">
+                        HTML • CSS • JavaScript • Bootstrap
+                    </p>
+
+                </div>
+
+
+                <!-- Salon Management -->
+                <div class="resume-card glass rounded-2xl p-6">
+
+                    <div class="flex items-start justify-between gap-4 mb-4">
+
+                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                            <i class="fas fa-scissors"></i>
+                        </div>
+
+                        <a href="https://github.com/moizesadiq-dotcom/salon-management-system"
+                           target="_blank"
+                           class="text-xs font-semibold text-accent hover:text-white">
+                            GitHub →
+                        </a>
+
+                    </div>
+
+                    <h3 class="text-lg font-bold text-white mb-2">
+                        Salon Management System
+                    </h3>
+
+                    <p class="text-sm text-slate-400 leading-6">
+                        Laravel-based management application covering appointments,
+                        customers, staff, services, payments, commissions, reports,
+                        and administrative management.
+                    </p>
+
+                    <p class="font-mono text-xs text-slate-500 mt-4">
+                        Laravel • PHP • MySQL • Bootstrap
+                    </p>
+
+                </div>
+
+
+                <!-- ZACNUS -->
+                <div class="resume-card glass rounded-2xl p-6 md:col-span-2">
+
+                    <div class="flex items-start justify-between gap-4 mb-4">
+
+                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                            <i class="fas fa-building"></i>
+                        </div>
+
+                        <a href="https://github.com/moizesadiq-dotcom"
+                           target="_blank"
+                           class="text-xs font-semibold text-accent hover:text-white">
+                            GitHub →
+                        </a>
+
+                    </div>
+
+                    <h3 class="text-lg font-bold text-white mb-2">
+                        ZACNUS — Software House Portal
+                    </h3>
+
+                    <p class="text-sm text-slate-400 leading-6">
+                        Multi-panel Laravel software house platform featuring client
+                        dashboards, project management, support ticketing, invoices,
+                        services, portfolio management, and comprehensive admin controls.
+                    </p>
+
+                    <p class="font-mono text-xs text-slate-500 mt-4">
+                        Laravel • PHP • MySQL • Blade • Tailwind CSS
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Certifications -->
+        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
+
+            <div class="flex items-center gap-3 mb-7">
+
+                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                    <i class="fas fa-certificate"></i>
+                </span>
+
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
+                        Learning
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-white">
+                        Certifications & Training
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="grid sm:grid-cols-2 gap-4">
+
+                <div class="resume-card glass rounded-xl p-5">
+                    <h3 class="font-semibold text-white mb-1">
+                        Web Development
+                    </h3>
+                    <p class="text-sm text-slate-400">
+                        Aptech Computer Education
+                    </p>
+                </div>
+
+                <div class="resume-card glass rounded-xl p-5">
+                    <h3 class="font-semibold text-white mb-1">
+                        CPISM AI
+                    </h3>
+                    <p class="text-sm text-slate-400">
+                        Aptech Computer Education
+                    </p>
+                </div>
+
+                <div class="resume-card glass rounded-xl p-5">
+                    <h3 class="font-semibold text-white mb-1">
+                        WordPress
+                    </h3>
+                    <p class="text-sm text-slate-400">
+                        Practical website development experience
+                    </p>
+                </div>
+
+                <div class="resume-card glass rounded-xl p-5">
+                    <h3 class="font-semibold text-white mb-1">
+                        SEO Fundamentals
+                    </h3>
+                    <p class="text-sm text-slate-400">
+                        Aptech learning / training
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Languages -->
+        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
+
+            <div class="flex items-center gap-3 mb-6">
+
+                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
+                    <i class="fas fa-language"></i>
+                </span>
+
+                <div>
+                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
+                        Communication
+                    </p>
+
+                    <h2 class="text-2xl font-bold text-white">
+                        Languages
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="flex flex-wrap gap-3">
+
+                <span class="px-4 py-2 rounded-full glass text-sm text-slate-300">
+                    English
+                </span>
+
+                <span class="px-4 py-2 rounded-full glass text-sm text-slate-300">
+                    Urdu
+                </span>
+
+                <span class="px-4 py-2 rounded-full glass text-sm text-slate-300">
+                    Hindi
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- Footer -->
+        <footer class="text-center py-8 border-t border-white/5">
+
+            <p class="font-mono text-xs text-slate-500">
+                © 2026 Abdul Moize • Backend Developer / Laravel Developer
+            </p>
+
+        </footer>
+
+    </main>
 
 </body>
 </html>

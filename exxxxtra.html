@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdul Moize — Full Stack Web Developer & Laravel Expert</title>
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Portfolio of Abdul Moize - Full Stack Web Developer specializing in Laravel, PHP, JavaScript, and Frontend Development based in Karachi, Pakistan.">
+    <meta name="keywords" content="Abdul Moize, Portfolio, Web Developer, Laravel, PHP, JavaScript, HTML, CSS, Bootstrap, Karachi">
+    <meta name="author" content="Abdul Moize">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#0a0a0c',
+                        cardBg: '#121217',
+                        cardBorder: '#22222c',
+                        accent: '#3b82f6',
+                        accentHover: '#2563eb',
+                        mutedText: '#9ca3af',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts & Lucide Icons & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0c;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0a0c;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #22222c;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b82f6;
+        }
+        .glow-accent {
+            box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3);
+        }
+        .glass-panel {
+            background: rgba(18, 18, 23, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .glass-panel:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-slate-100 antialiased selection:bg-accent selection:text-white">
+
+    <!-- Ambient Canvas Background Animation -->
+    <canvas id="bg-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="font-mono text-xl font-bold tracking-tight flex items-center gap-2">
+                <span class="text-accent">&lt;</span>AbdulMoize<span class="text-accent">/&gt;</span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#home" class="hover:text-accent transition-colors">Home</a>
+                <a href="#about" class="hover:text-accent transition-colors">About</a>
+                <a href="#skills" class="hover:text-accent transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="mailto:moizesadiq@gmail.com" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accentHover transition-all shadow-lg glow-accent">
+                    Let's Talk
+                </a>
+                <button id="mobile-menu-btn" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden glass-panel border-b border-white/10 px-6 py-4 space-y-3">
+            <a href="#home" class="block text-slate-300 hover:text-accent py-1">Home</a>
+            <a href="#about" class="block text-slate-300 hover:text-accent py-1">About</a>
+            <a href="#skills" class="block text-slate-300 hover:text-accent py-1">Skills</a>
+            <a href="#projects" class="block text-slate-300 hover:text-accent py-1">Projects</a>
+            <a href="#contact" class="block text-slate-300 hover:text-accent py-1">Contact</a>
+        </div>
+    </header>
+
+    <main class="relative z-10">
+        <!-- HERO SECTION -->
+        <section id="home" class="min-h-screen flex flex-col justify-center items-center relative pt-28 pb-16 px-6 overflow-hidden">
+            <div class="max-w-5xl mx-auto text-center z-10">
+                <!-- Status Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel text-xs font-mono font-medium text-slate-300 mb-8 border border-white/10">
+                    <span class="relative flex h-2 w-2">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    Available for Hiring • Based in Karachi
+                </div>
+
+                <!-- Headline -->
+                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
+                    Hi, I'm <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-400 to-indigo-500">Abdul Moize</span>
+                </h1>
+
+                <!-- Sub-badge Line -->
+                <div class="font-mono text-sm sm:text-base text-accent tracking-widest uppercase mb-6 flex flex-wrap justify-center items-center gap-2 sm:gap-4">
+                    <span>FULL STACK DEVELOPER</span><span class="text-slate-600">•</span>
+                    <span>LARAVEL</span><span class="text-slate-600">•</span>
+                    <span>PHP</span><span class="text-slate-600">•</span>
+                    <span>JAVASCRIPT</span>
+                </div>
+
+                <!-- Professional Intro -->
+                <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed font-light">
+                    Crafting robust, high-performance web applications with clean frontend UIs and dynamic backend architectures using PHP, Laravel, JavaScript, and MySQL.
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
+                    <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-accent text-white hover:bg-accentHover transition-all flex items-center justify-center gap-2 glow-accent group">
+                        View Projects
+                        <i data-lucide="arrow-down" class="w-4 h-4 group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold glass-panel text-slate-200 hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10">
+                        Let's Connect
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="flex items-center justify-center gap-5 text-xl text-slate-300">
+                    <a href="https://github.com/moizesadiq-dotcom" target="_blank" aria-label="GitHub" class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:text-white hover:border-accent/40 transition-all"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank" aria-label="LinkedIn" class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:text-white hover:border-accent/40 transition-all"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/ab.moize/" target="_blank" aria-label="Instagram" class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:text-white hover:border-accent/40 transition-all"><i class="fab fa-instagram"></i></a>
+                    <a href="mailto:moizesadiq@gmail.com" aria-label="Email" class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:text-white hover:border-accent/40 transition-all"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce">
+                <span class="text-xs font-mono uppercase tracking-widest">Scroll</span>
+                <i data-lucide="chevron-down" class="w-4 h-4"></i>
+            </div>
+        </section>
+
+        <!-- ABOUT SECTION -->
+        <section id="about" class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-darkBg to-[#0d0d12]">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="font-mono text-xs uppercase tracking-widest text-accent mb-3 block">Background</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+                        Building Scalable Digital Experiences
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    <div class="lg:col-span-5 glass-panel p-8 rounded-2xl border border-white/5">
+                        <h3 class="text-2xl font-bold text-white mb-4">Full Stack Web Developer based in Karachi, Pakistan 🇵🇰</h3>
+                        <p class="text-slate-400 text-sm leading-relaxed mb-6">
+                            I specialize in end-to-end web development, turning complex ideas into functional, aesthetically appealing web applications. With strong proficiency in Laravel and Modern Frontend tools, I focus on clean code, database optimization, and intuitive user experiences.
+                        </p>
+                        <div class="space-y-4 font-mono text-xs text-slate-300">
+                            <div class="flex items-center gap-3">
+                                <span class="text-accent">Name:</span> Abdul Moize
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-accent">Email:</span> moizesadiq@gmail.com
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-accent">Phone:</span> +92 370 7104132
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-accent">Location:</span> Karachi, Pakistan
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="glass-panel p-6 rounded-2xl border border-white/5">
+                            <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-4">
+                                <i data-lucide="code-2" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-base font-semibold text-white mb-1">Clean Architecture</h4>
+                            <p class="text-xs text-slate-400">Writing maintainable MVC logic and modular code structures.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-white/5">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4">
+                                <i data-lucide="database" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-base font-semibold text-white mb-1">Database Design</h4>
+                            <p class="text-xs text-slate-400">Optimized MySQL relational schemas and secure query handling.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-white/5">
+                            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4">
+                                <i data-lucide="layout" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-base font-semibold text-white mb-1">Responsive UI/UX</h4>
+                            <p class="text-xs text-slate-400">Tailwind & Bootstrap layout structuring for all screen sizes.</p>
+                        </div>
+                        <div class="glass-panel p-6 rounded-2xl border border-white/5">
+                            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
+                                <i data-lucide="git-branch" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="text-base font-semibold text-white mb-1">Version Control</h4>
+                            <p class="text-xs text-slate-400">Professional Git workflows and GitHub Pages live deployments.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="py-24 px-6 border-t border-white/5">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="font-mono text-xs uppercase tracking-widest text-accent mb-3 block">My Stack</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+                        Technologies I Master
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
+                        <i class="fa-brands fa-html5 text-4xl text-orange-500 mb-4"></i>
+                        <h3 class="text-base font-semibold text-white mb-1">HTML5</h3>
+                        <p class="text-xs text-slate-400">Semantic markup & accessibility.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
+                        <i class="fa-brands fa-css3-alt text-4xl text-blue-500 mb-4"></i>
+                        <h3 class="text-base font-semibold text-white mb-1">CSS3 / Flexbox</h3>
+                        <p class="text-xs text-slate-400">Responsive layouts & custom animations.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
+                        <i class="fa-brands fa-js text-4xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-base font-semibold text-white mb-1">JavaScript (ES6+)</h3>
+                        <p class="text-xs text-slate-400">Dynamic DOM & interactive UI logic.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
+                        <i class="fa-brands fa-bootstrap text-4xl text-purple-500 mb-4"></i>
+                        <h3 class="text-base font-semibold text-white mb-1">Bootstrap</h3>
+                        <p class="text-xs text-slate-400">Rapid mobile-first framework design.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
+                        <i class="fa-brands fa-php text-4xl text-indigo-400 mb-4"></i>
+                        <h3 class="text-base font-semibold text-white mb-1">PHP</h3>
+                        <p class="text-xs text-slate-400">Server-side logic & API endpoints.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
+                        <i class="fa-solid fa-database text-4xl text-cyan-400 mb-4"></i>
+                        <h3 class="text-base font-semibold text-white mb-1">MySQL</h3>
+                        <p class="text-xs text-slate-400">Relational database management.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
+                        <i class="fa-brands fa-laravel text-4xl text-red-500 mb-4"></i>
+                        <h3 class="text-base font-semibold text-white mb-1">Laravel</h3>
+                        <p class="text-xs text-slate-400">MVC architecture & secure backends.</p>
+                    </div>
+                    <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
+                        <i class="fa-brands fa-git-alt text-4xl text-amber-500 mb-4"></i>
+                        <h3 class="text-base font-semibold text-white mb-1">Git & GitHub</h3>
+                        <p class="text-xs text-slate-400">Version control & deployment workflows.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-[#0d0d12] to-darkBg">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="font-mono text-xs uppercase tracking-widest text-accent mb-3 block">Portfolio</span>
+                    <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+                        Featured Projects
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Project 1: Fitness Factory -->
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80" alt="Fitness Factory" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-accent/20 text-accent border border-accent/30 backdrop-blur-md">Frontend UI</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">Fitness Factory — Elite Gym Portal</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                    Dark-themed modern fitness platform featuring workout program highlights, photo gallery, and an interactive JS BMI calculator.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+                            <a href="https://moizesadiq-dotcom.github.io/fitness-factory/" target="_blank" class="text-accent hover:underline text-xs font-mono flex items-center gap-1 font-medium">Live Demo <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="https://github.com/moizesadiq-dotcom/fitness-factory" target="_blank" class="text-slate-400 hover:text-white text-xs font-mono flex items-center gap-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2: Aura Bistro -->
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Aura Bistro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-accent/20 text-accent border border-accent/30 backdrop-blur-md">Frontend UI</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">AURA BISTRO — Gourmet Dining</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                    Luxury coffee & bistro web app featuring dynamic category filtering, cart management, table reservation, and WhatsApp checkout.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+                            <a href="https://moizesadiq-dotcom.github.io/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App/" target="_blank" class="text-accent hover:underline text-xs font-mono flex items-center gap-1 font-medium">Live Demo <i class="fa-solid fa-arrow-right"></i></a>
+                            <a href="https://github.com/moizesadiq-dotcom/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App" target="_blank" class="text-slate-400 hover:text-white text-xs font-mono flex items-center gap-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3: The Origami Hub -->
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="images/origam.png" alt="The Origami Hub" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">Tutorial Web App</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">The Origami Hub</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                    Web application dedicated to paper folding guides, custom interactive canvas elements, and step-by-step visual tutorials.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+                            <a href="https://moizesadiq-dotcom.github.io/the-origami-hub/" target="_blank" class="text-accent hover:underline text-xs font-mono flex items-center gap-1 font-medium">Live Demo <i class="fa-solid fa-arrow-right"></i></a>
+                            <span class="text-slate-500 text-xs font-mono">GitHub Pages</span>
+                        </div>
+                    </div>
+
+                  
+           <!-- PROJECT 4: Salon Management System (Full Stack / Backend) -->
+<div class="project-card fullstack">
+    <!-- Pass 'salon' parameter to trigger the correct image array -->
+    <div class="card-image-wrapper interactive-slider-trigger" onclick="openSlider('salon')">
+        <img src="images/dashboard.png" alt="Salon Management System Dashboard">
+        <span class="tag-badge backend-tag">Laravel / Full Stack</span>
+        <div class="gallery-hover-badge">
+            <i class="fa-solid fa-images"></i> Click to View Dashboard Slides
+        </div>
+    </div>
+    <div class="card-body">
+        <h3>Salon Management System</h3>
+        <p>Full-stack Laravel administration dashboard managing service catalogs, staff commissions, appointment scheduling, and automated billing.</p>
+        <div class="card-actions">
+            <a href="https://github.com/moizesadiq-dotcom/salon-management-system" target="_blank" class="btn-card primary"><i class="fab fa-github"></i> Source Code</a>
+        </div>
+    </div>
+</div>
+<!-- PROJECT 4: VELORA MOTORS (Frontend) -->
+            <div class="project-card frontend">
+                <div class="card-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80" alt="Velora Motors">
+                    <span class="tag-badge">Frontend UI</span>
+                </div>
+                <div class="card-body">
+                    <h3>Velora Motors — Luxury Sports Vehicle</h3>
+                    <p>High-end automotive showcase featuring a dark-themed custom UI, vehicle data arrays, and smooth interactive design.</p>
+                    <div class="card-actions">
+                        <a href="https://moizesadiq-dotcom.github.io/velora-motors/" target="_blank" class="btn-card primary">Live Demo <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+</section>
+
+<!-- ================= FULLSCREEN SLIDER POPUP ================= -->
+<div id="imageModal" class="modal-overlay">
+    <span onclick="closeSlider()" class="modal-close-btn">&times;</span>
+    <div class="modal-box">
+        <button class="slider-btn prev-btn" onclick="changeSlide(-1)">❮</button>
+        <img id="modalImg" class="modal-img" src="" alt="Dashboard Preview">
+        <button class="slider-btn next-btn" onclick="changeSlide(1)">❯</button>
+    </div>
+    <div id="modalCaption" class="modal-caption-text"></div>
+</div>
+
+                        <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+                            <button onclick="openSlider('salon')" class="text-blue-400 hover:underline text-xs font-mono flex items-center gap-1 font-medium cursor-pointer"><i class="fa-solid fa-images"></i> View 5 Slides</button>
+                            <a href="https://github.com/moizesadiq-dotcom/salon-management-system" target="_blank" class="text-slate-400 hover:text-white text-xs font-mono flex items-center gap-1"><i class="fab fa-github"></i> Code</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 5: Velora Motors -->
+                    <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="h-48 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80" alt="Velora Motors" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-accent/20 text-accent border border-accent/30 backdrop-blur-md">Frontend UI</span>
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">Velora Motors — Luxury Sports</h3>
+                                <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                                    High-end automotive showcase featuring a dark-themed custom UI, vehicle data arrays, and smooth interactive design.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+                            <a href="https://moizesadiq-dotcom.github.io/velora-motors/" target="_blank" class="text-accent hover:underline text-xs font-mono flex items-center gap-1 font-medium">Live Demo <i class="fa-solid fa-arrow-right"></i></a>
+                            <span class="text-slate-500 text-xs font-mono">GitHub Pages</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FULLSCREEN 5-IMAGE SLIDER POPUP MODAL -->
+        <div id="imageModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl hidden items-center justify-center p-4">
+            <button onclick="closeSlider()" class="absolute top-6 right-6 text-white text-3xl hover:text-accent focus:outline-none z-50 w-12 h-12 rounded-full bg-white/10 flex items-center justify-center">&times;</button>
+            <div class="relative max-w-5xl w-full flex flex-col items-center">
+                <button class="absolute left-2 sm:-left-12 top-1/2 -translate-y-1/2 text-white text-2xl bg-white/10 hover:bg-accent w-10 h-10 rounded-full flex items-center justify-center transition-colors z-20" onclick="changeSlide(-1)">❮</button>
+                <img id="modalImg" class="max-h-[75vh] w-auto rounded-xl object-contain border border-white/10 shadow-2xl" src="" alt="Dashboard Preview">
+                <button class="absolute right-2 sm:-right-12 top-1/2 -translate-y-1/2 text-white text-2xl bg-white/10 hover:bg-accent w-10 h-10 rounded-full flex items-center justify-center transition-colors z-20" onclick="changeSlide(1)">❯</button>
+                <div id="modalCaption" class="mt-4 font-mono text-sm text-slate-300 text-center bg-white/5 px-4 py-2 rounded-full border border-white/10"></div>
+            </div>
+        </div>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-darkBg to-[#0a0a0c]">
+            <div class="max-w-7xl mx-auto">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <span class="font-mono text-xs uppercase tracking-widest text-accent mb-3 block">Get In Touch</span>
+                            <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
+                                Let's Build Something Great
+                            </h2>
+                            <p class="text-slate-400 leading-relaxed">
+                                Whether you have a project in mind, a freelance opportunity, or a full-time role, my inbox is always open. Let's discuss how I can add value.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4 font-mono text-sm">
+                            <a href="mailto:moizesadiq@gmail.com" class="flex items-center gap-3 text-slate-300 hover:text-accent transition-colors">
+                                <div class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-accent">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                moizesadiq@gmail.com
+                            </a>
+                            <a href="tel:+923707104132" class="flex items-center gap-3 text-slate-300 hover:text-accent transition-colors">
+                                <div class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-blue-400">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                +92 370 7104132
+                            </a>
+                            <div class="flex items-center gap-3 text-slate-300">
+                                <div class="w-10 h-10 rounded-xl glass-panel flex items-center justify-center text-emerald-400">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                Karachi, Sindh, Pakistan
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="flex items-center gap-4 pt-2">
+                            <a href="https://github.com/moizesadiq-dotcom" target="_blank" class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:border-accent/40 transition-all"><i class="fab fa-github"></i></a>
+                            <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank" class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:border-accent/40 transition-all"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="https://www.instagram.com/ab.moize/" target="_blank" class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:border-accent/40 transition-all"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-7">
+                        <form class="glass-panel p-8 sm:p-10 rounded-2xl border border-white/10 space-y-6" onsubmit="event.preventDefault(); alert('Thank you for reaching out! Your message has been sent.');">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider">Your Name</label>
+                                    <input type="text" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-white/10 text-white focus:outline-none focus:border-accent transition-colors text-sm">
+                                </div>
+                                <div class="space-y-2">
+                                    <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider">Your Email</label>
+                                    <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-white/10 text-white focus:outline-none focus:border-accent transition-colors text-sm">
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider">Subject</label>
+                                <input type="text" required placeholder="Project Collaboration / Full-Time Role" class="w-full px-4 py-3 rounded-xl bg-darkBg border border-white/10 text-white focus:outline-none focus:border-accent transition-colors text-sm">
+                            </div>
+                            <div class="space-y-2">
+                                <label class="block text-xs font-mono text-slate-300 uppercase tracking-wider">Message</label>
+                                <textarea rows="5" required placeholder="Your Message..." class="w-full px-4 py-3 rounded-xl bg-darkBg border border-white/10 text-white focus:outline-none focus:border-accent transition-colors text-sm resize-none"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-4 rounded-xl font-semibold bg-accent text-white hover:bg-accentHover transition-all flex items-center justify-center gap-2 glow-accent text-sm">
+                                Send Message <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-12 px-6 border-t border-white/5 bg-darkBg text-center sm:text-left">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex flex-col items-center sm:items-start gap-1">
+                <a href="#home" class="font-mono text-lg font-bold tracking-tight text-white">
+                    <span class="text-accent">&lt;</span>AbdulMoize<span class="text-accent">/&gt;</span>
+                </a>
+                <p class="text-xs text-slate-500 font-mono">Built with passion & clean code.</p>
+            </div>
+            
+            <div class="flex items-center gap-6 text-sm text-slate-400">
+                <a href="#home" class="hover:text-accent transition-colors">Home</a>
+                <a href="#about" class="hover:text-accent transition-colors">About</a>
+                <a href="#skills" class="hover:text-accent transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-accent transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-4 text-slate-400">
+                <a href="https://github.com/moizesadiq-dotcom" target="_blank" class="hover:text-white"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/ab.moize/" target="_blank" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Script -->
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 5 Original Local Images Array for Salon Management System Dashboard
+        // (Yahan apni purani 5 local images ke paths replace kar lena agar filenames mukhtalif hon)
+        const salonImages = [
+            { src: 'images/dashboard.png', caption: 'Slide 1: Main Admin Dashboard' },
+            { src: 'images/dashboard2.png', caption: 'Slide 2: Services & Pricing Management' },
+            { src: 'images/dashboard3.png', caption: 'Slide 3: Staff & Commission Module' },
+            { src: 'images/dashboard4.png', caption: 'Slide 4: Appointments Booking Schedule' },
+            { src: 'images/dashboard5.png', caption: 'Slide 5: Billing & Invoicing Section' }
+        ];
+
+        let currentImageIndex = 0;
+
+        function openSlider(type) {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            currentImageIndex = 0;
+            updateSlide();
+        }
+
+        function closeSlider() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }
+
+        function changeSlide(direction) {
+            currentImageIndex += direction;
+            if (currentImageIndex < 0) {
+                currentImageIndex = salonImages.length - 1;
+            } else if (currentImageIndex >= salonImages.length) {
+                currentImageIndex = 0;
+            }
+            updateSlide();
+        }
+
+        function updateSlide() {
+            const img = document.getElementById('modalImg');
+            const caption = document.getElementById('modalCaption');
+            const currentObj = salonImages[currentImageIndex];
+            img.src = currentObj.src;
+            caption.innerText = `${currentObj.caption} (${currentImageIndex + 1} of ${salonImages.length})`;
+        }
+
+        // Close modal on outside click or ESC key
+        window.addEventListener('click', (e) => {
+            const modal = document.getElementById('imageModal');
+            if (e.target === modal) {
+                closeSlider();
+            }
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeSlider();
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+        });
+
+        // Background Ambient Canvas Animation
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const particles = [];
+        const particleCount = Math.min(window.innerWidth / 15, 60);
+
+        for (let i = 0; i < particleCount; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 1.5 + 0.5,
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+            });
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.5)';
+            ctx.strokeStyle = 'rgba(59, 130, 246, 0.05)';
+
+            particles.forEach((p, index) => {
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                for (let j = index + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            });
+
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
+    </script>
+</body>
+</html>
