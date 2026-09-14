@@ -1,57 +1,38 @@
 <!DOCTYPE html>
 
-<html lang="en" class="scroll-smooth dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 ```
-<title>Abdul Moize — Full Stack Web Developer & Laravel Expert</title>
+<title>Abdul Moize — Web Developer</title>
 
-<!-- Meta Tags -->
-<meta name="description" content="Portfolio of Abdul Moize - Full Stack Web Developer specializing in Laravel, PHP, JavaScript, and Frontend Development based in Karachi, Pakistan.">
-<meta name="keywords" content="Abdul Moize, Portfolio, Web Developer, Laravel, PHP, JavaScript, HTML, CSS, Bootstrap, Karachi">
-<meta name="author" content="Abdul Moize">
+<meta name="description" content="Abdul Moize — Web Developer, Laravel Developer and Full Stack Web Developer.">
 
-<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<script>
-    tailwind.config = {
-        darkMode: 'class',
-        theme: {
-            extend: {
-                colors: {
-                    darkBg: '#0a0a0c',
-                    cardBg: '#121217',
-                    cardBorder: '#22222c',
-                    accent: '#3b82f6',
-                    accentHover: '#2563eb',
-                    mutedText: '#9ca3af',
-                },
-                fontFamily: {
-                    sans: ['Inter', 'sans-serif'],
-                    mono: ['JetBrains Mono', 'monospace'],
-                }
-            }
-        }
-    }
-</script>
-
-<!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-<!-- Lucide -->
-<script src="https://unpkg.com/lucide@latest"></script>
-
 <style>
+
+    :root {
+        --orange: #ee5b25;
+        --black: #11110f;
+        --cream: #f7f5f0;
+        --white: #ffffff;
+        --muted: #696963;
+        --line: #dfddd7;
+    }
+
     * {
+        margin: 0;
+        padding: 0;
         box-sizing: border-box;
     }
 
@@ -60,612 +41,1323 @@
     }
 
     body {
-        font-family: 'Inter', sans-serif;
-        background-color: #0a0a0c;
-        color: #f3f4f6;
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--black);
         overflow-x: hidden;
-        width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .brand,
+    .number {
+        font-family: "Space Grotesk", sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
     }
 
     img {
         max-width: 100%;
     }
 
-    .font-mono {
-        font-family: 'JetBrains Mono', monospace;
+    .container {
+        width: min(1180px, calc(100% - 40px));
+        margin: auto;
     }
 
-    ::-webkit-scrollbar {
-        width: 8px;
+    .orange {
+        color: var(--orange);
     }
 
-    ::-webkit-scrollbar-track {
-        background: #0a0a0c;
-    }
 
-    ::-webkit-scrollbar-thumb {
-        background: #22222c;
-        border-radius: 4px;
-    }
+    /* =========================
+       NAVBAR
+    ========================= */
 
-    ::-webkit-scrollbar-thumb:hover {
-        background: #3b82f6;
-    }
-
-    .glow-accent {
-        box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3);
-    }
-
-    .glass-panel {
-        background: rgba(18, 18, 23, 0.7);
+    .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        height: 78px;
+        background: rgba(247, 245, 240, 0.96);
         backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-bottom: 1px solid rgba(17, 17, 15, 0.08);
     }
 
-    .glass-panel:hover {
-        border-color: rgba(59, 130, 246, 0.3);
+    .nav-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .brand {
+        font-size: 25px;
+        font-weight: 700;
+        letter-spacing: -1.5px;
+    }
+
+    .brand span {
+        color: var(--orange);
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+        font-weight: 600;
+        color: #44443f;
+        transition: 0.25s;
+    }
+
+    .nav-links a:hover {
+        color: var(--orange);
+    }
+
+    .nav-talk {
+        padding: 11px 19px;
+        border-radius: 999px;
+        background: var(--black);
+        color: white !important;
+    }
+
+    .nav-talk:hover {
+        background: var(--orange);
+    }
+
+    .menu-btn {
+        display: none;
+        border: 0;
+        background: none;
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+        padding: 105px 0 55px;
+        min-height: auto;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1.02fr 0.98fr;
+        align-items: center;
+        gap: 55px;
+    }
+
+    .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1.6px;
+        color: var(--orange);
+        margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+        content: "";
+        width: 27px;
+        height: 2px;
+        background: var(--orange);
+    }
+
+    .hero h1 {
+        font-size: clamp(48px, 6.1vw, 82px);
+        line-height: 0.95;
+        letter-spacing: -4px;
+        max-width: 700px;
+    }
+
+    .hero h1 span {
+        color: var(--orange);
+    }
+
+    .hero-role {
+        margin-top: 22px;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 19px;
+        font-weight: 600;
+    }
+
+    .hero-text {
+        margin-top: 14px;
+        max-width: 560px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .hero-buttons {
+        margin-top: 27px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        padding: 13px 21px;
+        border-radius: 999px;
+        font-size: 14px;
+        font-weight: 700;
+        transition: 0.25s;
+    }
+
+    .btn-primary {
+        background: var(--black);
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: var(--orange);
+        transform: translateY(-2px);
+    }
+
+    .btn-outline {
+        border: 1px solid var(--line);
+        background: white;
+    }
+
+    .btn-outline:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+    }
+
+    .developer-area {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .developer-image {
+        display: block;
+        width: 100%;
+        max-width: 620px;
+        height: auto;
+        max-height: 500px;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 18px;
+    }
+
+
+    /* =========================
+       MARQUEE
+    ========================= */
+
+    .marquee {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+        white-space: nowrap;
+        background: white;
+    }
+
+    .marquee-track {
+        display: inline-flex;
+        align-items: center;
+        gap: 35px;
+        padding: 18px 0;
+        animation: marquee 25s linear infinite;
+    }
+
+    .marquee-item {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .marquee-dot {
+        color: var(--orange);
+        font-size: 19px;
+    }
+
+    @keyframes marquee {
+        from {
+            transform: translateX(0);
+        }
+
+        to {
+            transform: translateX(-50%);
+        }
+    }
+
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats {
+        padding: 65px 0;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+    }
+
+    .stat {
+        padding: 30px 25px;
+        border-right: 1px solid var(--line);
+    }
+
+    .stat:last-child {
+        border-right: none;
+    }
+
+    .number {
+        font-size: 42px;
+        font-weight: 700;
+        letter-spacing: -2px;
+    }
+
+    .stat p {
+        margin-top: 5px;
+        color: var(--muted);
+        font-size: 13px;
+    }
+
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    .section {
+        padding: 100px 0;
+    }
+
+    .section-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 30px;
+        margin-bottom: 52px;
+    }
+
+    .section-label {
+        color: var(--orange);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+    }
+
+    .section-title {
+        font-size: clamp(38px, 5vw, 65px);
+        line-height: 1;
+        letter-spacing: -3px;
+    }
+
+    .section-description {
+        max-width: 430px;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 15px;
+    }
+
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about {
+        background: white;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 80px;
+        align-items: start;
+    }
+
+    .about-big {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: clamp(28px, 3.2vw, 45px);
+        line-height: 1.15;
+        letter-spacing: -1.7px;
+    }
+
+    .about-copy {
+        color: var(--muted);
+        line-height: 1.9;
+        font-size: 15px;
+    }
+
+    .about-copy + .about-copy {
+        margin-top: 18px;
+    }
+
+    .about-info {
+        margin-top: 28px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+    .info-item {
+        padding-top: 15px;
+        border-top: 1px solid var(--line);
+    }
+
+    .info-item small {
+        color: var(--muted);
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+    }
+
+    .info-item strong {
+        font-size: 14px;
+    }
+
+
+    /* =========================
+       SKILLS
+    ========================= */
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+    }
+
+    .skill {
+        background: white;
+        border: 1px solid var(--line);
+        border-radius: 15px;
+        padding: 27px 22px;
+        transition: 0.3s;
+    }
+
+    .skill:hover {
+        border-color: var(--orange);
+        transform: translateY(-4px);
+    }
+
+    .skill i {
+        font-size: 22px;
+        color: var(--orange);
+        margin-bottom: 18px;
+    }
+
+    .skill h3 {
+        font-size: 17px;
+    }
+
+    .skill p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+
+    /* =========================
+       PROJECTS
+    ========================= */
+
+    .projects {
+        background: white;
+    }
+
+    .featured-project {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 40px;
+        align-items: center;
+        margin-bottom: 65px;
+    }
+
+    .project-image-wrap {
+        position: relative;
+        overflow: hidden;
+        border-radius: 18px;
+        background: #eee;
+        aspect-ratio: 16 / 10;
     }
 
     .project-image {
-        height: 220px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .project-image img {
         width: 100%;
         height: 100%;
+        display: block;
         object-fit: cover;
         transition: transform 0.5s ease;
     }
 
-    .project-card:hover .project-image img {
-        transform: scale(1.05);
+    .project-image-wrap:hover .project-image {
+        transform: scale(1.035);
     }
 
-    #imageModal {
-        transition: opacity 0.25s ease;
+    .project-content {
+        padding: 10px 0;
     }
 
-    #modalImg {
-        max-height: 75vh;
-        max-width: 90vw;
+    .project-number {
+        color: var(--orange);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 13px;
+    }
+
+    .project-content h3 {
+        font-size: clamp(30px, 3.5vw, 48px);
+        line-height: 1;
+        letter-spacing: -2px;
+    }
+
+    .project-content p {
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 14px;
+        margin-top: 17px;
+    }
+
+    .project-meta {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        flex-wrap: wrap;
+        margin-top: 19px;
+    }
+
+    .tag {
+        font-size: 11px;
+        font-weight: 700;
+        padding: 7px 11px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+    }
+
+    .project-links {
+        display: flex;
+        gap: 18px;
+        margin-top: 25px;
+        flex-wrap: wrap;
+    }
+
+    .project-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        color: var(--black);
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+    .project-link:hover {
+        color: var(--orange);
+    }
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 55px 30px;
+    }
+
+    .project-card {
+        min-width: 0;
+    }
+
+    .project-card .project-image-wrap {
+        aspect-ratio: 16 / 10;
+    }
+
+    .project-card h3 {
+        margin-top: 18px;
+        font-size: 25px;
+        letter-spacing: -1px;
+    }
+
+    .project-card p {
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.7;
+        margin-top: 8px;
+    }
+
+    .project-card .project-meta {
+        margin-top: 13px;
+    }
+
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border-top: 1px solid var(--line);
+    }
+
+    .service {
+        display: grid;
+        grid-template-columns: 55px 1fr;
+        gap: 18px;
+        padding: 35px 20px 35px 0;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .service:nth-child(odd) {
+        border-right: 1px solid var(--line);
+        padding-right: 40px;
+    }
+
+    .service:nth-child(even) {
+        padding-left: 40px;
+    }
+
+    .service-number {
+        color: var(--orange);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+    .service h3 {
+        font-size: 23px;
+    }
+
+    .service p {
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+        background: var(--black);
+        color: white;
+    }
+
+    .contact .section-label {
+        color: var(--orange);
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 0.7fr;
+        gap: 80px;
+        align-items: end;
+    }
+
+    .contact h2 {
+        font-size: clamp(45px, 7vw, 85px);
+        line-height: 0.94;
+        letter-spacing: -4px;
+    }
+
+    .contact h2 span {
+        color: var(--orange);
+    }
+
+    .contact-text {
+        margin-top: 22px;
+        color: #aaa9a3;
+        max-width: 520px;
+        line-height: 1.8;
+    }
+
+    .contact-details {
+        border-top: 1px solid #33332f;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 18px 0;
+        border-bottom: 1px solid #33332f;
+        color: #ddd;
+        font-size: 14px;
+    }
+
+    .contact-item i {
+        color: var(--orange);
+        width: 18px;
+    }
+
+    .contact-item:hover {
+        color: white;
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        background: var(--black);
+        color: #888780;
+        border-top: 1px solid #2a2a27;
+        padding: 25px 0;
+    }
+
+    .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .footer-copy {
+        font-size: 12px;
+    }
+
+    .socials {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .socials a {
+        font-size: 15px;
+        transition: 0.2s;
+    }
+
+    .socials a:hover {
+        color: var(--orange);
+    }
+
+
+    /* =========================
+       MODAL
+    ========================= */
+
+    .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(10, 10, 9, 0.93);
+        z-index: 2000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 25px;
+    }
+
+    .modal.active {
+        display: flex;
+    }
+
+    .modal-inner {
+        position: relative;
+        width: min(1050px, 100%);
+    }
+
+    .modal-image {
+        display: block;
+        width: 100%;
+        max-height: 82vh;
         object-fit: contain;
+        border-radius: 10px;
     }
 
-    .slider-arrow {
-        transition: all 0.2s ease;
+    .modal-close,
+    .modal-prev,
+    .modal-next {
+        position: absolute;
+        width: 42px;
+        height: 42px;
+        border: 0;
+        border-radius: 50%;
+        background: white;
+        color: var(--black);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3;
     }
 
-    .slider-arrow:hover {
-        transform: scale(1.08);
+    .modal-close {
+        right: 0;
+        top: -55px;
     }
 
-    /* Mobile Header */
-    @media (max-width: 639px) {
+    .modal-prev {
+        left: -55px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
 
-        #navbar .max-w-7xl {
-            height: 68px;
+    .modal-next {
+        right: -55px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+
+    /* =========================
+       ANIMATION
+    ========================= */
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    /* =========================
+       TABLET
+    ========================= */
+
+    @media (max-width: 900px) {
+
+        .nav-links {
+            position: absolute;
+            top: 78px;
+            left: 20px;
+            right: 20px;
+            display: none;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            padding: 10px;
+            background: white;
+            border: 1px solid var(--line);
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
         }
 
-        #navbar .px-6 {
-            padding-left: 16px;
-            padding-right: 16px;
+        .nav-links.active {
+            display: flex;
         }
 
-        #navbar .font-mono.text-xl {
+        .nav-links a {
+            padding: 13px 12px;
+        }
+
+        .nav-talk {
+            text-align: center;
+        }
+
+        .menu-btn {
+            display: block;
+        }
+
+        .hero {
+            padding-top: 105px;
+        }
+
+        .hero-grid,
+        .about-grid,
+        .featured-project,
+        .contact-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .developer-area {
+            order: -1;
+        }
+
+        .developer-image {
+            max-width: 650px;
+            max-height: 420px;
+        }
+
+        .skills-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stats-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stat:nth-child(2) {
+            border-right: none;
+        }
+
+        .stat:nth-child(-n+2) {
+            border-bottom: 1px solid var(--line);
+        }
+
+        .project-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .services-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .service:nth-child(odd) {
+            border-right: none;
+            padding-right: 0;
+        }
+
+        .service:nth-child(even) {
+            padding-left: 0;
+        }
+
+        .modal-prev {
+            left: 10px;
+        }
+
+        .modal-next {
+            right: 10px;
+        }
+    }
+
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+        .container {
+            width: calc(100% - 28px);
+        }
+
+        .navbar {
+            height: 70px;
+        }
+
+        .nav-links {
+            top: 70px;
+            left: 14px;
+            right: 14px;
+        }
+
+        .hero {
+            padding: 92px 0 45px;
+        }
+
+        .hero-grid {
+            gap: 30px;
+        }
+
+        .developer-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            max-height: 300px;
+            border-radius: 14px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            letter-spacing: -2.8px;
+        }
+
+        .hero-role {
+            font-size: 17px;
+        }
+
+        .hero-text {
+            font-size: 14px;
+        }
+
+        .hero-buttons {
+            margin-top: 23px;
+        }
+
+        .btn {
+            padding: 12px 17px;
+        }
+
+        .section {
+            padding: 72px 0;
+        }
+
+        .section-head {
+            display: block;
+            margin-bottom: 38px;
+        }
+
+        .section-description {
+            margin-top: 18px;
+        }
+
+        .stats {
+            padding: 48px 0;
+        }
+
+        .stats-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .stat {
+            padding: 24px 15px;
+        }
+
+        .number {
+            font-size: 31px;
+        }
+
+        .about-grid {
+            gap: 32px;
+        }
+
+        .about-info {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .skills-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .skill {
+            padding: 21px 16px;
+        }
+
+        .skill h3 {
             font-size: 15px;
         }
 
-        #navbar .flex.items-center.gap-4 {
-            gap: 8px;
+        .featured-project {
+            gap: 24px;
+            margin-bottom: 50px;
         }
 
-        #navbar .resume-btn {
-            display: inline-flex !important;
-            padding: 8px 12px;
-            font-size: 11px;
-            border-radius: 999px;
-            white-space: nowrap;
+        .project-content h3 {
+            font-size: 35px;
         }
 
-        #mobile-menu-btn {
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .project-grid {
+            gap: 45px;
         }
 
-        .project-image {
-            height: 200px;
+        .service {
+            grid-template-columns: 42px 1fr;
+            padding: 28px 0 !important;
         }
 
-        #modalImg {
-            max-width: 95vw;
-            max-height: 65vh;
+        .contact-grid {
+            gap: 42px;
         }
 
-        .slider-arrow {
-            padding: 8px 12px;
-            font-size: 11px;
+        .contact h2 {
+            font-size: 52px;
+            letter-spacing: -3px;
+        }
+
+        .footer-inner {
+            flex-direction: column;
+            align-items: flex-start;
         }
     }
 
-    @media (max-width: 380px) {
-
-        #navbar .font-mono.text-xl {
-            font-size: 13px;
-        }
-
-        #navbar .resume-btn {
-            padding: 7px 10px;
-            font-size: 10px;
-        }
-
-        #mobile-menu-btn {
-            width: 34px;
-            height: 34px;
-        }
-
-        #mobile-menu-btn i {
-            width: 20px;
-            height: 20px;
-        }
-    }
 </style>
 ```
 
 </head>
 
-<body class="bg-darkBg text-slate-100 antialiased selection:bg-accent selection:text-white">
+<body>
 
 ```
-<!-- Ambient Background -->
-<canvas id="bg-canvas"
-        class="fixed inset-0 pointer-events-none z-0 opacity-40">
-</canvas>
+<!-- =========================
+     NAVBAR
+========================= -->
 
+<header class="navbar">
 
-<!-- ================= NAVIGATION ================= -->
+    <div class="container nav-inner">
 
-<header id="navbar"
-        class="fixed top-0 left-0 right-0 z-50 glass-panel border-b border-white/5 transition-all duration-300">
-
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-
-        <!-- Logo -->
-        <a href="#home"
-           class="font-mono text-xl font-bold tracking-tight flex items-center gap-2 shrink-0">
-
-            <span class="text-accent">&lt;</span>
-            AbdulMoize
-            <span class="text-accent">/&gt;</span>
-
+        <a href="#home" class="brand">
+            MOIZE<span>.</span>
         </a>
 
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <nav class="nav-links" id="navLinks">
 
-            <a href="#home"
-               class="hover:text-accent transition-colors">
-                Home
-            </a>
+            <a href="#about">About</a>
 
-            <a href="#about"
-               class="hover:text-accent transition-colors">
-                About
-            </a>
+            <a href="#skills">Skills</a>
 
-            <a href="#skills"
-               class="hover:text-accent transition-colors">
-                Skills
-            </a>
+            <a href="#projects">Projects</a>
 
-            <a href="#projects"
-               class="hover:text-accent transition-colors">
-                Projects
-            </a>
+            <a href="#services">Services</a>
 
-            <a href="#contact"
-               class="hover:text-accent transition-colors">
-                Contact
+            <a href="#contact" class="nav-talk">
+                Let's Talk
             </a>
 
         </nav>
-
-
-        <!-- Right Side -->
-        <div class="flex items-center gap-4 shrink-0">
-
-            <!-- Resume -->
-            <!-- IMPORTANT: No hidden class -->
-            <a href="resume.html"
-               class="resume-btn inline-flex items-center justify-center px-5 py-2.5 rounded-full text-sm font-semibold bg-accent text-white hover:bg-accentHover transition-all shadow-lg glow-accent">
-
-                <i data-lucide="file-text"
-                   class="w-4 h-4 mr-2">
-                </i>
-
-                Resume
-
-            </a>
-
-
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn"
-                    class="md:hidden text-slate-300 hover:text-white focus:outline-none">
-
-                <i data-lucide="menu"
-                   class="w-6 h-6">
-                </i>
-
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <!-- ================= MOBILE MENU ================= -->
-
-    <div id="mobile-menu"
-         class="hidden md:hidden glass-panel border-b border-white/10 px-6 py-4 space-y-3">
-
-        <a href="#home"
-           class="mobile-link block text-slate-300 hover:text-accent py-2">
-            Home
-        </a>
-
-        <a href="#about"
-           class="mobile-link block text-slate-300 hover:text-accent py-2">
-            About
-        </a>
-
-        <a href="#skills"
-           class="mobile-link block text-slate-300 hover:text-accent py-2">
-            Skills
-        </a>
-
-        <a href="#projects"
-           class="mobile-link block text-slate-300 hover:text-accent py-2">
-            Projects
-        </a>
-
-        <a href="#contact"
-           class="mobile-link block text-slate-300 hover:text-accent py-2">
-            Contact
-        </a>
-
-        <a href="resume.html"
-           class="mobile-link flex items-center gap-2 text-accent hover:text-blue-300 py-2 font-semibold">
-
-            <i data-lucide="file-text"
-               class="w-4 h-4">
-            </i>
-
-            View Resume
-
-        </a>
 
     </div>
 
 </header>
 
 
-<main class="relative z-10">
 
+<!-- =========================
+     HERO
+========================= -->
 
-    <!-- ================= HERO ================= -->
+<main>
 
-    <section id="home"
-             class="min-h-screen flex flex-col justify-center items-center relative pt-28 pb-16 px-6 overflow-hidden">
+    <section class="hero" id="home">
 
-        <div class="max-w-5xl mx-auto text-center z-10">
+        <div class="container hero-grid">
 
+            <div class="hero-content reveal">
 
-            <!-- Availability -->
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-panel text-xs font-mono font-medium text-slate-300 mb-8 border border-white/10">
+                <div class="eyebrow">
+                    Available for opportunities
+                </div>
 
-                <span class="relative flex h-2 w-2">
+                <h1>
+                    I BUILD
+                    <span>DIGITAL</span>
+                    EXPERIENCES.
+                </h1>
 
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75">
-                    </span>
+                <div class="hero-role">
+                    Web Developer · Laravel Developer
+                </div>
 
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500">
-                    </span>
+                <p class="hero-text">
+                    I create modern websites and web applications
+                    with clean interfaces, responsive layouts and
+                    practical functionality.
+                </p>
 
-                </span>
+                <div class="hero-buttons">
 
-                Available for Hiring • Based in Karachi
+                    <a href="#projects" class="btn btn-primary">
+                        View My Work
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
 
-            </div>
+                    <a href="#contact" class="btn btn-outline">
+                        Let's work together
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
 
-
-            <!-- Hero Heading -->
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight text-white mb-6 leading-[1.1]">
-
-                Hi, I'm
-
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent via-blue-400 to-indigo-500">
-
-                    Abdul Moize
-
-                </span>
-
-            </h1>
-
-
-            <!-- Role -->
-            <div class="font-mono text-sm sm:text-base text-accent tracking-widest uppercase mb-6 flex flex-wrap justify-center items-center gap-2 sm:gap-4">
-
-                <span>FULL STACK DEVELOPER</span>
-
-                <span class="text-slate-600">•</span>
-
-                <span>LARAVEL</span>
-
-                <span class="text-slate-600">•</span>
-
-                <span>PHP</span>
-
-                <span class="text-slate-600">•</span>
-
-                <span>JAVASCRIPT</span>
+                </div>
 
             </div>
 
 
-            <!-- Description -->
-            <p class="max-w-2xl mx-auto text-lg sm:text-xl text-slate-400 mb-10 leading-relaxed font-light">
+            <div class="developer-area reveal">
 
-                Crafting robust, high-performance web applications with clean frontend UIs and dynamic backend architectures using PHP, Laravel, JavaScript, and MySQL.
-
-            </p>
-
-
-            <!-- Hero Buttons -->
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10">
-
-                <a href="#projects"
-                   class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold bg-accent text-white hover:bg-accentHover transition-all flex items-center justify-center gap-2 glow-accent group">
-
-                    View Projects
-
-                    <i data-lucide="arrow-down"
-                       class="w-4 h-4 group-hover:translate-y-1 transition-transform">
-                    </i>
-
-                </a>
-
-
-                <a href="#contact"
-                   class="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold glass-panel text-slate-200 hover:bg-white/10 transition-all flex items-center justify-center gap-2 border border-white/10">
-
-                    Let's Connect
-
-                </a>
+                <img
+                    src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=90"
+                    alt="Web development workspace with code"
+                    class="developer-image"
+                >
 
             </div>
-
-
-            <!-- Social Icons -->
-            <div class="flex items-center justify-center gap-5 text-xl text-slate-300">
-
-                <a href="https://github.com/moizesadiq-dotcom"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="GitHub"
-                   class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:text-white hover:border-accent/40 transition-all">
-
-                    <i class="fab fa-github"></i>
-
-                </a>
-
-
-                <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="LinkedIn"
-                   class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:text-white hover:border-accent/40 transition-all">
-
-                    <i class="fab fa-linkedin-in"></i>
-
-                </a>
-
-
-                <a href="https://www.instagram.com/ab.moize/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Instagram"
-                   class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:text-white hover:border-accent/40 transition-all">
-
-                    <i class="fab fa-instagram"></i>
-
-                </a>
-
-
-                <a href="mailto:moizesadiq@gmail.com"
-                   aria-label="Email"
-                   class="w-12 h-12 rounded-xl glass-panel flex items-center justify-center hover:text-white hover:border-accent/40 transition-all">
-
-                    <i class="fas fa-envelope"></i>
-
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <!-- Scroll -->
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 animate-bounce">
-
-            <span class="text-xs font-mono uppercase tracking-widest">
-                Scroll
-            </span>
-
-            <i data-lucide="chevron-down"
-               class="w-4 h-4">
-            </i>
 
         </div>
 
     </section>
 
 
-    <!-- ================= ABOUT ================= -->
 
-    <section id="about"
-             class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-darkBg to-[#0d0d12]">
+    <!-- =========================
+         MARQUEE
+    ========================= -->
 
-        <div class="max-w-7xl mx-auto">
+    <div class="marquee">
 
-            <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="marquee-track">
 
-                <span class="font-mono text-xs uppercase tracking-widest text-accent mb-3 block">
-                    Background
-                </span>
+            <span class="marquee-item">Web Development</span>
+            <span class="marquee-dot">✦</span>
 
-                <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-                    Building Scalable Digital Experiences
-                </h2>
+            <span class="marquee-item">Laravel</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">PHP</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">Frontend Development</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">Responsive UI</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">MySQL</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">Web Development</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">Laravel</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">PHP</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">Frontend Development</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">Responsive UI</span>
+            <span class="marquee-dot">✦</span>
+
+            <span class="marquee-item">MySQL</span>
+            <span class="marquee-dot">✦</span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         STATS
+    ========================= -->
+
+    <section class="stats">
+
+        <div class="container">
+
+            <div class="stats-grid reveal">
+
+                <div class="stat">
+                    <div class="number">06+</div>
+                    <p>Featured Projects</p>
+                </div>
+
+                <div class="stat">
+                    <div class="number">04+</div>
+                    <p>Development Areas</p>
+                </div>
+
+                <div class="stat">
+                    <div class="number">98%</div>
+                    <p>Responsive Focus</p>
+                </div>
+
+                <div class="stat">
+                    <div class="number">01+</div>
+                    <p>Year of Learning</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ABOUT
+    ========================= -->
+
+    <section class="section about" id="about">
+
+        <div class="container">
+
+            <div class="section-head reveal">
+
+                <div>
+
+                    <div class="section-label">
+                        01 — About
+                    </div>
+
+                    <h2 class="section-title">
+                        WHO I AM.
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    A developer focused on building useful digital
+                    products with clean design and solid functionality.
+                </p>
 
             </div>
 
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="about-grid">
 
+                <div class="reveal">
 
-                <!-- About Card -->
-                <div class="lg:col-span-5 glass-panel p-8 rounded-2xl border border-white/5">
-
-                    <h3 class="text-2xl font-bold text-white mb-4">
-
-                        Full Stack Web Developer based in Karachi, Pakistan 🇵🇰
-
-                    </h3>
-
-                    <p class="text-slate-400 text-sm leading-relaxed mb-6">
-
-                        I specialize in end-to-end web development, turning complex ideas into functional, aesthetically appealing web applications. With strong proficiency in Laravel and Modern Frontend tools, I focus on clean code, database optimization, and intuitive user experiences.
-
-                    </p>
-
-
-                    <div class="space-y-4 font-mono text-xs text-slate-300">
-
-                        <div class="flex items-center gap-3">
-                            <span class="text-accent">Name:</span>
-                            Abdul Moize
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <span class="text-accent">Email:</span>
-                            moizesadiq@gmail.com
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <span class="text-accent">Phone:</span>
-                            +92 370 7104132
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <span class="text-accent">Location:</span>
-                            Karachi, Pakistan
-                        </div>
-
+                    <div class="about-big">
+                        I turn ideas into
+                        <span class="orange">functional</span>
+                        digital experiences.
                     </div>
 
                 </div>
 
 
-                <!-- Feature Cards -->
-                <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="reveal">
 
+                    <p class="about-copy">
+                        I'm Abdul Moize, a Web Developer focused on
+                        frontend development, PHP and Laravel
+                        applications.
+                    </p>
 
-                    <div class="glass-panel p-6 rounded-2xl border border-white/5">
+                    <p class="about-copy">
+                        I enjoy building responsive websites,
+                        dashboards, management systems and practical
+                        web applications while continuously improving
+                        my development skills.
+                    </p>
 
-                        <div class="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent mb-4">
+                    <div class="about-info">
 
-                            <i data-lucide="code-2"
-                               class="w-5 h-5">
-                            </i>
-
+                        <div class="info-item">
+                            <small>Name</small>
+                            <strong>Abdul Moize</strong>
                         </div>
 
-                        <h4 class="text-base font-semibold text-white mb-1">
-                            Clean Architecture
-                        </h4>
-
-                        <p class="text-xs text-slate-400">
-                            Writing maintainable MVC logic and modular code structures.
-                        </p>
-
-                    </div>
-
-
-                    <div class="glass-panel p-6 rounded-2xl border border-white/5">
-
-                        <div class="w-10 h-10 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-4">
-
-                            <i data-lucide="database"
-                               class="w-5 h-5">
-                            </i>
-
+                        <div class="info-item">
+                            <small>Role</small>
+                            <strong>Web Developer</strong>
                         </div>
 
-                        <h4 class="text-base font-semibold text-white mb-1">
-                            Database Design
-                        </h4>
-
-                        <p class="text-xs text-slate-400">
-                            Optimized MySQL relational schemas and secure query handling.
-                        </p>
-
-                    </div>
-
-
-                    <div class="glass-panel p-6 rounded-2xl border border-white/5">
-
-                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-4">
-
-                            <i data-lucide="layout"
-                               class="w-5 h-5">
-                            </i>
-
+                        <div class="info-item">
+                            <small>Speciality</small>
+                            <strong>Laravel / PHP</strong>
                         </div>
 
-                        <h4 class="text-base font-semibold text-white mb-1">
-                            Responsive UI/UX
-                        </h4>
-
-                        <p class="text-xs text-slate-400">
-                            Tailwind & Bootstrap layout structuring for all screen sizes.
-                        </p>
-
-                    </div>
-
-
-                    <div class="glass-panel p-6 rounded-2xl border border-white/5">
-
-                        <div class="w-10 h-10 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-4">
-
-                            <i data-lucide="git-branch"
-                               class="w-5 h-5">
-                            </i>
-
+                        <div class="info-item">
+                            <small>Based In</small>
+                            <strong>Karachi, Pakistan</strong>
                         </div>
-
-                        <h4 class="text-base font-semibold text-white mb-1">
-                            Version Control
-                        </h4>
-
-                        <p class="text-xs text-slate-400">
-                            Professional Git workflows and GitHub Pages live deployments.
-                        </p>
 
                     </div>
 
@@ -678,154 +1370,85 @@
     </section>
 
 
-    <!-- ================= SKILLS ================= -->
 
-    <section id="skills"
-             class="py-24 px-6 border-t border-white/5">
+    <!-- =========================
+         SKILLS
+    ========================= -->
 
-        <div class="max-w-7xl mx-auto">
+    <section class="section" id="skills">
 
-            <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="container">
 
-                <span class="font-mono text-xs uppercase tracking-widest text-accent mb-3 block">
-                    My Stack
-                </span>
+            <div class="section-head reveal">
 
-                <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-                    Technologies I Master
-                </h2>
+                <div>
+
+                    <div class="section-label">
+                        02 — Skills
+                    </div>
+
+                    <h2 class="section-title">
+                        WHAT I USE.
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    Technologies and tools I use to design and develop
+                    modern web experiences.
+                </p>
 
             </div>
 
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="skills-grid">
 
-
-                <!-- HTML -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
-
-                    <i class="fa-brands fa-html5 text-4xl text-orange-500 mb-4"></i>
-
-                    <h3 class="text-base font-semibold text-white mb-1">
-                        HTML5
-                    </h3>
-
-                    <p class="text-xs text-slate-400">
-                        Semantic markup & accessibility.
-                    </p>
-
+                <div class="skill reveal">
+                    <i class="fa-brands fa-html5"></i>
+                    <h3>HTML5</h3>
+                    <p>Semantic and structured web pages.</p>
                 </div>
 
-
-                <!-- CSS -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
-
-                    <i class="fa-brands fa-css3-alt text-4xl text-blue-500 mb-4"></i>
-
-                    <h3 class="text-base font-semibold text-white mb-1">
-                        CSS3 / Flexbox
-                    </h3>
-
-                    <p class="text-xs text-slate-400">
-                        Responsive layouts & custom animations.
-                    </p>
-
+                <div class="skill reveal">
+                    <i class="fa-brands fa-css3-alt"></i>
+                    <h3>CSS3</h3>
+                    <p>Responsive layouts and modern styling.</p>
                 </div>
 
-
-                <!-- JS -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
-
-                    <i class="fa-brands fa-js text-4xl text-yellow-500 mb-4"></i>
-
-                    <h3 class="text-base font-semibold text-white mb-1">
-                        JavaScript (ES6+)
-                    </h3>
-
-                    <p class="text-xs text-slate-400">
-                        Dynamic DOM & interactive UI logic.
-                    </p>
-
+                <div class="skill reveal">
+                    <i class="fa-brands fa-js"></i>
+                    <h3>JavaScript</h3>
+                    <p>Interactive and dynamic interfaces.</p>
                 </div>
 
-
-                <!-- Bootstrap -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
-
-                    <i class="fa-brands fa-bootstrap text-4xl text-purple-500 mb-4"></i>
-
-                    <h3 class="text-base font-semibold text-white mb-1">
-                        Bootstrap
-                    </h3>
-
-                    <p class="text-xs text-slate-400">
-                        Rapid mobile-first framework design.
-                    </p>
-
+                <div class="skill reveal">
+                    <i class="fa-brands fa-bootstrap"></i>
+                    <h3>Bootstrap</h3>
+                    <p>Fast responsive frontend development.</p>
                 </div>
 
-
-                <!-- PHP -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
-
-                    <i class="fa-brands fa-php text-4xl text-indigo-400 mb-4"></i>
-
-                    <h3 class="text-base font-semibold text-white mb-1">
-                        PHP
-                    </h3>
-
-                    <p class="text-xs text-slate-400">
-                        Server-side logic & API endpoints.
-                    </p>
-
+                <div class="skill reveal">
+                    <i class="fa-brands fa-php"></i>
+                    <h3>PHP</h3>
+                    <p>Backend logic and server-side development.</p>
                 </div>
 
-
-                <!-- MySQL -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
-
-                    <i class="fa-solid fa-database text-4xl text-cyan-400 mb-4"></i>
-
-                    <h3 class="text-base font-semibold text-white mb-1">
-                        MySQL
-                    </h3>
-
-                    <p class="text-xs text-slate-400">
-                        Relational database management.
-                    </p>
-
+                <div class="skill reveal">
+                    <i class="fa-brands fa-laravel"></i>
+                    <h3>Laravel</h3>
+                    <p>Modern PHP web applications and systems.</p>
                 </div>
 
-
-                <!-- Laravel -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
-
-                    <i class="fa-brands fa-laravel text-4xl text-red-500 mb-4"></i>
-
-                    <h3 class="text-base font-semibold text-white mb-1">
-                        Laravel
-                    </h3>
-
-                    <p class="text-xs text-slate-400">
-                        MVC architecture & secure backends.
-                    </p>
-
+                <div class="skill reveal">
+                    <i class="fa-solid fa-database"></i>
+                    <h3>MySQL</h3>
+                    <p>Database design and application data.</p>
                 </div>
 
-
-                <!-- Git -->
-                <div class="glass-panel p-6 rounded-2xl border border-white/5 hover:border-accent/40 transition-all text-center">
-
-                    <i class="fa-brands fa-git-alt text-4xl text-amber-500 mb-4"></i>
-
-                    <h3 class="text-base font-semibold text-white mb-1">
-                        Git & GitHub
-                    </h3>
-
-                    <p class="text-xs text-slate-400">
-                        Version control & deployment workflows.
-                    </p>
-
+                <div class="skill reveal">
+                    <i class="fa-brands fa-github"></i>
+                    <h3>Git & GitHub</h3>
+                    <p>Version control and project management.</p>
                 </div>
 
             </div>
@@ -835,383 +1458,579 @@
     </section>
 
 
-    <!-- ================= PROJECTS ================= -->
 
-    <section id="projects"
-             class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-[#0d0d12] to-darkBg">
+    <!-- =========================
+         PROJECTS
+    ========================= -->
 
-        <div class="max-w-7xl mx-auto">
+    <section class="section projects" id="projects">
 
-            <div class="text-center max-w-3xl mx-auto mb-16">
+        <div class="container">
 
-                <span class="font-mono text-xs uppercase tracking-widest text-accent mb-3 block">
-                    Portfolio
-                </span>
+            <div class="section-head reveal">
 
-                <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-4">
-                    Featured Projects
-                </h2>
+                <div>
+
+                    <div class="section-label">
+                        03 — Selected Work
+                    </div>
+
+                    <h2 class="section-title">
+                        PROJECTS.
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    A selection of websites and web applications
+                    I've built while developing my skills.
+                </p>
 
             </div>
 
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
+            <!-- ORIGAMI FIRST -->
 
-                <!-- ================= PROJECT 1 ================= -->
+            <div class="featured-project reveal">
 
-                <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between project-card">
+                <div class="project-image-wrap">
 
-                    <div>
-
-                        <div class="project-image">
-
-                            <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
-                                 alt="Fitness Factory">
-
-                            <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-accent/20 text-accent border border-accent/30 backdrop-blur-md">
-
-                                Frontend UI
-
-                            </span>
-
-                        </div>
-
-
-                        <div class="p-6">
-
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
-
-                                Fitness Factory — Elite Gym Portal
-
-                            </h3>
-
-                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-
-                                Dark-themed modern fitness platform featuring workout program highlights, photo gallery, and an interactive JS BMI calculator.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
-
-                        <a href="https://moizesadiq-dotcom.github.io/fitness-factory/"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-accent hover:underline text-xs font-mono flex items-center gap-1 font-medium">
-
-                            Live Demo
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-
-                        <a href="https://github.com/moizesadiq-dotcom/fitness-factory"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-slate-400 hover:text-white text-xs font-mono flex items-center gap-1">
-
-                            <i class="fab fa-github"></i>
-                            Code
-
-                        </a>
-
-                    </div>
+                    <img
+                        src="images/origam.png"
+                        alt="The Origami Hub"
+                        class="project-image"
+                    >
 
                 </div>
 
+                <div class="project-content">
 
-                <!-- ================= PROJECT 2 ================= -->
-
-                <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between project-card">
-
-                    <div>
-
-                        <div class="project-image">
-
-                            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
-                                 alt="Aura Bistro">
-
-                            <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-accent/20 text-accent border border-accent/30 backdrop-blur-md">
-
-                                Frontend UI
-
-                            </span>
-
-                        </div>
-
-
-                        <div class="p-6">
-
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
-
-                                AURA BISTRO — Gourmet Dining
-
-                            </h3>
-
-                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-
-                                Luxury coffee & bistro web app featuring dynamic category filtering, cart management, table reservation, and WhatsApp checkout.
-
-                            </p>
-
-                        </div>
-
+                    <div class="project-number">
+                        01 / FEATURED PROJECT
                     </div>
 
+                    <h3>
+                        The Origami Hub
+                    </h3>
 
-                    <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+                    <p>
+                        A clean tutorial-focused web experience
+                        designed to help users explore origami
+                        projects and instructions.
+                    </p>
 
-                        <a href="https://moizesadiq-dotcom.github.io/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App/"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-accent hover:underline text-xs font-mono flex items-center gap-1 font-medium">
+                    <div class="project-meta">
 
-                            Live Demo
+                        <span class="tag">
+                            Tutorial Web App
+                        </span>
 
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-
-                        <a href="https://github.com/moizesadiq-dotcom/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-slate-400 hover:text-white text-xs font-mono flex items-center gap-1">
-
-                            <i class="fab fa-github"></i>
-                            Code
-
-                        </a>
-
-                    </div>
-
-                </div>
-
-
-                <!-- ================= PROJECT 3 ================= -->
-
-                <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between project-card">
-
-                    <div>
-
-                        <div class="project-image">
-
-                            <img src="images/origam.png"
-                                 alt="The Origami Hub">
-
-                            <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 backdrop-blur-md">
-
-                                Tutorial Web App
-
-                            </span>
-
-                        </div>
-
-
-                        <div class="p-6">
-
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
-
-                                The Origami Hub
-
-                            </h3>
-
-                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-
-                                Web application dedicated to paper folding guides, custom interactive canvas elements, and step-by-step visual tutorials.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
-
-                        <a href="https://moizesadiq-dotcom.github.io/the-origami-hub/"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-accent hover:underline text-xs font-mono flex items-center gap-1 font-medium">
-
-                            Live Demo
-
-                            <i class="fa-solid fa-arrow-right"></i>
-
-                        </a>
-
-
-                        <span class="text-slate-500 text-xs font-mono">
-                            GitHub Pages
+                        <span class="tag">
+                            Frontend
                         </span>
 
                     </div>
 
-                </div>
+                    <div class="project-links">
 
-
-                <!-- ================= PROJECT 4 ================= -->
-
-                <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between project-card">
-
-                    <div>
-
-                        <div class="project-image cursor-pointer"
-                             onclick="openSlider('salon')">
-
-                            <img src="images/dashboard.png"
-                                 alt="Salon Management System Dashboard">
-
-                            <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-red-500/20 text-red-400 border border-red-500/30 backdrop-blur-md">
-
-                                Laravel / Full Stack
-
-                            </span>
-
-
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
-
-                                <div class="opacity-0 group-hover:opacity-100 transition-all bg-black/70 backdrop-blur-md px-4 py-2 rounded-full text-xs font-mono text-white border border-white/10">
-
-                                    <i class="fa-solid fa-images mr-1"></i>
-
-                                    View Dashboard Gallery
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="p-6">
-
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
-
-                                Salon Management System
-
-                            </h3>
-
-                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-
-                                Full-stack Laravel administration dashboard managing service catalogs, staff commissions, appointment scheduling, payments, billing, and reports.
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
-
-                        <button onclick="openSlider('salon')"
-                                class="text-blue-400 hover:text-blue-300 hover:underline text-xs font-mono flex items-center gap-1 font-medium">
-
-                            <i class="fa-solid fa-images"></i>
-
-                            View 5 Slides
-
-                        </button>
-
-
-                        <a href="https://github.com/moizesadiq-dotcom/salon-management-system"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-slate-400 hover:text-white text-xs font-mono flex items-center gap-1">
-
-                            <i class="fab fa-github"></i>
-
-                            Source Code
-
+                        <a
+                            href="https://moizesadiq-dotcom.github.io/the-origami-hub/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            Live Project
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
                         </a>
 
                     </div>
 
                 </div>
 
-
-                <!-- ================= PROJECT 5 ================= -->
-
-                <div class="glass-panel rounded-2xl overflow-hidden border border-white/5 group hover:border-accent/40 transition-all flex flex-col justify-between project-card">
-
-                    <div>
-
-                        <div class="project-image cursor-pointer"
-                             onclick="openSlider('zacnus')">
-
-                            <img src="images/dashboardzz2.jpeg"
-                                 alt="Zacnus Portal Dashboard">
-
-                            <span class="absolute top-4 right-4 font-mono text-xs px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/30 backdrop-blur-md">
-
-                                Multi-Panel SaaS
-
-                            </span>
+            </div>
 
 
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all flex items-center justify-center">
 
-                                <div class="opacity-0 group-hover:opacity-100 transition-all bg-black/70 backdrop-blur-md px-4 py-2 rounded-full text-xs font-mono text-white border border-white/10">
-
-                                    <i class="fa-solid fa-images mr-1"></i>
-
-                                    View Zacnus Gallery
-
-                                </div>
-
-                            </div>
-
-                        </div>
+            <div class="project-grid">
 
 
-                        <div class="p-6">
+                <!-- ELECTRIC SCOOTER -->
 
-                            <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent transition-colors">
+                <article class="project-card reveal">
 
-                                ZACNUS — Software House Portal
+                    <div class="project-image-wrap">
 
-                            </h3>
-
-                            <p class="text-slate-400 text-sm leading-relaxed mb-4">
-
-                                Multi-panel Laravel platform featuring client dashboards, support ticketing systems, and comprehensive admin management controllers.
-
-                            </p>
-
-                        </div>
+                        <img
+                            src="https://raw.githubusercontent.com/moizesadiq-dotcom/electric-scooter/main/img/scoty.jpg"
+                            alt="Concept Electric Mobility — Electric Scooter UI/UX"
+                            class="project-image"
+                        >
 
                     </div>
 
+                    <div class="project-number">
+                        02 / PROJECT
+                    </div>
 
-                    <div class="px-6 py-4 bg-white/[0.02] border-t border-white/5 flex items-center justify-between">
+                    <h3>
+                        Electric Scooter
+                    </h3>
 
-                        <button onclick="openSlider('zacnus')"
-                                class="text-purple-400 hover:text-purple-300 hover:underline text-xs font-mono flex items-center gap-1 font-medium">
+                    <p>
+                        Premium electric mobility website concept
+                        focused on modern UI/UX, product presentation,
+                        responsive layouts and interactive web design.
+                    </p>
 
+                    <div class="project-meta">
+
+                        <span class="tag">
+                            UI/UX
+                        </span>
+
+                        <span class="tag">
+                            Frontend
+                        </span>
+
+                        <span class="tag">
+                            Responsive
+                        </span>
+
+                    </div>
+
+                    <div class="project-links">
+
+                        <a
+                            href="https://moizesadiq-dotcom.github.io/electric-scooter/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            Live Demo
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+
+                        <a
+                            href="https://github.com/moizesadiq-dotcom/electric-scooter"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            GitHub
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- FITNESS -->
+
+                <article class="project-card reveal">
+
+                    <div class="project-image-wrap">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80"
+                            alt="Fitness Factory"
+                            class="project-image"
+                        >
+
+                    </div>
+
+                    <div class="project-number">
+                        03 / PROJECT
+                    </div>
+
+                    <h3>
+                        Fitness Factory
+                    </h3>
+
+                    <p>
+                        Elite gym portal interface focused on
+                        modern presentation, responsive layouts
+                        and strong visual hierarchy.
+                    </p>
+
+                    <div class="project-meta">
+
+                        <span class="tag">
+                            Frontend UI
+                        </span>
+
+                        <span class="tag">
+                            Responsive
+                        </span>
+
+                    </div>
+
+                    <div class="project-links">
+
+                        <a
+                            href="https://moizesadiq-dotcom.github.io/fitness-factory/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            Live
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+
+                        <a
+                            href="https://github.com/moizesadiq-dotcom/fitness-factory"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            GitHub
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- AURA -->
+
+                <article class="project-card reveal">
+
+                    <div class="project-image-wrap">
+
+                        <img
+                            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+                            alt="AURA BISTRO"
+                            class="project-image"
+                        >
+
+                    </div>
+
+                    <div class="project-number">
+                        04 / PROJECT
+                    </div>
+
+                    <h3>
+                        AURA BISTRO
+                    </h3>
+
+                    <p>
+                        Gourmet dining and ordering web experience
+                        with a polished restaurant-focused interface.
+                    </p>
+
+                    <div class="project-meta">
+
+                        <span class="tag">
+                            Frontend UI
+                        </span>
+
+                        <span class="tag">
+                            Web App
+                        </span>
+
+                    </div>
+
+                    <div class="project-links">
+
+                        <a
+                            href="https://moizesadiq-dotcom.github.io/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            Live
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+
+                        <a
+                            href="https://github.com/moizesadiq-dotcom/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            GitHub
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SALON -->
+
+                <article class="project-card reveal">
+
+                    <div class="project-image-wrap">
+
+                        <img
+                            src="images/dashboard.png"
+                            alt="Salon Management System"
+                            class="project-image"
+                        >
+
+                    </div>
+
+                    <div class="project-number">
+                        05 / PROJECT
+                    </div>
+
+                    <h3>
+                        Salon Management System
+                    </h3>
+
+                    <p>
+                        Laravel-based management application for
+                        services, staff, customers, appointments,
+                        bookings, payments and reports.
+                    </p>
+
+                    <div class="project-meta">
+
+                        <span class="tag">
+                            Laravel
+                        </span>
+
+                        <span class="tag">
+                            Full Stack
+                        </span>
+
+                        <span class="tag">
+                            MySQL
+                        </span>
+
+                    </div>
+
+                    <div class="project-links">
+
+                        <button
+                            onclick="openGallery('salon')"
+                            class="project-link"
+                            style="border:0;background:none;padding:0;cursor:pointer;"
+                        >
+                            View Gallery
                             <i class="fa-solid fa-images"></i>
-
-                            View 7 Slides
-
                         </button>
 
-
-                        <a href="https://github.com/moizesadiq-dotcom"
-                           target="_blank"
-                           rel="noopener noreferrer"
-                           class="text-slate-400 hover:text-white text-xs font-mono flex items-center gap-1">
-
-                            <i class="fab fa-github"></i>
-
-                            Code
-
+                        <a
+                            href="https://github.com/moizesadiq-dotcom/salon-management-system"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            GitHub
+                            <i class="fa-brands fa-github"></i>
                         </a>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- ZACNUS -->
+
+                <article class="project-card reveal">
+
+                    <div class="project-image-wrap">
+
+                        <img
+                            src="images/dashboardzz2.jpeg"
+                            alt="ZACNUS Software House Portal"
+                            class="project-image"
+                        >
+
+                    </div>
+
+                    <div class="project-number">
+                        06 / PROJECT
+                    </div>
+
+                    <h3>
+                        ZACNUS
+                    </h3>
+
+                    <p>
+                        Software house portal with separate
+                        client and admin workflows for projects,
+                        invoices, services and support management.
+                    </p>
+
+                    <div class="project-meta">
+
+                        <span class="tag">
+                            Multi-Panel SaaS
+                        </span>
+
+                        <span class="tag">
+                            Laravel
+                        </span>
+
+                        <span class="tag">
+                            MySQL
+                        </span>
+
+                    </div>
+
+                    <!-- ONLY ONE PROJECT LINKS BLOCK -->
+
+                    <div class="project-links">
+
+                        <button
+                            onclick="openGallery('zacnus')"
+                            class="project-link"
+                            style="border:0;background:none;padding:0;cursor:pointer;"
+                        >
+                            View Gallery
+                            <i class="fa-solid fa-images"></i>
+                        </button>
+
+                        <a
+                            href="https://github.com/moizesadiq-dotcom"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="project-link"
+                        >
+                            GitHub
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SERVICES
+    ========================= -->
+
+    <section class="section" id="services">
+
+        <div class="container">
+
+            <div class="section-head reveal">
+
+                <div>
+
+                    <div class="section-label">
+                        04 — Services
+                    </div>
+
+                    <h2 class="section-title">
+                        WHAT I DO.
+                    </h2>
+
+                </div>
+
+                <p class="section-description">
+                    Practical development services focused on
+                    clean interfaces and functional web systems.
+                </p>
+
+            </div>
+
+
+            <div class="services-grid">
+
+                <div class="service reveal">
+
+                    <div class="service-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Web Development
+                        </h3>
+
+                        <p>
+                            Responsive websites built with clean
+                            structure, modern UI and practical
+                            functionality.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service reveal">
+
+                    <div class="service-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Laravel Applications
+                        </h3>
+
+                        <p>
+                            Backend-driven applications, CRUD
+                            systems, dashboards and management
+                            platforms.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service reveal">
+
+                    <div class="service-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Frontend UI
+                        </h3>
+
+                        <p>
+                            Modern responsive interfaces focused
+                            on usability, hierarchy and clean
+                            presentation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="service reveal">
+
+                    <div class="service-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Database Systems
+                        </h3>
+
+                        <p>
+                            MySQL database structures and
+                            application data management for
+                            web projects.
+                        </p>
 
                     </div>
 
@@ -1224,91 +2043,80 @@
     </section>
 
 
-    <!-- ================= CONTACT ================= -->
 
-    <section id="contact"
-             class="py-24 px-6 border-t border-white/5 bg-gradient-to-b from-darkBg to-[#0d0d12]">
+    <!-- =========================
+         CONTACT
+    ========================= -->
 
-        <div class="max-w-4xl mx-auto text-center">
+    <section class="section contact" id="contact">
 
-            <span class="font-mono text-xs uppercase tracking-widest text-accent mb-3 block">
+        <div class="container">
 
-                Get In Touch
+            <div class="contact-grid">
 
-            </span>
+                <div class="reveal">
 
+                    <div class="section-label">
+                        05 — Contact
+                    </div>
 
-            <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white mb-6">
+                    <h2>
+                        LET'S BUILD
+                        <span>SOMETHING.</span>
+                    </h2>
 
-                Let's Build Something Together
+                    <p class="contact-text">
+                        Have a website, web application or idea
+                        in mind? Let's turn it into something
+                        useful and professional.
+                    </p>
 
-            </h2>
-
-
-            <p class="text-slate-400 mb-8 max-w-xl mx-auto">
-
-                Have a project in mind or looking for a developer?
-                Feel free to reach out directly.
-
-            </p>
-
-
-            <!-- Social Links -->
-            <div class="flex items-center justify-center gap-4 mb-10">
-
-                <a href="https://github.com/moizesadiq-dotcom"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="GitHub"
-                   class="w-14 h-14 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:border-accent/50 hover:bg-accent/10 transition-all">
-
-                    <i class="fab fa-github text-2xl"></i>
-
-                </a>
+                </div>
 
 
-                <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="LinkedIn"
-                   class="w-14 h-14 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:border-accent/50 hover:bg-accent/10 transition-all">
+                <div class="contact-details reveal">
 
-                    <i class="fab fa-linkedin-in text-2xl"></i>
+                    <a
+                        href="mailto:moizesadiq@gmail.com"
+                        class="contact-item"
+                    >
+                        <i class="fa-solid fa-envelope"></i>
+                        moizesadiq@gmail.com
+                    </a>
 
-                </a>
+                    <a
+                        href="https://github.com/moizesadiq-dotcom"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-item"
+                    >
+                        <i class="fa-brands fa-github"></i>
+                        GitHub
+                    </a>
 
+                    <a
+                        href="https://www.linkedin.com/in/moize-sadiq-31220b3a0"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-item"
+                    >
+                        <i class="fa-brands fa-linkedin"></i>
+                        LinkedIn
+                    </a>
 
-                <a href="https://www.instagram.com/ab.moize/"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   aria-label="Instagram"
-                   class="w-14 h-14 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:border-accent/50 hover:bg-accent/10 transition-all">
+                    <a
+                        href="https://www.instagram.com/ab.moize/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="contact-item"
+                    >
+                        <i class="fa-brands fa-instagram"></i>
+                        Instagram
+                    </a>
 
-                    <i class="fab fa-instagram text-2xl"></i>
-
-                </a>
-
-
-                <a href="mailto:moizesadiq@gmail.com"
-                   aria-label="Email"
-                   class="w-14 h-14 rounded-xl glass-panel flex items-center justify-center text-slate-300 hover:text-white hover:border-accent/50 hover:bg-accent/10 transition-all">
-
-                    <i class="fas fa-envelope text-2xl"></i>
-
-                </a>
+                </div>
 
             </div>
-
-
-            <!-- Email -->
-            <a href="mailto:moizesadiq@gmail.com"
-               class="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold bg-accent text-white hover:bg-accentHover transition-all glow-accent">
-
-                <i class="fas fa-envelope"></i>
-
-                moizesadiq@gmail.com
-
-            </a>
 
         </div>
 
@@ -1317,277 +2125,303 @@
 </main>
 
 
-<!-- ================= IMAGE SLIDER MODAL ================= -->
 
-<div id="imageModal"
-     class="fixed inset-0 z-[100] hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+<!-- =========================
+     FOOTER
+========================= -->
 
-    <div class="relative max-w-5xl w-full flex flex-col items-center">
+<footer>
 
+    <div class="container footer-inner">
 
-        <!-- Close -->
-        <button onclick="closeSlider()"
-                class="absolute -top-12 right-0 text-white text-xl font-mono px-4 py-2 hover:text-accent">
+        <div class="footer-copy">
+            © 2026 Abdul Moize. Built with passion & code.
+        </div>
 
-            <i class="fa-solid fa-xmark text-2xl"></i>
+        <div class="socials">
 
-        </button>
+            <a
+                href="https://github.com/moizesadiq-dotcom"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+            >
+                <i class="fa-brands fa-github"></i>
+            </a>
 
+            <a
+                href="https://www.linkedin.com/in/moize-sadiq-31220b3a0"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+            >
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
 
-        <!-- Image -->
-        <img id="modalImg"
-             src=""
-             alt="Slider Image"
-             class="rounded-xl shadow-2xl mb-4">
+            <a
+                href="https://www.instagram.com/ab.moize/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Instagram"
+            >
+                <i class="fa-brands fa-instagram"></i>
+            </a>
 
-
-        <!-- Controls -->
-        <div class="flex items-center gap-4">
-
-            <button onclick="prevSlide()"
-                    class="slider-arrow px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-accent">
-
-                <i class="fa-solid fa-chevron-left"></i>
-
-                Prev
-
-            </button>
-
-
-            <span id="slideCounter"
-                  class="font-mono text-sm text-slate-300">
-            </span>
-
-
-            <button onclick="nextSlide()"
-                    class="slider-arrow px-4 py-2 bg-white/10 text-white rounded-lg hover:bg-accent">
-
-                Next
-
-                <i class="fa-solid fa-chevron-right"></i>
-
-            </button>
+            <a
+                href="mailto:moizesadiq@gmail.com"
+                aria-label="Email"
+            >
+                <i class="fa-solid fa-envelope"></i>
+            </a>
 
         </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     GALLERY MODAL
+========================= -->
+
+<div class="modal" id="galleryModal">
+
+    <div class="modal-inner">
+
+        <button class="modal-close" onclick="closeGallery()">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <button class="modal-prev" onclick="previousImage()">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+
+        <img
+            id="modalImage"
+            class="modal-image"
+            src=""
+            alt="Project screenshot"
+        >
+
+        <button class="modal-next" onclick="nextImage()">
+            <i class="fa-solid fa-chevron-right"></i>
+        </button>
 
     </div>
 
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
 
 <script>
 
-    /* ================= SALON IMAGES ================= */
+    /* MOBILE MENU */
 
-    const salonImages = [
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
 
-        'images/dashboard.png',
-        'images/appoinment.png',
-        'images/bookings.png',
-        'images/services.png',
-        'images/reports.png'
+    menuBtn.addEventListener("click", function () {
 
-    ];
+        navLinks.classList.toggle("active");
 
+        const icon = menuBtn.querySelector("i");
 
-    /* ================= ZACNUS IMAGES ================= */
+        if (navLinks.classList.contains("active")) {
 
-    const zacnusImages = [
-
-        'images/dashboardzz.jpeg',
-        'images/dashboardzz2.jpeg',
-        'images/footerzz.jpeg',
-        'images/adminzz.jpeg',
-        'images/clientzz.jpeg',
-        'images/managezzz.jpeg',
-        'images/serviceszz.jpeg'
-
-    ];
-
-
-    let activeImages = salonImages;
-
-    let currentSlide = 0;
-
-
-    /* ================= OPEN SLIDER ================= */
-
-    function openSlider(projectKey) {
-
-        if (projectKey === 'zacnus') {
-
-            activeImages = zacnusImages;
+            icon.classList.remove("fa-bars");
+            icon.classList.add("fa-xmark");
 
         } else {
 
-            activeImages = salonImages;
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
 
         }
 
-        currentSlide = 0;
-
-        updateSlide();
-
-        document
-            .getElementById('imageModal')
-            .classList.remove('hidden');
-
-        document.body.style.overflow = 'hidden';
-
-    }
+    });
 
 
-    /* ================= CLOSE SLIDER ================= */
+    document.querySelectorAll(".nav-links a").forEach(function (link) {
 
-    function closeSlider() {
+        link.addEventListener("click", function () {
 
-        document
-            .getElementById('imageModal')
-            .classList.add('hidden');
+            navLinks.classList.remove("active");
 
-        document.body.style.overflow = '';
+            const icon = menuBtn.querySelector("i");
 
-    }
+            icon.classList.remove("fa-xmark");
+            icon.classList.add("fa-bars");
 
+        });
 
-    /* ================= UPDATE SLIDE ================= */
-
-    function updateSlide() {
-
-        const modalImg =
-            document.getElementById('modalImg');
-
-        const counter =
-            document.getElementById('slideCounter');
-
-        modalImg.src =
-            activeImages[currentSlide];
-
-        counter.innerText =
-            `Slide ${currentSlide + 1} of ${activeImages.length}`;
-
-    }
+    });
 
 
-    /* ================= NEXT ================= */
 
-    function nextSlide() {
+    /* REVEAL ANIMATION */
 
-        currentSlide =
-            (currentSlide + 1) % activeImages.length;
+    const revealElements =
+        document.querySelectorAll(".reveal");
 
-        updateSlide();
+    const revealObserver =
+        new IntersectionObserver(
+            function (entries) {
 
-    }
+                entries.forEach(function (entry) {
 
+                    if (entry.isIntersecting) {
 
-    /* ================= PREVIOUS ================= */
+                        entry.target.classList.add("show");
 
-    function prevSlide() {
+                        revealObserver.unobserve(entry.target);
 
-        currentSlide =
-            (currentSlide - 1 + activeImages.length) %
-            activeImages.length;
+                    }
 
-        updateSlide();
+                });
 
-    }
-
-
-    /* ================= MOBILE MENU ================= */
-
-    const mobileMenuBtn =
-        document.getElementById('mobile-menu-btn');
-
-    const mobileMenu =
-        document.getElementById('mobile-menu');
-
-
-    if (mobileMenuBtn && mobileMenu) {
-
-        mobileMenuBtn.addEventListener(
-            'click',
-            function () {
-
-                mobileMenu.classList.toggle('hidden');
-
+            },
+            {
+                threshold: 0.12
             }
         );
 
+
+    revealElements.forEach(function (element) {
+
+        revealObserver.observe(element);
+
+    });
+
+
+
+    /* GALLERIES */
+
+    const galleries = {
+
+        salon: [
+            "images/dashboard.png",
+            "images/appoinment.png",
+            "images/bookings.png",
+            "images/services.png",
+            "images/reports.png"
+        ],
+
+        zacnus: [
+            "images/dashboardzz.jpeg",
+            "images/dashboardzz2.jpeg",
+            "images/footerzz.jpeg",
+            "images/adminzz.jpeg",
+            "images/clientzz.jpeg",
+            "images/managezzz.jpeg",
+            "images/serviceszz.jpeg"
+        ]
+
+    };
+
+
+    let currentGallery = [];
+    let currentIndex = 0;
+
+
+    function openGallery(name) {
+
+        currentGallery = galleries[name];
+
+        currentIndex = 0;
+
+        updateModalImage();
+
+        document
+            .getElementById("galleryModal")
+            .classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
     }
 
 
-    /* ================= CLOSE MOBILE MENU AFTER CLICK ================= */
+    function closeGallery() {
 
-    document.querySelectorAll('.mobile-link')
-        .forEach(function(link) {
+        document
+            .getElementById("galleryModal")
+            .classList.remove("active");
 
-            link.addEventListener('click', function() {
+        document.body.style.overflow = "";
 
-                mobileMenu.classList.add('hidden');
-
-            });
-
-        });
+    }
 
 
-    /* ================= ESC KEY ================= */
+    function updateModalImage() {
 
-    document.addEventListener(
-        'keydown',
-        function(event) {
+        document.getElementById("modalImage").src =
+            currentGallery[currentIndex];
 
-            if (event.key === 'Escape') {
-
-                closeSlider();
-
-                mobileMenu.classList.add('hidden');
-
-            }
-
-            if (!document.getElementById('imageModal').classList.contains('hidden')) {
-
-                if (event.key === 'ArrowRight') {
-
-                    nextSlide();
-
-                }
-
-                if (event.key === 'ArrowLeft') {
-
-                    prevSlide();
-
-                }
-
-            }
-
-        }
-    );
+    }
 
 
-    /* ================= CLICK OUTSIDE MODAL ================= */
+    function nextImage() {
+
+        if (!currentGallery.length) return;
+
+        currentIndex =
+            (currentIndex + 1) %
+            currentGallery.length;
+
+        updateModalImage();
+
+    }
+
+
+    function previousImage() {
+
+        if (!currentGallery.length) return;
+
+        currentIndex =
+            (currentIndex - 1 +
+                currentGallery.length) %
+            currentGallery.length;
+
+        updateModalImage();
+
+    }
+
 
     document
-        .getElementById('imageModal')
-        .addEventListener('click', function(event) {
+        .getElementById("galleryModal")
+        .addEventListener("click", function (event) {
 
             if (event.target === this) {
-
-                closeSlider();
-
+                closeGallery();
             }
 
         });
 
 
-    /* ================= LUCIDE ICONS ================= */
+    document.addEventListener("keydown", function (event) {
 
-    lucide.createIcons();
+        const modal =
+            document.getElementById("galleryModal");
+
+        if (!modal.classList.contains("active")) {
+            return;
+        }
+
+        if (event.key === "Escape") {
+            closeGallery();
+        }
+
+        if (event.key === "ArrowRight") {
+            nextImage();
+        }
+
+        if (event.key === "ArrowLeft") {
+            previousImage();
+        }
+
+    });
 
 </script>
-```
-
 </body>
 </html>
