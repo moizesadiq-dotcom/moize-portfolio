@@ -1,684 +1,571 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Abdul Moize — Resume</title>
-
-    <meta name="description" content="Resume of Abdul Moize - Backend Developer, Laravel Developer and Full Stack Web Developer.">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        darkBg: '#0a0a0c',
-                        cardBg: '#121217',
-                        cardBorder: '#22222c',
-                        accent: '#3b82f6',
-                        accentHover: '#2563eb',
-                        mutedText: '#9ca3af'
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace']
-                    }
-                }
-            }
-        }
-    </script>
+    <meta name="description" content="Resume of Abdul Moize — Web Developer specializing in Laravel, PHP, JavaScript, and full-stack web development.">
+    <meta name="author" content="Abdul Moize">
+    <meta name="theme-color" content="#0a0a0b">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
     <style>
+        :root {
+            --bg: #0a0a0b;
+            --bg-elevated: #111114;
+            --bg-card: #15151a;
+            --line: rgba(255, 255, 255, 0.07);
+            --line-hover: rgba(255, 255, 255, 0.14);
+            --text: #f5f5f4;
+            --text-muted: #9a9a93;
+            --text-dim: #6a6a64;
+            --accent: #ee5b25;
+            --accent-hover: #ff6b35;
+            --accent-dim: rgba(238, 91, 37, 0.12);
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            background: #0a0a0c;
-            color: #ffffff;
-            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .glass {
-            background: rgba(18, 18, 23, 0.85);
-            border: 1px solid #22222c;
-            backdrop-filter: blur(12px);
-        }
+        h1, h2, h3, h4 { font-family: var(--font-display); }
+        .font-mono { font-family: var(--font-mono); }
+        a { color: inherit; text-decoration: none; }
+        ::selection { background: var(--accent); color: #fff; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: #2a2a30; border-radius: 4px; }
 
-        .glow {
-            box-shadow: 0 0 35px rgba(59, 130, 246, 0.12);
+        .container { width: min(1000px, calc(100% - 48px)); margin: 0 auto; }
+
+        /* Nav */
+        .resume-nav {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(10,10,11,0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--line);
         }
+        .resume-nav-inner {
+            min-height: 70px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .brand {
+            font-family: var(--font-display);
+            font-size: 20px; font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .brand .dot { color: var(--accent); }
+        .nav-actions { display: flex; gap: 12px; align-items: center; }
+        .nav-link-back {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; border: 1px solid var(--line-hover);
+            border-radius: 6px; font-size: 13px; font-weight: 500;
+            color: var(--text-muted); transition: 0.25s;
+        }
+        .nav-link-back:hover { color: var(--text); border-color: var(--text-muted); }
+        .nav-print-btn {
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 10px 18px; background: var(--accent);
+            color: #fff; border-radius: 6px; font-size: 13px;
+            font-weight: 600; transition: 0.25s; cursor: pointer;
+            border: none;
+        }
+        .nav-print-btn:hover { background: var(--accent-hover); transform: translateY(-2px); }
+
+        /* Layout */
+        main { padding: 48px 0 64px; }
 
         .resume-card {
-            transition: all 0.3s ease;
+            background: var(--bg-elevated);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 24px;
+            transition: border-color 0.3s;
+        }
+        .resume-card:hover { border-color: var(--line-hover); }
+
+        .card-head {
+            display: flex; align-items: center; gap: 14px;
+            margin-bottom: 24px;
+        }
+        .card-head-icon {
+            width: 42px; height: 42px;
+            display: grid; place-items: center;
+            background: var(--accent-dim);
+            color: var(--accent);
+            border-radius: 10px;
+            font-size: 18px;
+        }
+        .card-head .label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--accent);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+        .card-head h2 { font-size: 22px; font-weight: 600; }
+
+        /* Header */
+        .resume-header {
+            display: flex; flex-direction: column; gap: 32px;
+        }
+        .header-tag {
+            font-family: var(--font-mono);
+            font-size: 12px; letter-spacing: 2px;
+            color: var(--accent); text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .resume-header h1 {
+            font-size: clamp(40px, 6vw, 64px);
+            font-weight: 700; letter-spacing: -2px;
+            line-height: 1.05; margin-bottom: 14px;
+        }
+        .resume-header .role {
+            font-size: 20px; color: var(--text-muted);
+            font-weight: 500; margin-bottom: 20px;
+        }
+        .resume-header .intro {
+            color: var(--text-muted); font-size: 15px;
+            line-height: 1.8; max-width: 600px;
         }
 
-        .resume-card:hover {
-            border-color: rgba(59, 130, 246, 0.45);
-            transform: translateY(-3px);
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .contact-pill {
+            display: flex; align-items: center; gap: 12px;
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            font-size: 13px; color: var(--text-muted);
+            transition: 0.25s;
+            overflow-wrap: anywhere;
+        }
+        .contact-pill:hover { border-color: var(--accent); color: var(--text); }
+        .contact-pill i { color: var(--accent); width: 16px; text-align: center; }
+
+        .about-text {
+            color: var(--text-muted); font-size: 14.5px;
+            line-height: 1.85;
         }
 
-        .skill {
-            background: rgba(59, 130, 246, 0.08);
-            border: 1px solid rgba(59, 130, 246, 0.18);
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+        }
+        .skill-pill {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 16px;
+            transition: 0.25s;
+        }
+        .skill-pill:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .skill-pill .cat {
+            font-family: var(--font-mono);
+            font-size: 11px; color: var(--text-dim);
+            margin-bottom: 6px; text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .skill-pill .tech { font-size: 14px; font-weight: 600; color: var(--text); }
+
+        /* Education / Timeline */
+        .timeline-item {
+            position: relative;
+            padding-left: 28px;
+            padding-bottom: 24px;
+            border-left: 1px solid var(--line);
+        }
+        .timeline-item:last-child { border-left-color: transparent; padding-bottom: 0; }
+        .timeline-item::before {
+            content: ""; position: absolute;
+            left: -5px; top: 2px;
+            width: 9px; height: 9px; border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px var(--accent-dim);
+        }
+        .ti-date { font-family: var(--font-mono); font-size: 12px; color: var(--accent); margin-bottom: 6px; }
+        .timeline-item h3 { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+        .ti-sub { color: var(--text-dim); font-size: 13px; margin-bottom: 6px; }
+        .timeline-item p { color: var(--text-muted); font-size: 13px; line-height: 1.7; }
+
+        /* Projects */
+        .proj-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .proj-card {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 22px;
+            transition: 0.3s var(--ease);
+        }
+        .proj-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+        .proj-card.wide { grid-column: span 2; }
+        .proj-top {
+            display: flex; justify-content: space-between;
+            align-items: flex-start; gap: 12px; margin-bottom: 12px;
+        }
+        .proj-icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            background: var(--accent-dim); color: var(--accent);
+            display: grid; place-items: center; font-size: 16px;
+        }
+        .proj-link { font-size: 12px; color: var(--accent); font-weight: 500; }
+        .proj-link:hover { color: var(--accent-hover); }
+        .proj-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+        .proj-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+        .proj-tech {
+            font-family: var(--font-mono); font-size: 11px;
+            color: var(--text-dim); margin-top: 12px;
         }
 
+        /* Certs */
+        .cert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .cert-card {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 10px; padding: 18px;
+            transition: 0.25s;
+        }
+        .cert-card:hover { border-color: var(--accent); }
+        .cert-card h3 { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .cert-card p { font-size: 13px; color: var(--text-muted); }
+
+        /* Languages */
+        .lang-pills { display: flex; flex-wrap: wrap; gap: 12px; }
+        .lang-pill {
+            padding: 10px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: 50px;
+            font-size: 14px; color: var(--text-muted);
+            transition: 0.25s;
+        }
+        .lang-pill:hover { border-color: var(--accent); color: var(--text); }
+
+        /* Footer */
+        .resume-footer {
+            text-align: center; padding: 32px 0;
+            border-top: 1px solid var(--line);
+            margin-top: 24px;
+        }
+        .resume-footer p {
+            font-family: var(--font-mono); font-size: 12px;
+            color: var(--text-dim);
+        }
+
+        /* Responsive */
+        @media (max-width: 700px) {
+            .contact-grid, .skills-grid, .proj-grid, .cert-grid { grid-template-columns: 1fr; }
+            .proj-card.wide { grid-column: span 1; }
+            .resume-card { padding: 24px; }
+            .resume-header h1 { font-size: 40px; }
+        }
+
+        /* Print */
         @media print {
-            body {
-                background: white !important;
-                color: #111827 !important;
-            }
-
-            .no-print {
-                display: none !important;
-            }
-
-            .glass,
+            body { background: white !important; color: #111 !important; }
+            .resume-nav, .resume-footer { display: none !important; }
             .resume-card {
                 background: white !important;
-                border: 1px solid #e5e7eb !important;
+                border: 1px solid #ddd !important;
                 box-shadow: none !important;
+                break-inside: avoid;
             }
-
-            .text-white {
-                color: #111827 !important;
+            .resume-header h1, .resume-header .role, .card-head h2,
+            .timeline-item h3, .proj-card h3, .cert-card h3, .skill-pill .tech, .brand {
+                color: #111 !important;
             }
-
-            .text-slate-300,
-            .text-slate-400 {
-                color: #4b5563 !important;
+            .resume-header .intro, .about-text, .proj-card p, .cert-card p,
+            .timeline-item p, .skill-pill .cat, .contact-pill, .lang-pill, .ti-sub {
+                color: #555 !important;
             }
-
-            .text-accent {
-                color: #2563eb !important;
-            }
+            .card-head-icon, .proj-icon { background: #f0f0f0 !important; color: var(--accent) !important; }
+            .header-tag, .card-head .label, .ti-date { color: var(--accent) !important; }
         }
     </style>
 </head>
-
 <body>
 
-    <!-- Top Navigation -->
-    <nav class="no-print sticky top-0 z-50 border-b border-white/5 bg-[#0a0a0c]/90 backdrop-blur-xl">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-
-            <a href="index.html"
-               class="font-mono text-lg font-semibold text-white">
-                &lt;AbdulMoize/&gt;
-            </a>
-
-            <div class="flex items-center gap-3">
-
-                <a href="index.html"
-                   class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-white/10 text-sm font-semibold text-slate-300 hover:text-white hover:border-accent/50 transition-all">
-                    <i class="fas fa-arrow-left text-xs"></i>
-                    Portfolio
+    <nav class="resume-nav no-print">
+        <div class="container resume-nav-inner">
+            <a href="index.html" class="brand">MOIZE<span class="dot">.</span></a>
+            <div class="nav-actions">
+                <a href="index.html" class="nav-link-back">
+                    <i class="fas fa-arrow-left" style="font-size:11px;"></i> Portfolio
                 </a>
-
-                <button onclick="window.print()"
-                        class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-accent text-white text-sm font-semibold hover:bg-accentHover transition-all">
-                    <i class="fas fa-download text-xs"></i>
-                    Print / Save PDF
+                <button onclick="window.print()" class="nav-print-btn">
+                    <i class="fas fa-download" style="font-size:11px;"></i> Print / Save PDF
                 </button>
-
             </div>
         </div>
     </nav>
 
-
-    <!-- Resume -->
-    <main class="max-w-6xl mx-auto px-6 py-12 sm:py-16">
+    <main class="container">
 
         <!-- Header -->
-        <section class="glass glow rounded-3xl p-7 sm:p-10 mb-8">
-
-            <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
-
+        <section class="resume-card">
+            <div class="resume-header">
                 <div>
-
-                    <p class="font-mono text-xs uppercase tracking-[0.25em] text-accent mb-3">
-                        Backend Developer • Laravel • PHP
+                    <p class="header-tag">Web Developer · Laravel · PHP · JavaScript</p>
+                    <h1>Abdul Moize</h1>
+                    <p class="role">Web Developer</p>
+                    <p class="intro">
+                        I build modern, responsive and interactive web experiences using modern frontend and backend technologies. Focused on Laravel, PHP, MySQL, JavaScript, and clean, maintainable code.
                     </p>
-
-                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white mb-4">
-                        Abdul Moize
-                    </h1>
-
-                    <p class="text-xl sm:text-2xl text-slate-300 font-medium mb-5">
-                        Junior Full Stack Web Developer
-                    </p>
-
-                    <p class="max-w-2xl text-slate-400 leading-7">
-                        Junior developer focused on backend development with PHP and Laravel,
-                        with practical experience in MySQL, JavaScript, Bootstrap, WordPress,
-                        and responsive web development. Interested in building clean,
-                        functional, and scalable web applications.
-                    </p>
-
                 </div>
-
-
-                <!-- Contact -->
-                <div class="glass rounded-2xl p-5 min-w-full lg:min-w-[300px]">
-
-                    <div class="space-y-4 text-sm">
-
-                        <a href="mailto:moizesadiq@gmail.com"
-                           class="flex items-center gap-3 text-slate-300 hover:text-white transition">
-                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                            moizesadiq@gmail.com
-                        </a>
-
-                        <a href="tel:+923707104132"
-                           class="flex items-center gap-3 text-slate-300 hover:text-white transition">
-                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
-                                <i class="fas fa-phone"></i>
-                            </span>
-                            +92 370 7104132
-                        </a>
-
-                        <div class="flex items-center gap-3 text-slate-300">
-                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
-                                <i class="fas fa-location-dot"></i>
-                            </span>
-                            Karachi, Pakistan
-                        </div>
-
-                        <a href="https://github.com/moizesadiq-dotcom"
-                           target="_blank"
-                           class="flex items-center gap-3 text-slate-300 hover:text-white transition">
-                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
-                                <i class="fab fa-github"></i>
-                            </span>
-                            GitHub
-                        </a>
-
-                        <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0"
-                           target="_blank"
-                           class="flex items-center gap-3 text-slate-300 hover:text-white transition">
-                            <span class="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
-                                <i class="fab fa-linkedin-in"></i>
-                            </span>
-                            LinkedIn
-                        </a>
-
+                <div class="contact-grid">
+                    <a href="mailto:moizesadiq@gmail.com" class="contact-pill">
+                        <i class="fas fa-envelope"></i> moizesadiq@gmail.com
+                    </a>
+                    <a href="tel:+923707104132" class="contact-pill">
+                        <i class="fas fa-phone"></i> +92 370 7104132
+                    </a>
+                    <a href="https://github.com/moizesadiq-dotcom" target="_blank" rel="noopener noreferrer" class="contact-pill">
+                        <i class="fab fa-github"></i> github.com/moizesadiq-dotcom
+                    </a>
+                    <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank" rel="noopener noreferrer" class="contact-pill">
+                        <i class="fab fa-linkedin-in"></i> LinkedIn
+                    </a>
+                    <div class="contact-pill">
+                        <i class="fas fa-location-dot"></i> Karachi, Pakistan
                     </div>
-
+                    <a href="https://www.instagram.com/ab.moize/" target="_blank" rel="noopener noreferrer" class="contact-pill">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- About -->
-        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
-
-            <div class="flex items-center gap-3 mb-6">
-                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                    <i class="fas fa-user"></i>
-                </span>
-
+        <section class="resume-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-user"></i></div>
                 <div>
-                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
-                        Profile
-                    </p>
-
-                    <h2 class="text-2xl font-bold text-white">
-                        About Me
-                    </h2>
+                    <p class="label">Profile</p>
+                    <h2>About Me</h2>
                 </div>
             </div>
-
-            <p class="text-slate-400 leading-8">
-                I am a junior web developer with a strong interest in backend development
-                and Laravel. I work with PHP, Laravel, MySQL, JavaScript, HTML, CSS and
-                Bootstrap to create responsive websites and web applications. I have also
-                worked with WordPress and SEO fundamentals. My focus is on improving my
-                backend development skills while continuing to build practical projects.
+            <p class="about-text">
+                I am a web developer with a strong interest in backend development and Laravel. I work with PHP, Laravel, MySQL, JavaScript, HTML, CSS, Bootstrap, and React to create responsive websites and web applications. I have also worked with WordPress and REST APIs. My focus is on improving my development skills while continuing to build practical, real-world projects.
             </p>
-
         </section>
-
 
         <!-- Skills -->
-        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
-
-            <div class="flex items-center gap-3 mb-7">
-
-                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                    <i class="fas fa-code"></i>
-                </span>
-
+        <section class="resume-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-code"></i></div>
                 <div>
-                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
-                        Expertise
-                    </p>
-
-                    <h2 class="text-2xl font-bold text-white">
-                        Technical Skills
-                    </h2>
+                    <p class="label">Expertise</p>
+                    <h2>Technical Skills</h2>
                 </div>
-
             </div>
-
-
-            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">Frontend</p>
-                    <p class="font-semibold text-white">HTML5, CSS3, JavaScript</p>
-                </div>
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">Framework</p>
-                    <p class="font-semibold text-white">Laravel</p>
-                </div>
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">Backend</p>
-                    <p class="font-semibold text-white">PHP</p>
-                </div>
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">Database</p>
-                    <p class="font-semibold text-white">MySQL</p>
-                </div>
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">UI Framework</p>
-                    <p class="font-semibold text-white">Bootstrap 5</p>
-                </div>
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">CMS</p>
-                    <p class="font-semibold text-white">WordPress</p>
-                </div>
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">Version Control</p>
-                    <p class="font-semibold text-white">Git & GitHub</p>
-                </div>
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">Development Tools</p>
-                    <p class="font-semibold text-white">VS Code, Composer, XAMPP</p>
-                </div>
-
-                <div class="skill rounded-xl p-4">
-                    <p class="text-xs text-slate-500 mb-1">Other</p>
-                    <p class="font-semibold text-white">SEO, REST APIs</p>
-                </div>
-
+            <div class="skills-grid">
+                <div class="skill-pill"><p class="cat">Frontend</p><p class="tech">HTML5, CSS3, JavaScript, Bootstrap, React</p></div>
+                <div class="skill-pill"><p class="cat">Backend</p><p class="tech">PHP, Laravel</p></div>
+                <div class="skill-pill"><p class="cat">Database</p><p class="tech">MySQL</p></div>
+                <div class="skill-pill"><p class="cat">CMS</p><p class="tech">WordPress</p></div>
+                <div class="skill-pill"><p class="cat">Version Control</p><p class="tech">Git & GitHub</p></div>
+                <div class="skill-pill"><p class="cat">Tools</p><p class="tech">VS Code, Composer, XAMPP</p></div>
+                <div class="skill-pill"><p class="cat">APIs</p><p class="tech">REST APIs</p></div>
+                <div class="skill-pill"><p class="cat">Other</p><p class="tech">SEO Fundamentals</p></div>
+                <div class="skill-pill"><p class="cat">Currently Learning</p><p class="tech">C# & AI</p></div>
             </div>
-
         </section>
-
 
         <!-- Education -->
-        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
-
-            <div class="flex items-center gap-3 mb-7">
-
-                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                    <i class="fas fa-graduation-cap"></i>
-                </span>
-
+        <section class="resume-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-graduation-cap"></i></div>
                 <div>
-                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
-                        Education
-                    </p>
-
-                    <h2 class="text-2xl font-bold text-white">
-                        Academic Background
-                    </h2>
+                    <p class="label">Education</p>
+                    <h2>Academic Background</h2>
                 </div>
-
             </div>
-
-
-            <div class="border-l-2 border-accent/30 pl-6">
-
-                <p class="font-mono text-xs text-accent mb-2">
-                    2025 — Present
-                </p>
-
-                <h3 class="text-xl font-bold text-white mb-2">
-                    CPISM AI — Artificial Intelligence
-                </h3>
-
-                <p class="text-slate-400">
-                    Aptech Computer Education, Pakistan
-                </p>
-
+            <div class="timeline-item">
+                <p class="ti-date">2025 — Present</p>
+                <h3>CPISM AI — Artificial Intelligence</h3>
+                <p class="ti-sub">Aptech Computer Education, Pakistan</p>
+                <p>Currently studying Artificial Intelligence fundamentals, expanding into advanced programming and AI-driven development.</p>
             </div>
-
+            <div class="timeline-item">
+                <p class="ti-date">Completed</p>
+                <h3>Web Development</h3>
+                <p class="ti-sub">Aptech Computer Education</p>
+                <p>Comprehensive web development training covering frontend, backend, database design, and modern development workflows.</p>
+            </div>
         </section>
-
 
         <!-- Projects -->
-        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
-
-            <div class="flex items-center gap-3 mb-8">
-
-                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                    <i class="fas fa-folder-open"></i>
-                </span>
-
+        <section class="resume-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-folder-open"></i></div>
                 <div>
-                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
-                        Selected Work
-                    </p>
-
-                    <h2 class="text-2xl font-bold text-white">
-                        Projects
-                    </h2>
+                    <p class="label">Selected Work</p>
+                    <h2>Projects</h2>
                 </div>
-
             </div>
-
-
-            <div class="grid md:grid-cols-2 gap-5">
-
-
-                <!-- Fitness Factory -->
-                <div class="resume-card glass rounded-2xl p-6">
-
-                    <div class="flex items-start justify-between gap-4 mb-4">
-
-                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                            <i class="fas fa-dumbbell"></i>
-                        </div>
-
-                        <a href="https://moizesadiq-dotcom.github.io/fitness-factory/"
-                           target="_blank"
-                           class="text-xs font-semibold text-accent hover:text-white">
-                            Live Project →
-                        </a>
-
+            <div class="proj-grid">
+                <div class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-rocket"></i></div>
+                        <a href="https://cosmos-3-d-explorer.vercel.app" target="_blank" rel="noopener noreferrer" class="proj-link">Live Project →</a>
                     </div>
-
-                    <h3 class="text-lg font-bold text-white mb-2">
-                        Fitness Factory
-                    </h3>
-
-                    <p class="text-sm text-slate-400 leading-6">
-                        Modern fitness website designed with responsive layouts,
-                        structured sections, and an engaging user interface.
-                    </p>
-
-                    <p class="font-mono text-xs text-slate-500 mt-4">
-                        HTML • CSS • JavaScript
-                    </p>
-
+                    <h3>COSMOS 3D EXPLORER</h3>
+                    <p>Immersive 3D space exploration experience featuring interactive celestial environments and visual effects.</p>
+                    <p class="proj-tech">Three.js · JavaScript · WebGL</p>
                 </div>
-
-
-                <!-- AURA BISTRO -->
-                <div class="resume-card glass rounded-2xl p-6">
-
-                    <div class="flex items-start justify-between gap-4 mb-4">
-
-                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                            <i class="fas fa-mug-hot"></i>
-                        </div>
-
-                        <a href="https://moizesadiq-dotcom.github.io/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App/"
-                           target="_blank"
-                           class="text-xs font-semibold text-accent hover:text-white">
-                            Live Project →
-                        </a>
-
+                <div class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-store"></i></div>
+                        <a href="https://github.com/moizesadiq-dotcom" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
                     </div>
-
-                    <h3 class="text-lg font-bold text-white mb-2">
-                        AURA BISTRO
-                    </h3>
-
-                    <p class="text-sm text-slate-400 leading-6">
-                        Gourmet dining and coffee web application featuring category
-                        filtering, table reservations, interactive cart management,
-                        and WhatsApp order checkout.
-                    </p>
-
-                    <p class="font-mono text-xs text-slate-500 mt-4">
-                        HTML • CSS • JavaScript • UI/UX
-                    </p>
-
+                    <h3>MarketLink</h3>
+                    <p>Laravel-based marketplace connecting customers with farmers and markets, with customer dashboard and product browsing.</p>
+                    <p class="proj-tech">Laravel · PHP · MySQL · Bootstrap</p>
                 </div>
-
-
-                <!-- Origami Hub -->
-                <div class="resume-card glass rounded-2xl p-6">
-
-                    <div class="flex items-start justify-between gap-4 mb-4">
-
-                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                            <i class="fas fa-paper-plane"></i>
-                        </div>
-
-                        <a href="https://moizesadiq-dotcom.github.io/the-origami-hub/"
-                           target="_blank"
-                           class="text-xs font-semibold text-accent hover:text-white">
-                            Live Project →
-                        </a>
-
+                <div class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-dumbbell"></i></div>
+                        <a href="https://moizesadiq-dotcom.github.io/fitness-factory/" target="_blank" rel="noopener noreferrer" class="proj-link">Live Project →</a>
                     </div>
-
-                    <h3 class="text-lg font-bold text-white mb-2">
-                        The Origami Hub
-                    </h3>
-
-                    <p class="text-sm text-slate-400 leading-6">
-                        Responsive origami tutorial website focused on clean design,
-                        structured content, responsive layouts, and user-friendly navigation.
-                    </p>
-
-                    <p class="font-mono text-xs text-slate-500 mt-4">
-                        HTML • CSS • JavaScript • Bootstrap
-                    </p>
-
+                    <h3>Fitness Factory</h3>
+                    <p>Modern fitness website with responsive layouts, structured sections, and interactive JS BMI calculator.</p>
+                    <p class="proj-tech">HTML · CSS · JavaScript</p>
                 </div>
-
-
-                <!-- Salon Management -->
-                <div class="resume-card glass rounded-2xl p-6">
-
-                    <div class="flex items-start justify-between gap-4 mb-4">
-
-                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                            <i class="fas fa-scissors"></i>
-                        </div>
-
-                        <a href="https://github.com/moizesadiq-dotcom/salon-management-system"
-                           target="_blank"
-                           class="text-xs font-semibold text-accent hover:text-white">
-                            GitHub →
-                        </a>
-
+                <div class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-mug-hot"></i></div>
+                        <a href="https://moizesadiq-dotcom.github.io/AURA-BISTRO-Gourmet-Dining-Ordering-Web-App/" target="_blank" rel="noopener noreferrer" class="proj-link">Live Project →</a>
                     </div>
-
-                    <h3 class="text-lg font-bold text-white mb-2">
-                        Salon Management System
-                    </h3>
-
-                    <p class="text-sm text-slate-400 leading-6">
-                        Laravel-based management application covering appointments,
-                        customers, staff, services, payments, commissions, reports,
-                        and administrative management.
-                    </p>
-
-                    <p class="font-mono text-xs text-slate-500 mt-4">
-                        Laravel • PHP • MySQL • Bootstrap
-                    </p>
-
+                    <h3>AURA BISTRO</h3>
+                    <p>Gourmet dining web app with category filtering, cart management, table reservations, and WhatsApp checkout.</p>
+                    <p class="proj-tech">HTML · CSS · JavaScript</p>
                 </div>
-
-
-                <!-- ZACNUS -->
-                <div class="resume-card glass rounded-2xl p-6 md:col-span-2">
-
-                    <div class="flex items-start justify-between gap-4 mb-4">
-
-                        <div class="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                            <i class="fas fa-building"></i>
-                        </div>
-
-                        <a href="https://github.com/moizesadiq-dotcom"
-                           target="_blank"
-                           class="text-xs font-semibold text-accent hover:text-white">
-                            GitHub →
-                        </a>
-
+                <div class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-paper-plane"></i></div>
+                        <a href="https://moizesadiq-dotcom.github.io/the-origami-hub/" target="_blank" rel="noopener noreferrer" class="proj-link">Live Project →</a>
                     </div>
-
-                    <h3 class="text-lg font-bold text-white mb-2">
-                        ZACNUS — Software House Portal
-                    </h3>
-
-                    <p class="text-sm text-slate-400 leading-6">
-                        Multi-panel Laravel software house platform featuring client
-                        dashboards, project management, support ticketing, invoices,
-                        services, portfolio management, and comprehensive admin controls.
-                    </p>
-
-                    <p class="font-mono text-xs text-slate-500 mt-4">
-                        Laravel • PHP • MySQL • Blade • Tailwind CSS
-                    </p>
-
+                    <h3>The Origami Hub</h3>
+                    <p>Responsive origami tutorial website with clean design, structured content, and user-friendly navigation.</p>
+                    <p class="proj-tech">HTML · CSS · JavaScript · Bootstrap</p>
                 </div>
-
+                <div class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-bolt"></i></div>
+                        <a href="https://moizesadiq-dotcom.github.io/electric-scooter/" target="_blank" rel="noopener noreferrer" class="proj-link">Live Project →</a>
+                    </div>
+                    <h3>Electric Scooter</h3>
+                    <p>Product-focused website for an electric scooter with clean, modern interface and product visuals.</p>
+                    <p class="proj-tech">HTML · CSS · JavaScript</p>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-car"></i></div>
+                        <a href="https://moizesadiq-dotcom.github.io/velora-motors/" target="_blank" rel="noopener noreferrer" class="proj-link">Live Project →</a>
+                    </div>
+                    <h3>Velora Motors</h3>
+                    <p>High-end automotive showcase with dark-themed custom UI and smooth interactive design.</p>
+                    <p class="proj-tech">HTML · CSS · JavaScript</p>
+                </div>
+                <div class="proj-card">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-scissors"></i></div>
+                        <a href="https://github.com/moizesadiq-dotcom/salon-management-system" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
+                    </div>
+                    <h3>Salon Management System</h3>
+                    <p>Full-stack Laravel application covering appointments, services, staff commissions, billing, and reports.</p>
+                    <p class="proj-tech">Laravel · PHP · MySQL · Bootstrap</p>
+                </div>
+                <div class="proj-card wide">
+                    <div class="proj-top">
+                        <div class="proj-icon"><i class="fas fa-building"></i></div>
+                        <a href="https://github.com/moizesadiq-dotcom" target="_blank" rel="noopener noreferrer" class="proj-link">GitHub →</a>
+                    </div>
+                    <h3>ZACNUS — Software House Portal</h3>
+                    <p>Multi-panel Laravel software house platform featuring client dashboards, project management, support ticketing, invoices, services, portfolio management, and comprehensive admin controls.</p>
+                    <p class="proj-tech">Laravel · PHP · MySQL · Blade · Tailwind CSS</p>
+                </div>
             </div>
-
         </section>
-
 
         <!-- Certifications -->
-        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
-
-            <div class="flex items-center gap-3 mb-7">
-
-                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                    <i class="fas fa-certificate"></i>
-                </span>
-
+        <section class="resume-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-certificate"></i></div>
                 <div>
-                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
-                        Learning
-                    </p>
-
-                    <h2 class="text-2xl font-bold text-white">
-                        Certifications & Training
-                    </h2>
+                    <p class="label">Learning</p>
+                    <h2>Certifications & Training</h2>
                 </div>
-
             </div>
-
-
-            <div class="grid sm:grid-cols-2 gap-4">
-
-                <div class="resume-card glass rounded-xl p-5">
-                    <h3 class="font-semibold text-white mb-1">
-                        Web Development
-                    </h3>
-                    <p class="text-sm text-slate-400">
-                        Aptech Computer Education
-                    </p>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <h3>Web Development</h3>
+                    <p>Aptech Computer Education</p>
                 </div>
-
-                <div class="resume-card glass rounded-xl p-5">
-                    <h3 class="font-semibold text-white mb-1">
-                        CPISM AI
-                    </h3>
-                    <p class="text-sm text-slate-400">
-                        Aptech Computer Education
-                    </p>
+                <div class="cert-card">
+                    <h3>CPISM AI</h3>
+                    <p>Aptech Computer Education</p>
                 </div>
-
-                <div class="resume-card glass rounded-xl p-5">
-                    <h3 class="font-semibold text-white mb-1">
-                        WordPress
-                    </h3>
-                    <p class="text-sm text-slate-400">
-                        Practical website development experience
-                    </p>
+                <div class="cert-card">
+                    <h3>WordPress</h3>
+                    <p>Practical website development experience</p>
                 </div>
-
-                <div class="resume-card glass rounded-xl p-5">
-                    <h3 class="font-semibold text-white mb-1">
-                        SEO Fundamentals
-                    </h3>
-                    <p class="text-sm text-slate-400">
-                        Aptech learning / training
-                    </p>
+                <div class="cert-card">
+                    <h3>SEO Fundamentals</h3>
+                    <p>Aptech learning / training</p>
                 </div>
-
             </div>
-
         </section>
-
 
         <!-- Languages -->
-        <section class="glass rounded-3xl p-7 sm:p-9 mb-8">
-
-            <div class="flex items-center gap-3 mb-6">
-
-                <span class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center">
-                    <i class="fas fa-language"></i>
-                </span>
-
+        <section class="resume-card">
+            <div class="card-head">
+                <div class="card-head-icon"><i class="fas fa-language"></i></div>
                 <div>
-                    <p class="font-mono text-xs uppercase tracking-widest text-accent">
-                        Communication
-                    </p>
-
-                    <h2 class="text-2xl font-bold text-white">
-                        Languages
-                    </h2>
+                    <p class="label">Communication</p>
+                    <h2>Languages</h2>
                 </div>
-
             </div>
-
-
-            <div class="flex flex-wrap gap-3">
-
-                <span class="px-4 py-2 rounded-full glass text-sm text-slate-300">
-                    English
-                </span>
-
-                <span class="px-4 py-2 rounded-full glass text-sm text-slate-300">
-                    Urdu
-                </span>
-
-                <span class="px-4 py-2 rounded-full glass text-sm text-slate-300">
-                    Hindi
-                </span>
-
+            <div class="lang-pills">
+                <span class="lang-pill">English</span>
+                <span class="lang-pill">Urdu</span>
+                <span class="lang-pill">Hindi</span>
             </div>
-
         </section>
-
-
-        <!-- Footer -->
-        <footer class="text-center py-8 border-t border-white/5">
-
-            <p class="font-mono text-xs text-slate-500">
-                © 2026 Abdul Moize • Backend Developer / Laravel Developer
-            </p>
-
-        </footer>
 
     </main>
 
+    <footer class="resume-footer">
+        <p>&copy; <span id="year"></span> Abdul Moize · Web Developer</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
 </body>
 </html>
