@@ -513,35 +513,102 @@
             animation: fadeUp 1s var(--ease) 0.5s forwards;
         }
 
-        .hero-image-frame {
+        .hero-art {
             position: relative;
-            width: min(100%, 380px);
-            aspect-ratio: 0.85;
+            width: min(100%, 440px);
+            aspect-ratio: 1;
+            margin: 0 auto;
         }
-        .hero-image-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 200px 200px 24px 24px;
+        .art-ring, .art-glow, .art-core {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border-radius: 50%;
+        }
+        .art-ring {
             border: 1px solid var(--line-hover);
         }
-        .hero-image-frame::before {
-            content: "";
-            position: absolute;
-            inset: -12px;
-            border: 1px solid var(--accent-dim);
-            border-radius: 212px 212px 32px 32px;
-            pointer-events: none;
+        .art-ring.r1 {
+            width: 92%; height: 92%;
+            margin: -46% 0 0 -46%;
+            border-style: dashed;
+            border-color: rgba(238, 91, 37, 0.25);
         }
-        .hero-image-frame::after {
-            content: "";
-            position: absolute;
-            inset: -40px;
-            background: radial-gradient(circle, var(--accent-glow), transparent 70%);
-            filter: blur(60px);
-            z-index: -1;
-            opacity: 0.5;
+        .art-ring.r2 {
+            width: 68%; height: 68%;
+            margin: -34% 0 0 -34%;
         }
+        .art-ring.r3 {
+            width: 46%; height: 46%;
+            margin: -23% 0 0 -23%;
+            border-color: rgba(238, 91, 37, 0.35);
+        }
+        .art-glow {
+            width: 70%; height: 70%;
+            margin: -35% 0 0 -35%;
+            background: radial-gradient(circle, var(--accent-glow), transparent 68%);
+            filter: blur(40px);
+            opacity: 0.6;
+        }
+        .art-orbit {
+            position: absolute;
+            inset: 0;
+        }
+        .art-node {
+            position: absolute;
+            top: 4%;
+            left: 50%;
+            width: 10px; height: 10px;
+            margin-left: -5px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 16px var(--accent-glow);
+        }
+        .art-core {
+            width: 84px; height: 84px;
+            margin: -42px 0 0 -42px;
+            display: grid;
+            place-items: center;
+            background: var(--bg-card);
+            border: 1px solid var(--line-hover);
+            border-radius: 22px;
+            color: var(--accent);
+            font-size: 26px;
+            z-index: 2;
+        }
+        .code-window {
+            position: absolute;
+            left: -4%;
+            bottom: 6%;
+            width: 76%;
+            padding: 14px 16px;
+            background: rgba(21, 21, 26, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--line-hover);
+            border-radius: 12px;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            line-height: 1.75;
+            color: var(--text-muted);
+            z-index: 3;
+            overflow: hidden;
+        }
+        .code-bar {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+        .code-bar span {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: #2a2a30;
+        }
+        .code-window pre { margin: 0; white-space: pre; }
+        .code-window .k { color: var(--accent); }
+        .code-window .v { color: #8cc4ff; }
+        .code-window .s { color: #a8d5a2; }
 
         .floating-card {
             position: absolute;
@@ -828,6 +895,17 @@
             min-width: 0;
             position: relative;
         }
+        .project-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(360px circle at var(--mx, 50%) var(--my, 50%), rgba(238, 91, 37, 0.10), transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .project-card:hover::before { opacity: 1; }
         .project-card:hover {
             transform: translateY(-8px);
             border-color: var(--line-hover);
@@ -1260,7 +1338,7 @@
             .nav-cta { display: none; }
             .hero { min-height: auto; padding: 100px 0 60px; }
             .hero-visual { min-height: 320px; }
-            .hero-image-frame { max-width: 280px; }
+            .hero-art { width: min(100%, 320px); }
             .projects-grid { grid-template-columns: 1fr; gap: 22px; }
             .contact-grid { grid-template-columns: 1fr; gap: 36px; }
             .section-head { margin-bottom: 44px; }
@@ -1407,8 +1485,21 @@
                 </div>
 
                 <div class="hero-visual">
-                    <div class="hero-image-frame">
-                        <img src="images/profile.png" alt="Abdul Moize — Web Developer" loading="eager">
+                    <div class="hero-art">
+                        <span class="art-ring r1"></span>
+                        <span class="art-ring r2"></span>
+                        <span class="art-glow"></span>
+                        <span class="art-ring r3"></span>
+                        <span class="art-orbit"><span class="art-node"></span></span>
+                        <span class="art-core"><i class="fa-solid fa-code"></i></span>
+                        <div class="code-window">
+                            <div class="code-bar"><span></span><span></span><span></span></div>
+<pre><code><span class="k">const</span> <span class="v">developer</span> = {
+  name: <span class="s">"Abdul Moize"</span>,
+  focus: [<span class="s">"Laravel"</span>, <span class="s">"React"</span>],
+  craft: <span class="s">"modern web"</span>
+};</code></pre>
+                        </div>
                     </div>
                     <div class="floating-card top">
                         <div class="fc-icon"><i class="fa-brands fa-laravel"></i> <strong>PHP / Laravel</strong></div>
@@ -1474,7 +1565,7 @@
                             </div>
                             <div class="detail-item">
                                 <span>Currently Learning</span>
-                                <strong>C# & AI</strong>
+                                <strong>C#</strong>
                             </div>
                         </div>
                     </div>
@@ -1516,8 +1607,6 @@
                         <h3><i class="fa-solid fa-database"></i> Database Management</h3>
                         <div class="skill-chips">
                             <span class="skill-chip"><i class="fa-solid fa-database"></i> MySQL</span>
-                            <span class="skill-chip"><i class="fa-solid fa-diagram-project"></i> Schema Design</span>
-                            <span class="skill-chip"><i class="fa-solid fa-magnifying-glass"></i> Query Optimization</span>
                         </div>
                     </div>
 
@@ -1571,10 +1660,9 @@
                                 An immersive 3D space exploration experience featuring interactive celestial environments, visual effects and engaging 3D elements.
                             </p>
                             <div class="project-tags">
-                                <span>Three.js</span>
-                                <span>JavaScript</span>
                                 <span>3D</span>
-                                <span>WebGL</span>
+                                <span>Interactive</span>
+                                <span>Visual Effects</span>
                             </div>
                             <div class="project-actions">
                                 <a class="project-btn demo" href="https://cosmos-3-d-explorer.vercel.app" target="_blank" rel="noopener noreferrer">
@@ -1854,22 +1942,22 @@
                     <div class="timeline-col reveal">
                         <h3><i class="fa-solid fa-briefcase"></i> Development Experience</h3>
                         <div class="timeline-item">
-                            <div class="ti-date">Practical Projects</div>
+                            <div class="ti-date">Full Stack</div>
                             <h4>Full Stack Web Development</h4>
                             <p class="ti-sub">Laravel · PHP · MySQL · JavaScript</p>
-                            <p>Built and deployed multiple web applications including marketplace platforms, management systems, and interactive frontend projects using Laravel, PHP, MySQL, and modern frontend technologies.</p>
+                            <p>Worked on database-driven web applications, including the MarketLink marketplace, a Salon Management System, and the ZACNUS platform, using PHP, Laravel, and MySQL.</p>
                         </div>
                         <div class="timeline-item">
-                            <div class="ti-date">Frontend Projects</div>
+                            <div class="ti-date">Frontend</div>
                             <h4>Responsive Web Development</h4>
                             <p class="ti-sub">HTML · CSS · JavaScript · Bootstrap</p>
-                            <p>Developed responsive websites and web applications including dining apps, fitness platforms, product showcases, and creative interactive experiences deployed via GitHub Pages.</p>
+                            <p>Built responsive websites and web applications, including AURA BISTRO, Fitness Factory, The Origami Hub, and the Electric Scooter showcase.</p>
                         </div>
                         <div class="timeline-item">
-                            <div class="ti-date">Creative Development</div>
+                            <div class="ti-date">3D &amp; Creative</div>
                             <h4>3D & Interactive Experiences</h4>
-                            <p class="ti-sub">Three.js · WebGL · JavaScript</p>
-                            <p>Created immersive 3D space exploration experiences with interactive celestial environments and visual effects.</p>
+                            <p class="ti-sub">Interactive 3D · Visual Effects</p>
+                            <p>Created COSMOS 3D EXPLORER, an immersive 3D space exploration experience with interactive celestial environments.</p>
                         </div>
                     </div>
 
@@ -1879,13 +1967,13 @@
                             <div class="ti-date">2025 — Present</div>
                             <h4>CPISM AI — Artificial Intelligence</h4>
                             <p class="ti-sub">Aptech Computer Education, Pakistan</p>
-                            <p>Currently studying Artificial Intelligence fundamentals, expanding into advanced programming and AI-driven development.</p>
+                            <p>Currently enrolled in the Artificial Intelligence programme.</p>
                         </div>
                         <div class="timeline-item">
-                            <div class="ti-date">Completed</div>
+                            <div class="ti-date">Training</div>
                             <h4>Web Development</h4>
                             <p class="ti-sub">Aptech Computer Education</p>
-                            <p>Comprehensive web development training covering frontend, backend, database design, and modern development workflows.</p>
+                            <p>Training in frontend and backend web development.</p>
                         </div>
                         <div class="timeline-item">
                             <div class="ti-date">Training</div>
@@ -2005,6 +2093,8 @@
         </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script>
         /* ===== PRELOADER ===== */
         window.addEventListener('load', function() {
@@ -2016,6 +2106,34 @@
 
         /* ===== CURRENT YEAR ===== */
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        /* ===== PROJECT CARD SPOTLIGHT ===== */
+        document.querySelectorAll('.project-card').forEach(function(card) {
+            card.addEventListener('pointermove', function(e) {
+                var r = card.getBoundingClientRect();
+                card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+                card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+            });
+        });
+
+        /* ===== HERO MOTION (GSAP) ===== */
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (window.gsap && !reduceMotion) {
+            gsap.to('.art-orbit', { rotation: 360, duration: 26, repeat: -1, ease: 'none' });
+            gsap.to('.art-ring.r1', { rotation: 360, duration: 48, repeat: -1, ease: 'none' });
+            gsap.to('.art-ring.r2', { rotation: -360, duration: 60, repeat: -1, ease: 'none' });
+            gsap.to('.code-window', { y: -10, duration: 3.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+            gsap.from('.art-core, .art-ring, .art-glow', { scale: 0.6, opacity: 0, duration: 1.2, stagger: 0.12, ease: 'expo.out' });
+            gsap.from('.code-window', { y: 40, opacity: 0, duration: 1.1, delay: 0.5, ease: 'expo.out' });
+            if (window.ScrollTrigger) {
+                gsap.registerPlugin(ScrollTrigger);
+                gsap.to('.hero-visual', {
+                    y: 120,
+                    ease: 'none',
+                    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
+                });
+            }
+        }
 
         /* ===== NAVBAR SCROLL ===== */
         var navbar = document.getElementById('navbar');
