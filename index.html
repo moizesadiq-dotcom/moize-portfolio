@@ -1359,6 +1359,7 @@
             .filters { gap: 8px; }
             .filter-btn { padding: 8px 14px; font-size: 12px; }
             .project-image { height: 200px; }
+            .code-window { font-size: 10px; width: 88%; left: -2%; }
             .project-content { padding: 20px; }
             .project-topline h3 { font-size: 19px; }
             .project-btn { flex: 1 1 auto; }
@@ -1380,9 +1381,6 @@
             .hero-description, .hero-actions, .hero-socials, .hero-visual, .scroll-indicator { opacity: 1; }
         }
     </style>
-  <meta property="og:image" content="https://bolt.new/static/og_default.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
 </head>
 <body>
 
@@ -1414,7 +1412,7 @@
                 <li><a href="#skills" class="nav-link">Skills</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
-                <li><a href="#contact" class="nav-link nav-cta">Contact Me <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:11px;"></i></a></li>
+                <li><a href="#contact" class="nav-link nav-cta">Contact Me</a></li>
             </ul>
             <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
                 <i class="fa-solid fa-bars"></i>
@@ -1633,12 +1631,12 @@
                 </div>
 
                 <div class="filters reveal" id="filters">
-                    <button class="filter-btn active" data-filter="all">All <span class="count">9</span></button>
-                    <button class="filter-btn" data-filter="frontend">Frontend Development <span class="count">4</span></button>
-                    <button class="filter-btn" data-filter="backend">Backend Development <span class="count">2</span></button>
-                    <button class="filter-btn" data-filter="fullstack">Full Stack Development <span class="count">3</span></button>
-                    <button class="filter-btn" data-filter="animation">Animation & Interactive <span class="count">1</span></button>
-                    <button class="filter-btn" data-filter="threed">3D & Creative <span class="count">1</span></button>
+                    <button class="filter-btn active" data-filter="all" aria-pressed="true">All <span class="count"></span></button>
+                    <button class="filter-btn" data-filter="frontend" aria-pressed="false">Frontend Development <span class="count"></span></button>
+                    <button class="filter-btn" data-filter="backend" aria-pressed="false">Backend Development <span class="count"></span></button>
+                    <button class="filter-btn" data-filter="fullstack" aria-pressed="false">Full Stack Development <span class="count"></span></button>
+                    <button class="filter-btn" data-filter="animation" aria-pressed="false">Animation &amp; Interactive <span class="count"></span></button>
+                    <button class="filter-btn" data-filter="threed" aria-pressed="false">3D &amp; Creative <span class="count"></span></button>
                 </div>
 
                 <div class="projects-grid" id="projectsGrid">
@@ -2122,7 +2120,7 @@
             gsap.to('.art-orbit', { rotation: 360, duration: 26, repeat: -1, ease: 'none' });
             gsap.to('.art-ring.r1', { rotation: 360, duration: 48, repeat: -1, ease: 'none' });
             gsap.to('.art-ring.r2', { rotation: -360, duration: 60, repeat: -1, ease: 'none' });
-            gsap.to('.code-window', { y: -10, duration: 3.2, yoyo: true, repeat: -1, ease: 'sine.inOut' });
+            gsap.to('.code-window', { y: -10, duration: 3.2, delay: 1.6, yoyo: true, repeat: -1, ease: 'sine.inOut' });
             gsap.from('.art-core, .art-ring, .art-glow', { scale: 0.6, opacity: 0, duration: 1.2, stagger: 0.12, ease: 'expo.out' });
             gsap.from('.code-window', { y: 40, opacity: 0, duration: 1.1, delay: 0.5, ease: 'expo.out' });
             if (window.ScrollTrigger) {
@@ -2180,16 +2178,29 @@
         var filterBtns = document.querySelectorAll('.filter-btn');
         var projectCards = document.querySelectorAll('.project-card');
 
+        function cardMatches(card, filter) {
+            var cats = (card.getAttribute('data-categories') || '').split(' ');
+            return filter === 'all' || cats.indexOf(filter) !== -1;
+        }
+
         filterBtns.forEach(function(btn) {
+            var filter = btn.getAttribute('data-filter');
+            var count = btn.querySelector('.count');
+            if (count) {
+                count.textContent = Array.prototype.filter.call(projectCards, function(card) {
+                    return cardMatches(card, filter);
+                }).length;
+            }
             btn.addEventListener('click', function() {
-                var filter = this.getAttribute('data-filter');
-                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                filterBtns.forEach(function(b) {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-pressed', 'false');
+                });
                 this.classList.add('active');
+                this.setAttribute('aria-pressed', 'true');
 
                 projectCards.forEach(function(card) {
-                    var cats = card.getAttribute('data-categories') || '';
-                    var show = (filter === 'all' || cats.indexOf(filter) !== -1);
-                    card.classList.toggle('is-hidden', !show);
+                    card.classList.toggle('is-hidden', !cardMatches(card, filter));
                 });
             });
         });
