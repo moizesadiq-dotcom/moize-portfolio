@@ -7,11 +7,20 @@
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-    /* Preloader */
+    /* Preloader, then a scroll-driven swarm. Nothing here moves the page. */
+    fitPortfolio();
+    window.addEventListener('resize', fitPortfolio);
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () { fitPortfolio(); });
+    }
     window.addEventListener('load', function () {
+        fitPortfolio();
         setTimeout(function () {
-            document.getElementById('preloader').classList.add('done');
-        }, reduceMotion ? 0 : 1100);
+            var pre = document.getElementById('preloader');
+            if (pre) pre.classList.add('done');
+            try { initSwarm(); }
+            catch (err) { /* real text stays visible */ }
+        }, reduceMotion ? 0 : 680);
     });
 
     /* Navigation */
@@ -54,139 +63,246 @@
         });
     }
 
-    /* Reveal on scroll */
-    var revealEls = document.querySelectorAll('.reveal');
-    if ('IntersectionObserver' in window) {
-        var revealObserver = new IntersectionObserver(function (entries, obs) {
-            entries.forEach(function (entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    obs.unobserve(entry.target);
+    /* Content is visible without JS. The class is only a hook. */
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+
+    function fitPortfolio() {
+        var el = document.querySelector('.hero-display');
+        if (!el) return;
+        try {
+            el.style.fontSize = '';
+            var cs = window.getComputedStyle(el);
+            var pad = (parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0);
+            var limit = el.clientWidth - pad - 4;
+            if (limit < 80) return;
+            var size = parseFloat(cs.fontSize) || 80;
+            var range = document.createRange();
+            range.selectNodeContents(el);
+            var w = range.getBoundingClientRect().width;
+            if (w > 8) {
+                size = size * (limit / w);
+                el.style.fontSize = size + 'px';
+                range = document.createRange();
+                range.selectNodeContents(el);
+                w = range.getBoundingClientRect().width;
+                if (w > limit + 0.5) {
+                    size = size * (limit / w);
+                    el.style.fontSize = size + 'px';
                 }
-            });
-        }, { threshold: 0.12 });
-        revealEls.forEach(function (el) { revealObserver.observe(el); });
-    } else {
-        revealEls.forEach(function (el) { el.classList.add('visible'); });
+            }
+            document.documentElement.style.setProperty('--hero-size', (parseFloat(el.style.fontSize) || size).toFixed(2) + 'px');
+        } catch (err) { /* leave the CSS size in place */ }
     }
 
-    /* Hero entrance and motion */
-    if (hasGsap && !reduceMotion) {
-        var intro = gsap.timeline({ delay: 0.3, defaults: { ease: 'expo.out' } });
-        intro.from('.hero-title .line > span', { yPercent: 110, duration: 1.4, stagger: 0.12 })
-            .from('.hero-badge, .hero-role, .hero-intro, .hero-actions, .hero-social', { y: 24, opacity: 0, duration: 1, stagger: 0.08 }, '-=1')
-            .from('.editor', { y: 60, opacity: 0, rotateX: 8, duration: 1.6 }, '-=1.3')
-            .from('.float-chip', { scale: 0.8, opacity: 0, duration: 0.9, stagger: 0.15, ease: 'back.out(1.6)' }, '-=1');
+    /*
+     * Each selector is its own target. Cards and the text inside them are
+     * listed separately so a title is never boxed together with its paragraph.
+     */
+    var SWARM_SELECTORS = [
+        '.hero-display',
+        '.hero-hello',
+        '.hero-name',
+        '.hero-intro',
+        '.hero-social a',
+        '.hero-portrait',
+        '.hero-facts span',
+        '.marquee-item',
+        '#about .eyebrow',
+        '#about .section-title',
+        '#about .about-text p',
+        '#about .fact .k',
+        '#about .fact .v',
+        '#skills .eyebrow',
+        '#skills .section-title',
+        '#skills .skill-card',
+        '#skills .skill-card h3',
+        '#skills .chip',
+        '#projects .eyebrow',
+        '#projects .section-title',
+        '#projects .filter-btn',
+        '#projects .project-card',
+        '#projects .project-head h3',
+        '#projects .project-body > p',
+        '#projects .project-category',
+        '#projects .project-no',
+        '#projects .project-tags span',
+        '#wordpress .eyebrow',
+        '#wordpress .section-title',
+        '#wordpress .section-lead',
+        '#wordpress .wp-list strong',
+        '#wordpress .wp-list li span',
+        '#experience .eyebrow',
+        '#experience .section-title',
+        '#experience .timeline-col > h3',
+        '#experience .tl-item',
+        '#experience .tl-date',
+        '#experience .tl-item h4',
+        '#experience .tl-sub',
+        '#experience .tl-item > p',
+        '#contact .eyebrow',
+        '#contact .contact-cta',
+        '#contact .section-lead',
+        '#contact .btn',
+        '#contact .contact-link .label',
+        '#contact .contact-link .value',
+        '.footer-inner > span',
+        '.footer-links a'
+    ];
+    var SWARM_COLORS = ['#e10600', '#f4f6f8', '#ff5c4d', '#c5cad3', '#ff2a22', '#ffffff', '#ffb0a6', '#8d96a3', '#ff7a6e', '#d7dbe2'];
 
-        gsap.to('.chip-a', { y: -14, duration: 3.4, yoyo: true, repeat: -1, ease: 'sine.inOut' });
-        gsap.to('.chip-b', { y: 12, duration: 4.2, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 0.6 });
-        gsap.to('.chip-c', { y: -10, duration: 3.8, yoyo: true, repeat: -1, ease: 'sine.inOut', delay: 1.2 });
+    function initSwarm() {
+        if (reduceMotion || !hasGsap || !('IntersectionObserver' in window)) return;
+        var seen = [];
+        var targets = [];
+        SWARM_SELECTORS.forEach(function (sel) {
+            var nodes;
+            try { nodes = document.querySelectorAll(sel); }
+            catch (err) { return; }
+            Array.prototype.forEach.call(nodes, function (el) {
+                if (seen.indexOf(el) !== -1) return;
+                seen.push(el);
+                targets.push(el);
+            });
+        });
+        if (!targets.length) return;
 
-        if (hasScrollTrigger) {
-            gsap.to('.hero-visual', {
-                yPercent: -10,
-                ease: 'none',
-                scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-            });
-            gsap.to('.hero-copy', {
-                yPercent: 8,
-                ease: 'none',
-                scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true }
-            });
-            gsap.utils.toArray('.section-title').forEach(function (title) {
-                gsap.from(title, {
-                    y: 40, opacity: 0, duration: 1.2, ease: 'expo.out',
-                    scrollTrigger: { trigger: title, start: 'top 85%' }
+        var queue = [];
+        var active = 0;
+        var colorIndex = 0;
+        var POINTER = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 2.5 5.8 19.2 10.4 14.4 14.2 22 17.1 20.5 13.2 13.2 19.6 12.2 5 2.5Z"/></svg>';
+
+        function cap() {
+            return window.matchMedia('(max-width: 700px)').matches ? 2 : 4;
+        }
+        function safeRect(el) {
+            try {
+                if (!el || !el.isConnected || !el.getBoundingClientRect) return null;
+                var style = window.getComputedStyle(el);
+                if (!style || style.display === 'none' || style.visibility === 'hidden') return null;
+                var r = el.getBoundingClientRect();
+                if (!isFinite(r.left) || !isFinite(r.top) || !isFinite(r.width) || !isFinite(r.height)) return null;
+                if (r.width < 2 || r.height < 2) return null;
+                return r;
+            } catch (err) {
+                return null;
+            }
+        }
+        function removeNode(node) {
+            if (node && node.parentNode) node.parentNode.removeChild(node);
+        }
+        function drawOne(el, color, slot, done) {
+            var settled = false;
+            var cursor = null;
+            var box = null;
+            var timer = 0;
+            function finish() {
+                if (settled) return;
+                settled = true;
+                if (timer) window.clearTimeout(timer);
+                removeNode(cursor);
+                removeNode(box);
+                if (done) done();
+            }
+            var rect = safeRect(el);
+            if (!rect) { finish(); return; }
+            try {
+                var pageX = rect.left + (window.pageXOffset || document.documentElement.scrollLeft || 0);
+                var pageY = rect.top + (window.pageYOffset || document.documentElement.scrollTop || 0);
+                var pad = 4;
+                var x = pageX - pad;
+                var y = pageY - pad;
+                var w = Math.round(rect.width + pad * 2);
+                var h = Math.round(rect.height + pad * 2);
+                if (w < 2 || h < 2) { finish(); return; }
+
+                cursor = document.createElement('div');
+                cursor.className = 'build-cursor';
+                cursor.setAttribute('aria-hidden', 'true');
+                cursor.style.color = color;
+                cursor.innerHTML = POINTER;
+                document.body.appendChild(cursor);
+
+                box = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                box.setAttribute('class', 'build-box');
+                box.setAttribute('aria-hidden', 'true');
+                box.style.left = Math.round(x) + 'px';
+                box.style.top = Math.round(y) + 'px';
+                box.style.width = w + 'px';
+                box.style.height = h + 'px';
+                var stroke = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+                var inset = 1;
+                stroke.setAttribute('x', String(inset));
+                stroke.setAttribute('y', String(inset));
+                stroke.setAttribute('width', String(Math.max(0, w - inset * 2)));
+                stroke.setAttribute('height', String(Math.max(0, h - inset * 2)));
+                stroke.setAttribute('fill', 'none');
+                stroke.setAttribute('stroke', color);
+                stroke.setAttribute('stroke-width', '1.5');
+                box.appendChild(stroke);
+                document.body.appendChild(box);
+
+                var len = 2 * (Math.max(0, w - inset * 2) + Math.max(0, h - inset * 2));
+                stroke.style.strokeDasharray = String(len);
+                stroke.style.strokeDashoffset = String(len);
+
+                var angle = ((slot || 0) % 8) * (Math.PI / 4);
+                var dist = 34 + (slot % 3) * 10;
+                gsap.set(cursor, {
+                    x: x + Math.cos(angle) * dist,
+                    y: y + Math.sin(angle) * dist,
+                    opacity: 0
                 });
-            });
-            gsap.utils.toArray('.project-card').forEach(function (card, i) {
-                gsap.from(card, {
-                    y: 60, opacity: 0, duration: 1, ease: 'expo.out', delay: (i % 3) * 0.08,
-                    scrollTrigger: { trigger: card, start: 'top 90%', toggleActions: 'play none none none' }
-                });
-            });
+                var tl = gsap.timeline({ onComplete: finish });
+                tl.to(cursor, { x: x - 1, y: y - 1, opacity: 1, duration: 0.38, ease: 'power3.out' });
+                tl.to(stroke, { strokeDashoffset: 0, duration: 0.5, ease: 'power2.inOut' }, '-=0.06');
+                tl.to(cursor, { opacity: 0, duration: 0.18 }, '+=0.14');
+                tl.to(box, { opacity: 0, duration: 0.22 }, '<');
+                timer = window.setTimeout(finish, 2200);
+            } catch (err) {
+                finish();
+            }
+        }
+        function pump() {
+            var max = cap();
+            if (active >= max || !queue.length) return;
+            var job = queue.shift();
+            active += 1;
+            var delay = (active - 1) * (max === 2 ? 120 : 70);
+            window.setTimeout(function () {
+                try {
+                    drawOne(job.el, job.color, job.slot, function () {
+                        active = Math.max(0, active - 1);
+                        pump();
+                    });
+                } catch (err) {
+                    active = Math.max(0, active - 1);
+                    pump();
+                }
+            }, delay);
+            if (active < max && queue.length) pump();
         }
 
-        var marquee = document.querySelector('.marquee-track');
-        if (marquee) {
-            gsap.to(marquee, { xPercent: -50, duration: 38, ease: 'none', repeat: -1 });
-        }
-    }
-
-    /* Editor tilt and cursor-driven motion */
-    var editor = document.getElementById('editor');
-    if (finePointer && !reduceMotion && hasGsap) {
-        var rotX = gsap.quickTo(editor, 'rotateX', { duration: 0.8, ease: 'power3.out' });
-        var rotY = gsap.quickTo(editor, 'rotateY', { duration: 0.8, ease: 'power3.out' });
-        var wrap = editor.parentElement;
-        wrap.addEventListener('pointermove', function (e) {
-            var r = wrap.getBoundingClientRect();
-            var px = (e.clientX - r.left) / r.width - 0.5;
-            var py = (e.clientY - r.top) / r.height - 0.5;
-            rotY(px * 8);
-            rotX(-py * 6);
-        });
-        wrap.addEventListener('pointerleave', function () { rotX(0); rotY(0); });
-    }
-
-    if (finePointer && !reduceMotion) {
-        var dot = document.getElementById('cursorDot');
-        var glow = document.getElementById('cursorGlow');
-        var mx = window.innerWidth / 2, my = window.innerHeight / 2, gx = mx, gy = my;
-        dot.classList.add('on');
-        glow.classList.add('on');
-        document.addEventListener('pointermove', function (e) {
-            mx = e.clientX; my = e.clientY;
-            dot.style.transform = 'translate(' + mx + 'px, ' + my + 'px)';
-        });
-        (function followGlow() {
-            gx += (mx - gx) * 0.12;
-            gy += (my - gy) * 0.12;
-            glow.style.transform = 'translate(' + gx + 'px, ' + gy + 'px)';
-            requestAnimationFrame(followGlow);
-        })();
-        document.querySelectorAll('a, button, .project-card, .chip').forEach(function (el) {
-            el.addEventListener('pointerenter', function () { dot.classList.add('hover'); });
-            el.addEventListener('pointerleave', function () { dot.classList.remove('hover'); });
-        });
-
-        if (hasGsap) {
-            document.querySelectorAll('.btn').forEach(function (btn) {
-                var qx = gsap.quickTo(btn, 'x', { duration: 0.6, ease: 'elastic.out(1, 0.5)' });
-                var qy = gsap.quickTo(btn, 'y', { duration: 0.6, ease: 'elastic.out(1, 0.5)' });
-                btn.addEventListener('pointermove', function (e) {
-                    var r = btn.getBoundingClientRect();
-                    qx((e.clientX - r.left - r.width / 2) * 0.25);
-                    qy((e.clientY - r.top - r.height / 2) * 0.35);
+        var observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting || entry.intersectionRatio < 0.12) return;
+                var el = entry.target;
+                observer.unobserve(el);
+                if (el.getAttribute('data-swarm-armed') === '1') return;
+                el.setAttribute('data-swarm-armed', '1');
+                queue.push({
+                    el: el,
+                    color: SWARM_COLORS[colorIndex % SWARM_COLORS.length],
+                    slot: colorIndex
                 });
-                btn.addEventListener('pointerleave', function () { qx(0); qy(0); });
+                colorIndex += 1;
             });
-        }
+            pump();
+        }, { root: null, rootMargin: '0px 0px -8% 0px', threshold: [0.12, 0.4] });
 
-        document.querySelectorAll('.project-card').forEach(function (card) {
-            card.addEventListener('pointermove', function (e) {
-                var r = card.getBoundingClientRect();
-                card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-                card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-            });
+        targets.forEach(function (el) {
+            try { observer.observe(el); }
+            catch (err) { /* skip an element that cannot be observed */ }
         });
-    }
-
-    /* Hero role typing */
-    var roleEl = document.getElementById('roleText');
-    var roles = ['Web Developer', 'Laravel & PHP Developer', 'Frontend Developer'];
-    if (roleEl && !reduceMotion) {
-        var roleIndex = 0, charIndex = 0, deleting = false;
-        (function typeRole() {
-            var word = roles[roleIndex];
-            roleEl.textContent = word.slice(0, charIndex);
-            if (!deleting && charIndex < word.length) { charIndex++; return setTimeout(typeRole, 70); }
-            if (!deleting) { deleting = true; return setTimeout(typeRole, 1800); }
-            if (charIndex > 0) { charIndex--; return setTimeout(typeRole, 35); }
-            deleting = false;
-            roleIndex = (roleIndex + 1) % roles.length;
-            setTimeout(typeRole, 300);
-        })();
     }
 
     /* Filters */
@@ -270,33 +386,4 @@
         if (e.key === 'ArrowLeft') step(-1);
     });
 
-    /* Ambient particles */
-    var canvas = document.getElementById('particles');
-    if (canvas && canvas.getContext && !reduceMotion && finePointer) {
-        var ctx = canvas.getContext('2d');
-        var pts = [];
-        var w, h;
-        function resize() {
-            w = canvas.width = window.innerWidth;
-            h = canvas.height = window.innerHeight;
-        }
-        resize();
-        window.addEventListener('resize', resize);
-        for (var i = 0; i < 40; i++) {
-            pts.push({ x: Math.random() * w, y: Math.random() * h, r: Math.random() * 1.4 + 0.4, vx: (Math.random() - 0.5) * 0.15, vy: -Math.random() * 0.25 - 0.05, a: Math.random() * 0.5 + 0.2 });
-        }
-        function draw() {
-            ctx.clearRect(0, 0, w, h);
-            pts.forEach(function (p) {
-                p.x += p.vx; p.y += p.vy;
-                if (p.y < -5) { p.y = h + 5; p.x = Math.random() * w; }
-                ctx.beginPath();
-                ctx.fillStyle = 'rgba(232, 238, 242,' + p.a + ')';
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fill();
-            });
-            requestAnimationFrame(draw);
-        }
-        draw();
-    }
 })();
