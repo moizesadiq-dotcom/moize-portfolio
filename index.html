@@ -16,8 +16,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <noscript>
+        <style>
+            body.swarm-active [data-swarm-target] {
+                opacity: 1 !important;
+                visibility: visible !important;
+                pointer-events: auto !important;
+            }
+        </style>
+    </noscript>
 </head>
-<body>
+<body class="swarm-active">
 
     <div class="preloader" id="preloader" aria-hidden="true">
         <div class="preloader-mark">MOIZE<span>.</span></div>
@@ -65,27 +74,117 @@
         <section class="hero" id="home">
             <div class="hero-stage">
                 <p class="hero-display" aria-hidden="true"><span>P</span><span>O</span><span>R</span><span>T</span><span>F</span><span>O</span><span>L</span><span>I</span><span>O</span></p>
+                
                 <div class="hero-grid">
-                    <div class="hero-copy">
-                        <p class="hero-hello">Hello, I'm</p>
-                        <p class="hero-name" aria-hidden="true">ABDUL MOIZE</p>
-                        <h1 class="hero-title">Abdul Moize</h1>
-                        <p class="hero-intro">I build modern, responsive and interactive web experiences using modern frontend and backend technologies.</p>
-                        <div class="hero-social">
+                    <!-- LEFT COLUMN: Name, Introduction, CTAs, Metrics -->
+                    <div class="hero-col hero-col-left">
+                        <p class="hero-hello" data-swarm-target="true">Hello, I'm</p>
+                        <div class="hero-name-badge" data-swarm-target="true">
+                            <h1 class="hero-name-text">ABDUL MOIZE.</h1>
+                        </div>
+                        <div class="hero-role-line" data-swarm-target="true">
+                            <span class="role-bullet">▪</span>
+                            <span class="role-title">SYSTEM ARCHITECT / WEB DEVELOPER</span>
+                        </div>
+                        <p class="hero-intro" data-swarm-target="true">
+                            Architecting modern, responsive and interactive web applications, scalable database architectures, and full-stack solutions from first principles.
+                        </p>
+                        <div class="hero-actions" data-swarm-target="true">
+                            <a href="#projects" class="hero-cta-link">
+                                INITIATE DISPATCH <i class="fa-solid fa-chevron-right"></i>
+                            </a>
+                            <a href="#about" class="hero-btn-secondary">
+                                EXPLORE ARCHITECTURE
+                            </a>
+                        </div>
+                        <div class="hero-social" data-swarm-target="true">
                             <a href="https://github.com/moizesadiq-dotcom" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
                             <a href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                             <a href="https://www.instagram.com/ab.moize/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
                         </div>
+                        <div class="hero-metrics-row" data-swarm-target="true">
+                            <div class="metric-item">
+                                <span class="metric-num">9+</span>
+                                <span class="metric-label">Projects Live</span>
+                            </div>
+                            <div class="metric-divider"></div>
+                            <div class="metric-item">
+                                <span class="metric-num">7-Layer</span>
+                                <span class="metric-label">Core Stack</span>
+                            </div>
+                            <div class="metric-divider"></div>
+                            <div class="metric-item">
+                                <span class="metric-num">100%</span>
+                                <span class="metric-label">Autonomy</span>
+                            </div>
+                        </div>
                     </div>
-                    <figure class="hero-portrait">
-                        <img src="images/hero-portrait.png" alt="Abdul Moize" width="215" height="221">
-                    </figure>
-                    <ul class="hero-facts">
-                        <li><span>Name</span><span class="hero-fact-value">Abdul Moize</span></li>
-                        <li><span>Location</span><span class="hero-fact-value">Karachi, Pakistan</span></li>
-                        <li><span>Role</span><span class="hero-fact-value">Web Developer</span></li>
-                        <li><span>Stack</span><span class="hero-fact-value">Laravel, PHP, MySQL, React</span></li>
-                    </ul>
+
+                    <!-- CENTER COLUMN: Portrait & Status HUD -->
+                    <div class="hero-col hero-col-center">
+                        <div class="hero-portrait-card" data-swarm-target="true">
+                            <div class="portrait-backdrop"></div>
+                            <img src="images/profile.png" alt="Abdul Moize" class="portrait-img">
+                            <div class="portrait-hud-badge">
+                                <span class="hud-dot"></span>
+                                <span>AUTONOMOUS SYSTEM ONLINE</span>
+                            </div>
+                        </div>
+                        <div class="hero-portrait-footer" data-swarm-target="true">
+                            <div class="status-dots">
+                                <span class="s-dot dot-yellow"></span>
+                                <span class="s-dot dot-green"></span>
+                                <span class="s-dot dot-cyan"></span>
+                                <span class="s-dot dot-red"></span>
+                            </div>
+                            <span class="status-text">KARACHI, PK • AVAILABLE FOR CLIENTS</span>
+                        </div>
+                    </div>
+
+                    <!-- RIGHT COLUMN: Stacked Skill / Architecture Cards -->
+                    <div class="hero-col hero-col-right">
+                        <div class="hero-card" data-swarm-target="true">
+                            <div class="hero-card-header">
+                                <h3 class="hero-card-title">Autonomous Core</h3>
+                                <span class="hero-card-tag">01 / 03</span>
+                            </div>
+                            <p class="hero-card-desc">
+                                Enterprise-grade backend ecosystems, Laravel &amp; PHP MVC architectures, normalized MySQL databases, and secure RESTful endpoints.
+                            </p>
+                            <div class="hero-card-status">
+                                <span class="status-pill"><i class="fa-solid fa-server"></i> Backend &amp; DB</span>
+                                <span class="card-metric">ACTIVE</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-card" data-swarm-target="true">
+                            <div class="hero-card-header">
+                                <h3 class="hero-card-title">Interactive Systems</h3>
+                                <span class="hero-card-tag">02 / 03</span>
+                            </div>
+                            <p class="hero-card-desc">
+                                High-performance client-side interfaces, React components, JavaScript ES6+, dynamic rendering, and fluid GSAP animation orchestrations.
+                            </p>
+                            <div class="hero-card-status">
+                                <span class="status-pill"><i class="fa-solid fa-code"></i> Frontend &amp; Motion</span>
+                                <span class="card-metric">ONLINE</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-card" data-swarm-target="true">
+                            <div class="hero-card-header">
+                                <h3 class="hero-card-title">Production Solutions</h3>
+                                <span class="hero-card-tag">03 / 03</span>
+                            </div>
+                            <p class="hero-card-desc">
+                                WordPress theme architecture, custom CMS configurations, responsive multi-device layouts, and accessible UI engineering.
+                            </p>
+                            <div class="hero-card-status">
+                                <span class="status-pill"><i class="fa-brands fa-wordpress"></i> CMS &amp; Web</span>
+                                <span class="card-metric">STABLE</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -98,30 +197,30 @@
 
         <section class="section" id="about">
             <div class="container about-grid">
-                <div class="about-text reveal">
+                <div class="about-text" data-swarm-target="true">
                     <span class="eyebrow">About</span>
                     <h2 class="section-title">Developer with a focus on <em>functionality</em>.</h2>
                     <p class="lead">I build modern, responsive and interactive web experiences using modern frontend and backend technologies.</p>
                     <p>My work ranges from dashboard-style management systems built with Laravel and MySQL to responsive frontend websites and interactive showcases. I care about clean structure, dependable behaviour and interfaces that are easy to use on any screen.</p>
                 </div>
-                <div class="about-facts reveal reveal-delay-1">
-                    <div class="fact"><i class="fa-regular fa-user"></i><span class="k">Name</span><span class="v">Abdul Moize</span></div>
-                    <div class="fact"><i class="fa-solid fa-location-dot"></i><span class="k">Location</span><span class="v">Karachi, Pakistan</span></div>
-                    <div class="fact"><i class="fa-solid fa-code"></i><span class="k">Specialisation</span><span class="v">Web Development</span></div>
-                    <div class="fact"><i class="fa-solid fa-seedling"></i><span class="k">Currently learning</span><span class="v">C#</span></div>
-                    <div class="fact wide"><i class="fa-solid fa-layer-group"></i><span class="k">Also working with</span><span class="v">WordPress and REST APIs</span></div>
+                <div class="about-facts">
+                    <div class="fact" data-swarm-target="true"><i class="fa-regular fa-user"></i><span class="k">Name</span><span class="v">Abdul Moize</span></div>
+                    <div class="fact" data-swarm-target="true"><i class="fa-solid fa-location-dot"></i><span class="k">Location</span><span class="v">Karachi, Pakistan</span></div>
+                    <div class="fact" data-swarm-target="true"><i class="fa-solid fa-code"></i><span class="k">Specialisation</span><span class="v">Web Development</span></div>
+                    <div class="fact" data-swarm-target="true"><i class="fa-solid fa-seedling"></i><span class="k">Currently learning</span><span class="v">C#</span></div>
+                    <div class="fact wide" data-swarm-target="true"><i class="fa-solid fa-layer-group"></i><span class="k">Also working with</span><span class="v">WordPress and REST APIs</span></div>
                 </div>
             </div>
         </section>
 
         <section class="section" id="skills">
             <div class="container">
-                <div class="section-head reveal">
+                <div class="section-head" data-swarm-target="true">
                     <span class="eyebrow">Skills &amp; technologies</span>
                     <h2 class="section-title">The tools I use to <em>build</em>.</h2>
                 </div>
                 <div class="skills-grid">
-                    <div class="skill-card reveal">
+                    <div class="skill-card" data-swarm-target="true">
                         <h3><i class="fa-solid fa-laptop-code"></i> Frontend Development</h3>
                         <div class="chips">
                             <span class="chip"><i class="fa-brands fa-html5"></i> HTML5</span>
@@ -131,7 +230,7 @@
                             <span class="chip"><i class="fa-brands fa-react"></i> React</span>
                         </div>
                     </div>
-                    <div class="skill-card reveal reveal-delay-1">
+                    <div class="skill-card" data-swarm-target="true">
                         <h3><i class="fa-solid fa-server"></i> Backend Development</h3>
                         <div class="chips">
                             <span class="chip"><i class="fa-brands fa-php"></i> PHP</span>
@@ -140,13 +239,13 @@
                             <span class="chip"><i class="fa-brands fa-wordpress"></i> WordPress</span>
                         </div>
                     </div>
-                    <div class="skill-card reveal">
+                    <div class="skill-card" data-swarm-target="true">
                         <h3><i class="fa-solid fa-database"></i> Database Management</h3>
                         <div class="chips">
                             <span class="chip"><i class="fa-solid fa-database"></i> MySQL</span>
                         </div>
                     </div>
-                    <div class="skill-card reveal reveal-delay-1">
+                    <div class="skill-card" data-swarm-target="true">
                         <h3><i class="fa-solid fa-screwdriver-wrench"></i> Tools &amp; Technologies</h3>
                         <div class="chips">
                             <span class="chip"><i class="fa-brands fa-git-alt"></i> Git</span>
@@ -162,12 +261,12 @@
 
         <section class="section" id="projects">
             <div class="container">
-                <div class="section-head reveal">
+                <div class="section-head" data-swarm-target="true">
                     <span class="eyebrow">Selected work</span>
                     <h2 class="section-title">Projects, <em>shipped</em> and in progress.</h2>
                 </div>
 
-                <div class="filters reveal" role="group" aria-label="Filter projects by category">
+                <div class="filters" data-swarm-target="true" role="group" aria-label="Filter projects by category">
                     <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All <span class="count"></span></button>
                     <button class="filter-btn" type="button" data-filter="frontend" aria-pressed="false">Frontend Development <span class="count"></span></button>
                     <button class="filter-btn" type="button" data-filter="backend" aria-pressed="false">Backend Development <span class="count"></span></button>
@@ -178,7 +277,7 @@
 
                 <div class="projects-grid">
 
-                    <article class="project-card featured" data-categories="animation threed">
+                    <article class="project-card featured" data-categories="animation threed" data-swarm-target="true">
                         <div class="project-media">
                             <img src="https://images.pexels.com/photos/38777901/pexels-photo-38777901.jpeg?auto=compress&cs=tinysrgb&h=650&w=940" alt="COSMOS 3D EXPLORER space exploration preview" loading="lazy">
                             <span class="project-category">Animation &amp; Interactive</span>
@@ -194,7 +293,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-categories="fullstack backend">
+                    <article class="project-card" data-categories="fullstack backend" data-swarm-target="true">
                         <div class="project-media">
                             <img src="images/dashboardzz.jpeg" alt="MarketLink application dashboard" loading="lazy" onerror="this.src='images/dashboard.png'">
                             <span class="project-category">Full Stack</span>
@@ -210,7 +309,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-categories="frontend">
+                    <article class="project-card" data-categories="frontend" data-swarm-target="true">
                         <div class="project-media">
                             <img src="images/origam.png" alt="The Origami Hub website" loading="lazy">
                             <span class="project-category">Frontend</span>
@@ -226,7 +325,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-categories="frontend">
+                    <article class="project-card" data-categories="frontend" data-swarm-target="true">
                         <div class="project-media">
                             <img src="https://raw.githubusercontent.com/moizesadiq-dotcom/electric-scooter/main/img/scoty.jpg" alt="Electric Scooter website" loading="lazy">
                             <span class="project-category">Frontend</span>
@@ -242,7 +341,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-categories="frontend">
+                    <article class="project-card" data-categories="frontend" data-swarm-target="true">
                         <div class="project-media">
                             <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=85" alt="Fitness Factory website" loading="lazy">
                             <span class="project-category">Frontend</span>
@@ -258,7 +357,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-categories="frontend">
+                    <article class="project-card" data-categories="frontend" data-swarm-target="true">
                         <div class="project-media">
                             <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=85" alt="AURA BISTRO gourmet dining website" loading="lazy">
                             <span class="project-category">Frontend</span>
@@ -274,7 +373,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-categories="frontend">
+                    <article class="project-card" data-categories="frontend" data-swarm-target="true">
                         <div class="project-media">
                             <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=85" alt="Velora Motors luxury sports vehicle website" loading="lazy">
                             <span class="project-category">Frontend</span>
@@ -289,7 +388,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-categories="fullstack backend">
+                    <article class="project-card" data-categories="fullstack backend" data-swarm-target="true">
                         <div class="project-media">
                             <img src="images/dashboard.png" alt="Salon Management System dashboard" loading="lazy">
                             <span class="project-category">Full Stack</span>
@@ -305,7 +404,7 @@
                         </div>
                     </article>
 
-                    <article class="project-card" data-categories="fullstack backend">
+                    <article class="project-card" data-categories="fullstack backend" data-swarm-target="true">
                         <div class="project-media">
                             <img src="images/dashboardzz2.jpeg" alt="ZACNUS management dashboard" loading="lazy">
                             <span class="project-category">Full Stack</span>
@@ -327,17 +426,17 @@
 
         <section class="section" id="wordpress">
             <div class="container">
-                <div class="wp-panel reveal">
-                    <div>
+                <div class="wp-panel">
+                    <div data-swarm-target="true">
                         <span class="eyebrow">WordPress &amp; UI/UX</span>
                         <h2 class="section-title">Clear layouts, <em>considered</em> interfaces.</h2>
                         <p class="section-lead">WordPress is part of my toolkit, alongside custom PHP and Laravel builds. The interface principles below guide how I design every project on this page.</p>
                     </div>
                     <ul class="wp-list">
-                        <li><i class="fa-brands fa-wordpress"></i><div><strong>WordPress</strong><span>Content-driven websites built on a familiar, editable platform.</span></div></li>
-                        <li><i class="fa-solid fa-table-cells-large"></i><div><strong>Responsive layouts</strong><span>Interfaces that adapt cleanly from large desktops to phones.</span></div></li>
-                        <li><i class="fa-solid fa-gauge-high"></i><div><strong>Dashboard UI</strong><span>Clear navigation and readable data for management systems.</span></div></li>
-                        <li><i class="fa-solid fa-universal-access"></i><div><strong>Accessible interactions</strong><span>Keyboard support, visible focus states and reduced-motion options.</span></div></li>
+                        <li data-swarm-target="true"><i class="fa-brands fa-wordpress"></i><div><strong>WordPress</strong><span>Content-driven websites built on a familiar, editable platform.</span></div></li>
+                        <li data-swarm-target="true"><i class="fa-solid fa-table-cells-large"></i><div><strong>Responsive layouts</strong><span>Interfaces that adapt cleanly from large desktops to phones.</span></div></li>
+                        <li data-swarm-target="true"><i class="fa-solid fa-gauge-high"></i><div><strong>Dashboard UI</strong><span>Clear navigation and readable data for management systems.</span></div></li>
+                        <li data-swarm-target="true"><i class="fa-solid fa-universal-access"></i><div><strong>Accessible interactions</strong><span>Keyboard support, visible focus states and reduced-motion options.</span></div></li>
                     </ul>
                 </div>
             </div>
@@ -345,41 +444,41 @@
 
         <section class="section" id="experience">
             <div class="container">
-                <div class="section-head reveal">
+                <div class="section-head" data-swarm-target="true">
                     <span class="eyebrow">Experience &amp; education</span>
                     <h2 class="section-title">Background, <em>in order</em>.</h2>
                 </div>
                 <div class="timeline">
-                    <div class="timeline-col reveal">
-                        <h3><i class="fa-solid fa-briefcase"></i> Development Experience</h3>
-                        <div class="tl-item">
+                    <div class="timeline-col">
+                        <h3 data-swarm-target="true"><i class="fa-solid fa-briefcase"></i> Development Experience</h3>
+                        <div class="tl-item" data-swarm-target="true">
                             <div class="tl-date">Full Stack</div>
                             <h4>Full Stack Web Development</h4>
                             <p class="tl-sub">Laravel &middot; PHP &middot; MySQL &middot; JavaScript</p>
                             <p>Worked on database-driven web applications, including the MarketLink marketplace, a Salon Management System, and the ZACNUS platform.</p>
                         </div>
-                        <div class="tl-item">
+                        <div class="tl-item" data-swarm-target="true">
                             <div class="tl-date">Frontend</div>
                             <h4>Responsive Web Development</h4>
                             <p class="tl-sub">HTML &middot; CSS &middot; JavaScript &middot; Bootstrap</p>
                             <p>Built responsive websites and web applications, including AURA BISTRO, Fitness Factory, The Origami Hub, and the Electric Scooter showcase.</p>
                         </div>
-                        <div class="tl-item">
+                        <div class="tl-item" data-swarm-target="true">
                             <div class="tl-date">3D &amp; Creative</div>
                             <h4>3D &amp; Interactive Experiences</h4>
                             <p class="tl-sub">Interactive 3D &middot; Visual Effects</p>
                             <p>Created COSMOS 3D EXPLORER, an immersive 3D space exploration experience with interactive celestial environments.</p>
                         </div>
                     </div>
-                    <div class="timeline-col reveal reveal-delay-1">
-                        <h3><i class="fa-solid fa-graduation-cap"></i> Education</h3>
-                        <div class="tl-item">
+                    <div class="timeline-col">
+                        <h3 data-swarm-target="true"><i class="fa-solid fa-graduation-cap"></i> Education</h3>
+                        <div class="tl-item" data-swarm-target="true">
                             <div class="tl-date">2025 &ndash; Present</div>
                             <h4>CPISM AI &mdash; Artificial Intelligence</h4>
                             <p class="tl-sub">Aptech Computer Education, Pakistan</p>
                             <p>Currently enrolled in the Artificial Intelligence programme.</p>
                         </div>
-                        <div class="tl-item">
+                        <div class="tl-item" data-swarm-target="true">
                             <div class="tl-date">Training</div>
                             <h4>Web Development</h4>
                             <p class="tl-sub">Aptech Computer Education</p>
@@ -392,7 +491,7 @@
 
         <section class="section" id="contact">
             <div class="container contact-grid">
-                <div class="reveal">
+                <div data-swarm-target="true">
                     <span class="eyebrow">Contact</span>
                     <h2 class="contact-cta" style="margin-top:20px;">Let&rsquo;s build something <em>remarkable</em> together.</h2>
                     <p class="section-lead">Have a project in mind, or want to talk about web development? Send me a message and I will get back to you.</p>
@@ -400,23 +499,23 @@
                         <a href="mailto:moizesadiq@gmail.com?subject=Web%20Development%20Inquiry" class="btn btn-primary magnetic">Send Me an Email <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="contact-links reveal reveal-delay-1">
-                    <a class="contact-link" href="mailto:moizesadiq@gmail.com">
+                <div class="contact-links">
+                    <a class="contact-link" data-swarm-target="true" href="mailto:moizesadiq@gmail.com">
                         <i class="fa-regular fa-envelope ico"></i>
                         <div><span class="label">Email</span><span class="value">moizesadiq@gmail.com</span></div>
                         <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
                     </a>
-                    <a class="contact-link" href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank" rel="noopener noreferrer">
+                    <a class="contact-link" data-swarm-target="true" href="https://www.linkedin.com/in/moize-sadiq-31220b3a0" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-linkedin-in ico"></i>
                         <div><span class="label">LinkedIn</span><span class="value">moize-sadiq-31220b3a0</span></div>
                         <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
                     </a>
-                    <a class="contact-link" href="https://github.com/moizesadiq-dotcom" target="_blank" rel="noopener noreferrer">
+                    <a class="contact-link" data-swarm-target="true" href="https://github.com/moizesadiq-dotcom" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-github ico"></i>
                         <div><span class="label">GitHub</span><span class="value">moizesadiq-dotcom</span></div>
                         <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
                     </a>
-                    <a class="contact-link" href="https://www.instagram.com/ab.moize/" target="_blank" rel="noopener noreferrer">
+                    <a class="contact-link" data-swarm-target="true" href="https://www.instagram.com/ab.moize/" target="_blank" rel="noopener noreferrer">
                         <i class="fa-brands fa-instagram ico"></i>
                         <div><span class="label">Instagram</span><span class="value">@ab.moize</span></div>
                         <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
@@ -427,7 +526,7 @@
     </main>
 
     <footer class="footer">
-        <div class="container footer-inner">
+        <div class="container footer-inner" data-swarm-target="true">
             <span>&copy; <span id="currentYear"></span> Abdul Moize. Built with care.</span>
             <div class="footer-links">
                 <a href="https://github.com/moizesadiq-dotcom" target="_blank" rel="noopener noreferrer">GitHub</a>
